@@ -1,0 +1,583 @@
+{
+ "slips": [
+  {
+   "id": "d032dee8b1",
+   "kind": "multipla",
+   "method": "MULTIGOL",
+   "title": "Multigol a raddoppio #1",
+   "descr": "Le fasce Multigol più sicure fino a quota ~2",
+   "picks": [
+    {
+     "fx": "062a3dc2",
+     "lg": "I1",
+     "date": "2026-10-28",
+     "time": "17:30",
+     "home": "Milan",
+     "away": "Bologna",
+     "markets": [
+      "MG14"
+     ],
+     "name": "Multigol 1-4",
+     "p": 0.8114,
+     "fair": 1.23,
+     "min_odds": 1.29,
+     "real": null
+    },
+    {
+     "fx": "40daeb01",
+     "lg": "I1",
+     "date": "2026-10-28",
+     "time": "17:30",
+     "home": "Parma",
+     "away": "Udinese",
+     "markets": [
+      "MG14"
+     ],
+     "name": "Multigol 1-4",
+     "p": 0.8114,
+     "fair": 1.23,
+     "min_odds": 1.29,
+     "real": null
+    },
+    {
+     "fx": "1882d22c",
+     "lg": "I2",
+     "date": "2026-10-28",
+     "time": "19:00",
+     "home": "Juve Stabia",
+     "away": "Verona",
+     "markets": [
+      "MG14"
+     ],
+     "name": "Multigol 1-4",
+     "p": 0.8114,
+     "fair": 1.23,
+     "min_odds": 1.29,
+     "real": null
+    },
+    {
+     "fx": "c6110767",
+     "lg": "I1",
+     "date": "2026-10-28",
+     "time": "19:45",
+     "home": "Genoa",
+     "away": "Juventus",
+     "markets": [
+      "MG14"
+     ],
+     "name": "Multigol 1-4",
+     "p": 0.8114,
+     "fair": 1.23,
+     "min_odds": 1.29,
+     "real": null
+    }
+   ],
+   "prob": 0.4335,
+   "fair": 2.31,
+   "real": null,
+   "combos": null,
+   "created": "2026-10-28",
+   "status": "IN CORSO"
+  },
+  {
+   "id": "ae08022094",
+   "kind": "multipla",
+   "method": "MULTIGOL",
+   "title": "Multigol a raddoppio #2",
+   "descr": "Le fasce Multigol più sicure fino a quota ~2",
+   "picks": [
+    {
+     "fx": "cb4fc7a6",
+     "lg": "I1",
+     "date": "2026-10-29",
+     "time": "19:45",
+     "home": "Fiorentina",
+     "away": "Atalanta",
+     "markets": [
+      "MG14"
+     ],
+     "name": "Multigol 1-4",
+     "p": 0.8014,
+     "fair": 1.25,
+     "min_odds": 1.31,
+     "real": null
+    },
+    {
+     "fx": "731ec53e",
+     "lg": "I2",
+     "date": "2026-10-28",
+     "time": "18:00",
+     "home": "Pisa",
+     "away": "Palermo",
+     "markets": [
+      "MG14"
+     ],
+     "name": "Multigol 1-4",
+     "p": 0.7943,
+     "fair": 1.26,
+     "min_odds": 1.32,
+     "real": null
+    },
+    {
+     "fx": "bbfe3db5",
+     "lg": "I1",
+     "date": "2026-10-28",
+     "time": "17:30",
+     "home": "Venezia",
+     "away": "Inter",
+     "markets": [
+      "MG14"
+     ],
+     "name": "Multigol 1-4",
+     "p": 0.7733,
+     "fair": 1.29,
+     "min_odds": 1.36,
+     "real": null
+    }
+   ],
+   "prob": 0.4922,
+   "fair": 2.03,
+   "real": null,
+   "combos": null,
+   "created": "2026-10-28",
+   "status": "IN CORSO"
+  },
+  {
+   "id": "3340850a82",
+   "kind": "singola",
+   "method": "MULTIGOL",
+   "title": "Singola Multigol",
+   "descr": "",
+   "picks": [
+    {
+     "fx": "062a3dc2",
+     "lg": "I1",
+     "date": "2026-10-28",
+     "time": "17:30",
+     "home": "Milan",
+     "away": "Bologna",
+     "markets": [
+      "MG14"
+     ],
+     "name": "Multigol 1-4",
+     "p": 0.8114,
+     "fair": 1.23,
+     "min_odds": 1.29,
+     "real": null
+    }
+   ],
+   "prob": 0.8114,
+   "fair": 1.23,
+   "real": null,
+   "combos": null,
+   "created": "2026-10-28",
+   "status": "IN CORSO"
+  },
+  {
+   "id": "4493147994",
+   "kind": "singola",
+   "method": "MULTIGOL",
+   "title": "Singola Multigol",
+   "descr": "",
+   "picks": [
+    {
+     "fx": "40daeb01",
+     "lg": "I1",
+     "date": "2026-10-28",
+     "time": "17:30",
+     "home": "Parma",
+     "away": "Udinese",
+     "markets": [
+      "MG14"
+     ],
+     "name": "Multigol 1-4",
+     "p": 0.8114,
+     "fair": 1.23,
+     "min_odds": 1.29,
+     "real": null
+    }
+   ],
+   "prob": 0.8114,
+   "fair": 1.23,
+   "real": null,
+   "combos": null,
+   "created": "2026-10-28",
+   "status": "IN CORSO"
+  },
+  {
+   "id": "4cdac4a6bf",
+   "kind": "singola",
+   "method": "MULTIGOL",
+   "title": "Singola Multigol",
+   "descr": "",
+   "picks": [
+    {
+     "fx": "1882d22c",
+     "lg": "I2",
+     "date": "2026-10-28",
+     "time": "19:00",
+     "home": "Juve Stabia",
+     "away": "Verona",
+     "markets": [
+      "MG14"
+     ],
+     "name": "Multigol 1-4",
+     "p": 0.8114,
+     "fair": 1.23,
+     "min_odds": 1.29,
+     "real": null
+    }
+   ],
+   "prob": 0.8114,
+   "fair": 1.23,
+   "real": null,
+   "combos": null,
+   "created": "2026-10-28",
+   "status": "IN CORSO"
+  },
+  {
+   "id": "ed4dab1dc9",
+   "kind": "singola",
+   "method": "MULTIGOL",
+   "title": "Singola Multigol",
+   "descr": "",
+   "picks": [
+    {
+     "fx": "c6110767",
+     "lg": "I1",
+     "date": "2026-10-28",
+     "time": "19:45",
+     "home": "Genoa",
+     "away": "Juventus",
+     "markets": [
+      "MG14"
+     ],
+     "name": "Multigol 1-4",
+     "p": 0.8114,
+     "fair": 1.23,
+     "min_odds": 1.29,
+     "real": null
+    }
+   ],
+   "prob": 0.8114,
+   "fair": 1.23,
+   "real": null,
+   "combos": null,
+   "created": "2026-10-28",
+   "status": "IN CORSO"
+  },
+  {
+   "id": "7eb24af8f6",
+   "kind": "singola",
+   "method": "MULTIGOL",
+   "title": "Singola Multigol",
+   "descr": "",
+   "picks": [
+    {
+     "fx": "cb4fc7a6",
+     "lg": "I1",
+     "date": "2026-10-29",
+     "time": "19:45",
+     "home": "Fiorentina",
+     "away": "Atalanta",
+     "markets": [
+      "MG14"
+     ],
+     "name": "Multigol 1-4",
+     "p": 0.8014,
+     "fair": 1.25,
+     "min_odds": 1.31,
+     "real": null
+    }
+   ],
+   "prob": 0.8014,
+   "fair": 1.25,
+   "real": null,
+   "combos": null,
+   "created": "2026-10-28",
+   "status": "IN CORSO"
+  },
+  {
+   "id": "6a7299c93a",
+   "kind": "singola",
+   "method": "BATISTUTA",
+   "title": "Batistuta: GG-GG / GG-NG / NG-GG",
+   "descr": "Si giocano le 3 combinazioni divise (calcolatore 'Contabilizzatore')",
+   "picks": [
+    {
+     "fx": "731ec53e",
+     "lg": "I2",
+     "date": "2026-10-28",
+     "time": "18:00",
+     "home": "Pisa",
+     "away": "Palermo",
+     "markets": [
+      "BAT"
+     ],
+     "name": "GG in almeno un tempo (Batistuta)",
+     "p": 0.4871,
+     "fair": 2.05,
+     "min_odds": 2.16,
+     "real": null
+    }
+   ],
+   "prob": 0.4871,
+   "fair": 2.05,
+   "real": null,
+   "combos": null,
+   "created": "2026-10-28",
+   "status": "IN CORSO"
+  },
+  {
+   "id": "f7bcb4bfdb",
+   "kind": "multipla",
+   "method": "RADUCIOIU",
+   "title": "Raducioiu multipla Under 2.5",
+   "descr": "Partite con media Batistuta bassa, quota ~2",
+   "picks": [
+    {
+     "fx": "c6110767",
+     "lg": "I1",
+     "date": "2026-10-28",
+     "time": "19:45",
+     "home": "Genoa",
+     "away": "Juventus",
+     "markets": [
+      "U25"
+     ],
+     "name": "Under 2.5",
+     "p": 0.5529,
+     "fair": 1.81,
+     "min_odds": 1.9,
+     "real": 1.73
+    },
+    {
+     "fx": "1882d22c",
+     "lg": "I2",
+     "date": "2026-10-28",
+     "time": "19:00",
+     "home": "Juve Stabia",
+     "away": "Verona",
+     "markets": [
+      "U25"
+     ],
+     "name": "Under 2.5",
+     "p": 0.5101,
+     "fair": 1.96,
+     "min_odds": 2.06,
+     "real": 1.87
+    }
+   ],
+   "prob": 0.282,
+   "fair": 3.55,
+   "real": 3.24,
+   "combos": null,
+   "created": "2026-10-28",
+   "status": "IN CORSO"
+  },
+  {
+   "id": "8728d43b3f",
+   "kind": "singola",
+   "method": "RADUCIOIU",
+   "title": "Raducioiu: NG 1°T + NG 2°T",
+   "descr": "",
+   "picks": [
+    {
+     "fx": "c6110767",
+     "lg": "I1",
+     "date": "2026-10-28",
+     "time": "19:45",
+     "home": "Genoa",
+     "away": "Juventus",
+     "markets": [
+      "RAD"
+     ],
+     "name": "NG-NG nei due tempi (Raducioiu)",
+     "p": 0.6134,
+     "fair": 1.63,
+     "min_odds": 1.71,
+     "real": null
+    }
+   ],
+   "prob": 0.6134,
+   "fair": 1.63,
+   "real": null,
+   "combos": null,
+   "created": "2026-10-28",
+   "status": "IN CORSO"
+  },
+  {
+   "id": "4f00e40b63",
+   "kind": "singola",
+   "method": "RADUCIOIU",
+   "title": "Raducioiu: NG 1°T + NG 2°T",
+   "descr": "",
+   "picks": [
+    {
+     "fx": "52f17751",
+     "lg": "I1",
+     "date": "2026-10-29",
+     "time": "17:30",
+     "home": "Frosinone",
+     "away": "Lecce",
+     "markets": [
+      "RAD"
+     ],
+     "name": "NG-NG nei due tempi (Raducioiu)",
+     "p": 0.6134,
+     "fair": 1.63,
+     "min_odds": 1.71,
+     "real": null
+    }
+   ],
+   "prob": 0.6134,
+   "fair": 1.63,
+   "real": null,
+   "combos": null,
+   "created": "2026-10-28",
+   "status": "IN CORSO"
+  },
+  {
+   "id": "334106811c",
+   "kind": "singola",
+   "method": "RADUCIOIU",
+   "title": "Raducioiu: NG 1°T + NG 2°T",
+   "descr": "",
+   "picks": [
+    {
+     "fx": "40daeb01",
+     "lg": "I1",
+     "date": "2026-10-28",
+     "time": "17:30",
+     "home": "Parma",
+     "away": "Udinese",
+     "markets": [
+      "RAD"
+     ],
+     "name": "NG-NG nei due tempi (Raducioiu)",
+     "p": 0.6077,
+     "fair": 1.65,
+     "min_odds": 1.73,
+     "real": null
+    }
+   ],
+   "prob": 0.6077,
+   "fair": 1.65,
+   "real": null,
+   "combos": null,
+   "created": "2026-10-28",
+   "status": "IN CORSO"
+  },
+  {
+   "id": "29976810db",
+   "kind": "singola",
+   "method": "RADUCIOIU",
+   "title": "Raducioiu: NG 1°T + NG 2°T",
+   "descr": "",
+   "picks": [
+    {
+     "fx": "1882d22c",
+     "lg": "I2",
+     "date": "2026-10-28",
+     "time": "19:00",
+     "home": "Juve Stabia",
+     "away": "Verona",
+     "markets": [
+      "RAD"
+     ],
+     "name": "NG-NG nei due tempi (Raducioiu)",
+     "p": 0.5961,
+     "fair": 1.68,
+     "min_odds": 1.76,
+     "real": null
+    }
+   ],
+   "prob": 0.5961,
+   "fair": 1.68,
+   "real": null,
+   "combos": null,
+   "created": "2026-10-28",
+   "status": "IN CORSO"
+  },
+  {
+   "id": "3da815fe7a",
+   "kind": "singola",
+   "method": "RADUCIOIU",
+   "title": "Raducioiu: NG 1°T + NG 2°T",
+   "descr": "",
+   "picks": [
+    {
+     "fx": "6f3292bf",
+     "lg": "I2",
+     "date": "2026-10-28",
+     "time": "19:00",
+     "home": "Carrarese",
+     "away": "Arezzo",
+     "markets": [
+      "RAD"
+     ],
+     "name": "NG-NG nei due tempi (Raducioiu)",
+     "p": 0.5862,
+     "fair": 1.71,
+     "min_odds": 1.79,
+     "real": null
+    }
+   ],
+   "prob": 0.5862,
+   "fair": 1.71,
+   "real": null,
+   "combos": null,
+   "created": "2026-10-28",
+   "status": "IN CORSO"
+  },
+  {
+   "id": "d241292406",
+   "kind": "sistema",
+   "method": "RADUCIOIU",
+   "title": "Sistema Risultato Esatto 2 partite × 2 gruppi",
+   "descr": "4 colonne, come il foglio 'Contab Sistema RE'",
+   "picks": [
+    {
+     "fx": "c6110767",
+     "lg": "I1",
+     "date": "2026-10-28",
+     "time": "19:45",
+     "home": "Genoa",
+     "away": "Juventus",
+     "markets": [
+      "RE_C",
+      "RE_X"
+     ],
+     "name": "Ris. esatto 1-0 / 2-0 / 2-1 oppure Ris. esatto 0-0 / 1-1 / 2-2",
+     "p": 0.532,
+     "fair": 1.88,
+     "min_odds": 1.97,
+     "real": null
+    },
+    {
+     "fx": "52f17751",
+     "lg": "I1",
+     "date": "2026-10-29",
+     "time": "17:30",
+     "home": "Frosinone",
+     "away": "Lecce",
+     "markets": [
+      "RE_C",
+      "RE_O"
+     ],
+     "name": "Ris. esatto 1-0 / 2-0 / 2-1 oppure Ris. esatto 0-1 / 0-2 / 1-2",
+     "p": 0.4446,
+     "fair": 2.25,
+     "min_odds": 2.36,
+     "real": null
+    }
+   ],
+   "prob": 0.2365,
+   "fair": 4.23,
+   "real": null,
+   "combos": 4,
+   "created": "2026-10-28",
+   "status": "IN CORSO"
+  }
+ ]
+}

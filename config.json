@@ -1,0 +1,44 @@
+{
+  "leagues": {
+    "I1":  {"name": "Italia Serie A",        "country": "Italia"},
+    "I2":  {"name": "Italia Serie B",        "country": "Italia"},
+    "E0":  {"name": "Inghilterra Premier",   "country": "Inghilterra"},
+    "E1":  {"name": "Inghilterra Championship", "country": "Inghilterra"},
+    "E2":  {"name": "Inghilterra League One", "country": "Inghilterra"},
+    "E3":  {"name": "Inghilterra League Two", "country": "Inghilterra"},
+    "D1":  {"name": "Germania Bundesliga",   "country": "Germania"},
+    "D2":  {"name": "Germania 2. Bundesliga", "country": "Germania"},
+    "SP1": {"name": "Spagna Liga",           "country": "Spagna"},
+    "SP2": {"name": "Spagna Segunda",        "country": "Spagna"},
+    "F1":  {"name": "Francia Ligue 1",       "country": "Francia"},
+    "F2":  {"name": "Francia Ligue 2",       "country": "Francia"},
+    "N1":  {"name": "Olanda Eredivisie",     "country": "Olanda"},
+    "B1":  {"name": "Belgio Pro League",     "country": "Belgio"},
+    "P1":  {"name": "Portogallo Liga",       "country": "Portogallo"},
+    "G1":  {"name": "Grecia Super League",   "country": "Grecia"},
+    "T1":  {"name": "Turchia Super Lig",     "country": "Turchia"},
+    "AUT": {"name": "Austria Bundesliga",    "country": "Austria",   "extra": ["Austria", "Bundesliga"]},
+    "DNK": {"name": "Danimarca Superliga",   "country": "Danimarca", "extra": ["Denmark", "Superliga"]},
+    "SWZ": {"name": "Svizzera Super League", "country": "Svizzera",  "extra": ["Switzerland", "Super League"]}
+  },
+
+  "metodo": {
+    "raducioiu_max": 0.46,
+    "batistuta_min": 0.60
+  },
+
+  "statistiche": {
+    "partite_minime": 6,
+    "partite_campione": 10
+  },
+
+  "bollette": {
+    "soglia_consiglio": 0.75,
+    "quota_raddoppio": 2.0,
+    "max_eventi_multipla": 5,
+    "margine_valore": 1.05,
+    "puntata": 10
+  },
+
+  "backtest_stagioni": 2
+}
