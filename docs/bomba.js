@@ -5,7 +5,7 @@
   const MG = window.MG;
   if (!MG || !MG.D || !MG.sis) return;
   const { D, esc, pct, q2, eur, lgName, fdate, badge, started } = MG;
-  const { FX, MK, compute, columns, defOdds, elem } = MG.sis;
+  const { FX, MK, compute, columns, defOdds, elem, splitBox, colsLabel, splitOwners } = MG.sis;
 
   const KEY = "mg_bomba";
   let opts = Object.assign({ importo: 10, n: 4, stile: "equilibrato", sizes: [] }, JSON.parse(localStorage.getItem(KEY) || "{}"));
@@ -87,7 +87,7 @@
     }
     if (manual.length) best = tried.find((t) => t.sizes.join() === manual.join());
     else if (!best || best.sc === -Infinity) return { error: `Con ${eur(importo)} le colonne verrebbero sotto i ${eur(MIN_COL)}: aumenta l'importo o riduci le partite.` };
-    const final = compute(its, best.sizes, importo, 20000);
+    const final = compute(its, best.sizes, importo, 20000, opts.split);
     const auto = tried.reduce((a, t) => (!a || t.sc > a.sc ? t : a), null);
     return { its, sizes: best.sizes, r: final, tried, importo, manual: manual.length > 0, auto, short: chosen.length < opts.n };
   }
@@ -123,7 +123,7 @@
     if (res.error) body = `<div class="empty">${esc(res.error)}</div>`;
     else {
       const r = res.r, n = res.its.length;
-      const cols = columns(res.its, res.sizes, r.per, 200);
+      const cols = columns(res.its, res.sizes, r.perK, 200);
       body = `<div class="card bomba">
         <h3>💣 La tua Bomba · ${n} partite · ${esc(sizeLabel(res.sizes, n))}</h3>
         ${res.short ? `<div class="small muted">Ci sono solo ${n} partite con giocate consigliate in questo momento.</div>` : ""}
@@ -132,8 +132,9 @@
           <div class="small muted">${esc(lgName(it.fx.lg))} · ${fdate(it.fx.date, it.fx.time)} · ${badge(it.method, it.fx)}</div></div>
           <div class="r">${it.opts.map((o) => `<div class="w">${esc(MK[o.mk])}</div><div class="small muted">${pct(it.fx.est.probs[o.mk])} · quota min ${q2(o.odds)}</div>`).join("")}</div>
         </div>`).join("")}
+        ${splitBox("bomba", res.its, res.sizes, res.importo, opts.split)}
         <div class="grid2" style="margin-top:10px">
-          <div class="kpi"><div class="v">${r.cols}</div><div class="l">colonne da ${eur(r.per)}</div></div>
+          <div class="kpi"><div class="v">${r.cols}</div><div class="l">${colsLabel(r)}</div></div>
           <div class="kpi"><div class="v">${eur(r.total)}</div><div class="l">importo totale</div></div>
           <div class="kpi"><div class="v">${eur(r.minCol)}</div><div class="l">vincita minima</div></div>
           <div class="kpi"><div class="v">${eur(r.maxAll)}</div><div class="l">vincita massima</div></div>
@@ -142,8 +143,8 @@
         </div>
         <div class="note" style="margin-top:10px">🤖 ${why(res)}<br>Le quote sono quelle <b>minime</b>: se il tuo bookmaker paga meno su qualche giocata, apri la bomba nel costruttore e correggile.</div>
         <details><summary class="small"><b>Vedi le colonne</b>${r.cols > cols.length ? ` (prime ${cols.length} di ${r.cols})` : ""}</summary>
-          <div class="tw" style="margin-top:6px"><table><tr><th>#</th><th>Giocate</th><th>Quota</th><th>Vincita</th></tr>
-          ${cols.map((c, i) => `<tr><td>${i + 1}</td><td style="text-align:left;white-space:normal">${c.c.map(([it, o]) => `${esc(it.fx.home)}: ${esc(MK[o.mk])}`).join("<br>")}</td><td>${q2(c.q)}</td><td>${eur(c.win)}</td></tr>`).join("")}
+          <div class="tw" style="margin-top:6px"><table><tr><th>#</th><th>Giocate</th><th>Quota</th>${r.split ? "<th>Puntata</th>" : ""}<th>Vincita</th></tr>
+          ${cols.map((c, i) => `<tr><td>${i + 1}</td><td style="text-align:left;white-space:normal">${c.c.map(([it, o]) => `${esc(it.fx.home)}: ${esc(MK[o.mk])}`).join("<br>")}</td><td>${q2(c.q)}</td>${r.split ? `<td>${eur(c.st)}</td>` : ""}<td>${eur(c.win)}</td></tr>`).join("")}
           </table></div></details>
         <details style="margin-top:6px"><summary class="small"><b>Gli altri sistemi che ho confrontato</b></summary>
           <div class="tw" style="margin-top:6px"><table><tr><th>Sistema</th><th>Colonne</th><th>Rientro</th><th>Vincita max</th></tr>
@@ -168,12 +169,22 @@
   }
 
   MG.views.bomba = view;
+  splitOwners.bomba = {
+    get: () => ({ its: result.its, sizes: result.sizes, total: result.importo, split: opts.split }),
+    set: (split, total) => {
+      opts.split = split; opts.importo = Math.round(total * 100) / 100;
+      result.importo = opts.importo;
+      result.r = compute(result.its, result.sizes, opts.importo, 20000, split);
+      persist();
+    },
+  };
   const persist = () => localStorage.setItem(KEY, JSON.stringify(opts));
   const main = document.getElementById("main");
   main.addEventListener("click", (ev) => {
     const t = ev.target.closest("[data-bn],[data-bs],[data-ba],[data-bz]");
     if (!t || MG.state.tab !== "bomba") return;
     const d = t.dataset;
+    if (!d.ba || d.ba === "again") opts.split = null;   // nuova bomba o nuovo tipo: importi di nuovo uguali per colonna
     if (d.bn) { opts.n = +d.bn; opts.sizes = []; seed = 0; result = null; }
     else if (d.bz) {
       if (d.bz === "auto") opts.sizes = [];
@@ -182,7 +193,7 @@
     }
     else if (d.bs) { opts.stile = d.bs; seed = 0; result = null; }
     else if (d.ba === "again") { seed++; result = null; }
-    else if (d.ba === "open" && result && !result.error) { MG.sis.openInBuilder(result.its, result.sizes, result.importo); return; }
+    else if (d.ba === "open" && result && !result.error) { MG.sis.openInBuilder(result.its, result.sizes, result.importo, result.r.split); return; }
     else if (d.ba === "save" && result && !result.error) {
       MG.sis.saveSystem(result.its, result.r);
       alert("Bomba salvata: la trovi in Sistema → I miei sistemi.");
@@ -193,6 +204,7 @@
   main.addEventListener("change", (ev) => {
     if (ev.target.id !== "bImp" || MG.state.tab !== "bomba") return;
     opts.importo = Math.max(1, parseFloat(String(ev.target.value).replace(",", ".")) || 10);
+    opts.split = null;
     result = null; persist(); MG.render();
   });
 })();

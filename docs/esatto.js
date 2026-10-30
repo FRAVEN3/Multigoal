@@ -22,7 +22,7 @@
   for (const id of Object.keys(st.sel)) if (!FX[id] || started(FX[id])) delete st.sel[id];
 
   const pr = (fx, mk) => fx.est.probs[mk];
-  const { compute, columns, elem } = MG.sis;
+  const { compute, columns, elem, splitBox, colsLabel, splitOwners } = MG.sis;
   const MAXP = 8; // partite proposte dall'app
   const minOdds = (fx, mk) => Math.round((margin / pr(fx, mk)) * 100) / 100;
   // i risultati della partita dal più probabile
@@ -40,25 +40,27 @@
 
   // ---------- sistema (integrale o a correzione) su più partite ----------
   const sizesOf = (sizes, n) => { const s = (sizes || []).filter((k) => k >= 1 && k <= n); return s.length ? s.sort((a, b) => a - b) : [n]; };
+  const splitOf = (key) => (key === "auto" ? st.auto.split : st.selSplit);
   function sysBox(its, sizesSel, key) {
     const n = its.length, sizes = sizesOf(sizesSel, n), T = Number(st.importo) || 0;
     const eC = elem(its.map((it) => it.opts.length));
     const chips = Array.from({ length: n }, (_, i) => i + 1).map((k) =>
       `<button class="chip ${sizes.includes(k) ? "on" : ""}" data-re-sz="${key}|${k}">${k === n ? `${k} su ${k} integrale` : `${k} su ${n}`} · ${eC[k]} col.</button>`).join("");
-    const r = compute(its, sizes, T, 8000);
-    const cols = columns(its, sizes, r.per, 150);
+    const r = compute(its, sizes, T, 8000, splitOf(key));
+    const cols = columns(its, sizes, r.perK, 150);
     const errs = n - Math.min(...sizes);
     const k = (v, l) => `<div class="kpi"><div class="v">${v}</div><div class="l">${l}</div></div>`;
     return `<div class="small muted" style="margin-top:8px">Tipo di sistema (puoi sceglierne più di uno, es. 2 su 3 + 3 su 3)</div>
       <div class="chips" style="margin-top:4px">${chips}</div>
-      <div class="grid2">${k(r.cols, `colonne da ${eur(r.per)}`)}${k(eur(r.minCol), "vincita minima")}${k(eur(r.maxAll), "vincita massima")}
+      ${splitBox("re-" + key, its, sizes, T, splitOf(key))}
+      <div class="grid2">${k(r.cols, colsLabel(r))}${k(eur(r.minCol), "vincita minima")}${k(eur(r.maxAll), "vincita massima")}
         ${k(pct(r.pAny, 1), "probabilità di vincere qualcosa")}${k(pct(r.pProf, 1), "probabilità di rientrare o guadagnare")}
         ${k(`<span class="${r.ev >= 0 ? "esito-W" : "esito-L"}">${r.ev >= 0 ? "+" : ""}${pct(r.ev, 1)}</span>`, "resa media stimata")}</div>
       <div class="small muted" style="margin-top:6px">${errs ? `Puoi sbagliare fino a ${errs} partit${errs === 1 ? "a" : "e"} e vincere comunque qualcosa.` : "Devono uscire tutte le partite."}
         ${r.per > 0 && r.per < 0.1 ? ` <span class="esito-L">Colonne sotto 0,10 €: molti bookmaker non le accettano.</span>` : ""}</div>
       <details style="margin-top:6px"><summary class="small"><b>Vedi le colonne</b>${r.cols > cols.length ? ` (prime ${cols.length} di ${r.cols})` : ""}</summary>
-        <div class="tw" style="margin-top:6px"><table><tr><th>#</th><th>Risultati</th><th>Quota</th><th>Vincita</th></tr>
-        ${cols.map((c, i) => `<tr><td>${i + 1}</td><td style="text-align:left;white-space:normal">${c.c.map(([it, o]) => `${esc(it.fx.home)}: <b>${label(o.mk)}</b>`).join("<br>")}</td><td>${q2(c.q)}</td><td>${eur(c.win)}</td></tr>`).join("")}
+        <div class="tw" style="margin-top:6px"><table><tr><th>#</th><th>Risultati</th><th>Quota</th>${r.split ? "<th>Puntata</th>" : ""}<th>Vincita</th></tr>
+        ${cols.map((c, i) => `<tr><td>${i + 1}</td><td style="text-align:left;white-space:normal">${c.c.map(([it, o]) => `${esc(it.fx.home)}: <b>${label(o.mk)}</b>`).join("<br>")}</td><td>${q2(c.q)}</td>${r.split ? `<td>${eur(c.st)}</td>` : ""}<td>${eur(c.win)}</td></tr>`).join("")}
         </table></div></details>
       <div class="row" style="margin-top:10px">
         <button class="btn" data-re-act="save-${key}">Salva sistema</button>
@@ -183,32 +185,48 @@
   }
 
   MG.views.esatto = view;
+  // importi per tipo: una sola cifra totale per la scheda, quindi cambiarli cambia anche l'importo totale
+  const owner = (key) => ({
+    get: () => {
+      const auto = key === "auto", its = auto ? autoIts() : itsOf(st.sel);
+      return { its, sizes: sizesOf(auto ? st.auto.sizes : st.selSizes, its.length), total: Number(st.importo) || 0, split: splitOf(key) };
+    },
+    set: (split, total) => {
+      if (key === "auto") st.auto.split = split; else st.selSplit = split;
+      st.importo = Math.round(total * 100) / 100; save();
+    },
+  });
+  splitOwners["re-auto"] = owner("auto");
+  splitOwners["re-sel"] = owner("sel");
   const main = document.getElementById("main");
   main.addEventListener("click", (ev) => {
     if (MG.state.tab !== "esatto") return;
     const t = ev.target.closest("[data-re],[data-re-top],[data-re-f],[data-re-act],[data-re-sz],[data-re-k],[data-re-on]");
     if (!t) return;
     const d = t.dataset;
-    if (d.re) { const [id, mk] = d.re.split("|"); toggle(id, mk); }
-    else if (d.reTop) { const fx = FX[d.reTop]; st.sel[d.reTop] = Object.fromEntries(ranked(fx).slice(0, 3).map((mk) => [mk, minOdds(fx, mk)])); }
+    if (d.re) { const [id, mk] = d.re.split("|"); toggle(id, mk); st.selSplit = null; }
+    else if (d.reTop) {
+      st.selSplit = null; const fx = FX[d.reTop]; st.sel[d.reTop] = Object.fromEntries(ranked(fx).slice(0, 3).map((mk) => [mk, minOdds(fx, mk)])); }
     else if (d.reF) st.filtro = d.reF;
     else if (d.reSz) {
       const [key, k] = d.reSz.split("|"), auto = key === "auto";
       const n = auto ? autoIts().length : itsOf(st.sel).length;
       let cur = sizesOf(auto ? st.auto.sizes : st.selSizes, n);
       cur = cur.includes(+k) ? cur.filter((x) => x !== +k) : [...cur, +k];
-      if (auto) st.auto.sizes = cur; else st.selSizes = cur;
+      if (auto) { st.auto.sizes = cur; st.auto.split = null; } else { st.selSizes = cur; st.selSplit = null; }
     }
-    else if (d.reK) st.auto.k = +d.reK;
+    else if (d.reK) { st.auto.k = +d.reK; st.auto.split = null; }
     else if (d.reOn) {
       const on = autoOn(proposal());
       st.auto.on = on.includes(d.reOn) ? on.filter((x) => x !== d.reOn) : [...on, d.reOn];
+      st.auto.split = null;
     }
-    else if (d.reAct === "clear") { st.sel = {}; st.selSizes = []; }
+    else if (d.reAct === "clear") { st.sel = {}; st.selSizes = []; st.selSplit = null; }
     else if (d.reAct === "copy") {
       // porta la proposta nella "tua giocata", dove si possono cambiare risultati e quote
       st.sel = Object.fromEntries(autoIts().map((it) => [it.fx.id, Object.fromEntries(it.opts.map((o) => [o.mk, o.odds]))]));
       st.selSizes = st.auto.sizes.slice();
+      st.selSplit = st.auto.split ? { ...st.auto.split } : null;
       save(); MG.render();
       const h = [...document.querySelectorAll("#main h2")].find((x) => x.textContent === "La tua giocata");
       if (h) h.scrollIntoView();
@@ -219,9 +237,10 @@
       const its = key === "auto" ? autoIts() : itsOf(st.sel);
       if (!its.length) return;
       const sizes = sizesOf(key === "auto" ? st.auto.sizes : st.selSizes, its.length);
-      if (act === "sis") { MG.sis.openInBuilder(its, sizes, Number(st.importo) || 10); return; }
+      const sp = splitOf(key);
+      if (act === "sis") { MG.sis.openInBuilder(its, sizes, Number(st.importo) || 10, sp); return; }
       if (act === "save") {
-        MG.sis.saveSystem(its, compute(its, sizes, Number(st.importo) || 0, 2000));
+        MG.sis.saveSystem(its, compute(its, sizes, Number(st.importo) || 0, 2000, sp));
         alert("Sistema salvato: lo trovi in Sistema → I miei sistemi.");
       }
       return;
@@ -231,6 +250,7 @@
   main.addEventListener("change", (ev) => {
     if (MG.state.tab !== "esatto") return;
     const t = ev.target;
+    if (t.id === "reTot" || t.id === "reTotA") { st.auto.split = null; st.selSplit = null; }
     if (t.id === "reTot" || t.id === "reTotA") st.importo = Math.max(0, parseFloat(String(t.value).replace(",", ".")) || 0);
     else if (t.dataset.reOdds) { const [id, mk] = t.dataset.reOdds.split("|"); const v = parseFloat(String(t.value).replace(",", ".")); if (v > 1 && st.sel[id]) st.sel[id][mk] = v; }
     else return;

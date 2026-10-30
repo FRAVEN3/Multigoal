@@ -65,6 +65,7 @@
     if (mk in s) delete s[mk]; else s[mk] = defOdds(fx, mk);
     if (!Object.keys(s).length) delete draft.sel[fxId];
     draft.sizes = draft.sizes.filter((k) => k <= Object.keys(draft.sel).length);
+    draft.split = null;
     save();
   }
 
@@ -116,17 +117,30 @@
     return p[p.length - 1].v;
   }
 
-  function compute(its, sizesArg, totalArg, nSim) {
-    const n = its.length, sizes = sizesArg || sizesOf(n);
+  // Importi diversi per tipo di sistema (es. 6 € sull'integrale e 4 € sul 2 su 3).
+  // split = { k: euro } con un valore per ogni tipo scelto; se manca, l'importo è uguale per ogni colonna.
+  function normSplit(split, sizes) {
+    if (!split || sizes.length < 2 || !sizes.every((k) => Number(split[k]) >= 0)) return null;
+    const out = Object.fromEntries(sizes.map((k) => [k, Number(split[k])]));
+    return Object.values(out).some((v) => v > 0) ? out : null;
+  }
+  function perOf(its, sizes, total, split) {
     const eC = elem(its.map((it) => it.opts.length));
     const cols = sizes.reduce((a, k) => a + eC[k], 0);
-    const total = Number(totalArg ?? draft.total) || 0, per = cols ? total / cols : 0;
+    const sp = normSplit(split, sizes);
+    const perK = Object.fromEntries(sizes.map((k) => [k, sp ? (eC[k] ? sp[k] / eC[k] : 0) : cols ? total / cols : 0]));
+    return { eC, cols, perK, split: sp, total: sp ? sizes.reduce((a, k) => a + sp[k], 0) : total };
+  }
+  function compute(its, sizesArg, totalArg, nSim, splitArg) {
+    const n = its.length, sizes = sizesArg || sizesOf(n);
+    const P = perOf(its, sizes, Number(totalArg ?? draft.total) || 0, splitArg !== undefined ? splitArg : sizesArg ? null : draft.split);
+    const { cols, perK, total } = P;
+    const pers = sizes.map((k) => perK[k]), per = Math.min(...pers), perMax = Math.max(...pers);
     // vincita della colonna più bassa e di quella più alta (se esce solo quella)
-    let minCol = Infinity, maxAll;
-    const kmin = Math.min(...sizes);
     const sortedMin = its.map((it) => Math.min(...it.opts.map((o) => o.odds))).sort((a, b) => a - b);
-    minCol = sortedMin.slice(0, kmin).reduce((a, b) => a * b, 1) * per;
-    maxAll = sizes.reduce((a, k) => a + elem(its.map((it) => it.opts.reduce((s, o) => s + o.odds, 0)))[k], 0) * per;
+    const minCol = Math.min(...sizes.filter((k) => perK[k] > 0).map((k) => sortedMin.slice(0, k).reduce((a, b) => a * b, 1) * perK[k]));
+    const eSum = elem(its.map((it) => it.opts.reduce((s, o) => s + o.odds, 0)));
+    const maxAll = sizes.reduce((a, k) => a + eSum[k] * perK[k], 0);
     // simulazione: per ogni partita estraggo un risultato dalle partite di riferimento delle due squadre
     const N = nSim || 20000;
     const pools = its.map(pool);
@@ -134,13 +148,13 @@
     for (let i = 0; i < N; i++) {
       const v = pools.map(draw);
       const e = elem(v);
-      const pay = sizes.reduce((s, k) => s + e[k], 0) * per;
+      const pay = sizes.reduce((s, k) => s + e[k] * perK[k], 0);
       if (pay > 0) any++;
       if (pay >= total) { prof++; sumProf += pay; }
       if (pay > best) best = pay;
       sum += pay;
     }
-    return { n, sizes, cols, per, total, minCol, maxAll, pAny: any / N, pProf: prof / N, ev: total ? sum / N / total - 1 : 0, best,
+    return { n, sizes, cols, per, perMax, perK, split: P.split, total, minCol: isFinite(minCol) ? minCol : 0, maxAll, pAny: any / N, pProf: prof / N, ev: total ? sum / N / total - 1 : 0, best,
       avgProf: prof ? sumProf / prof : 0 };
   }
 
@@ -154,8 +168,59 @@
       rec(i + 1, chosen, k);
     };
     for (const k of sizes) rec(0, [], k);
-    return out.map((c) => { const q = c.reduce((a, [, o]) => a * o.odds, 1); return { c, q, win: q * per }; });
+    return out.map((c) => { const q = c.reduce((a, [, o]) => a * o.odds, 1), st = typeof per === "object" ? per[c.length] : per; return { c, q, st, win: q * st }; });
   }
+
+  // ---------- riquadro "Importo per tipo" (usato da Sistema, Bomba e Ris. esatto) ----------
+  const colsLabel = (r) => (r.split && r.perMax - r.per > 0.005 ? `colonne da ${eur(r.per)} a ${eur(r.perMax)}` : `colonne da ${eur(r.per)}`);
+  const sizeName = (k, n) => (k === n ? `${k} su ${k} integrale` : `${k} su ${n}`);
+  function scaleSplit(split, sizes, total) {
+    const sp = normSplit(split, sizes);
+    if (!sp) return null;
+    const t = sizes.reduce((a, k) => a + sp[k], 0);
+    return t ? Object.fromEntries(sizes.map((k) => [k, Math.round((sp[k] * total / t) * 100) / 100])) : null;
+  }
+  function splitBox(key, its, sizes, total, split) {
+    if (sizes.length < 2) return "";
+    const n = its.length, P = perOf(its, sizes, total, split);
+    const rows = sizes.slice().sort((a, b) => b - a).map((k) => {
+      const amt = P.split ? P.split[k] : Math.round(P.perK[k] * P.eC[k] * 100) / 100;
+      return `<div class="optrow"><span>${sizeName(k, n)} <span class="small muted">· ${P.eC[k]} col.</span></span>
+        <span><input class="odds" type="number" step="0.5" min="0" inputmode="decimal" value="${amt}" data-split="${key}|${k}"> €
+        <span class="small muted" style="display:inline-block;min-width:92px;text-align:right">${eur(P.perK[k])} a col.</span></span></div>`;
+    }).join("");
+    return `<div class="card" style="margin:6px 0;padding:8px 10px">
+      <div class="small"><b>Importo per tipo</b> <span class="muted">(es. di più sull'integrale e il resto sulle altre)</span></div>
+      ${rows}
+      <div class="row" style="margin:6px 0 0"><span class="small">Totale <b>${eur(P.total)}</b></span>
+        <button class="chip ${P.split ? "" : "on"}" data-splitmode="${key}|eq">Uguale per colonna</button>
+        <button class="chip" data-splitmode="${key}|half">Parti uguali per tipo</button></div>
+      <div class="small muted">Se il tuo bookmaker non permette importi diversi nella stessa schedina, gioca una schedina per ogni tipo con l'importo indicato: il risultato è identico.</div>
+    </div>`;
+  }
+  // ogni scheda registra come leggere e salvare i propri importi: { get: () => ({ its, sizes, total, split }), set: (split, total) => {} }
+  const splitOwners = {};
+  document.getElementById("main").addEventListener("change", (ev) => {
+    const t = ev.target; if (!t.dataset || !t.dataset.split) return;
+    const [key, k] = t.dataset.split.split("|"), o = splitOwners[key]; if (!o) return;
+    const { its, sizes, total, split } = o.get(), P = perOf(its, sizes, total, split);
+    const sp = Object.fromEntries(sizes.map((x) => [x, P.split ? P.split[x] : Math.round(P.perK[x] * P.eC[x] * 100) / 100]));
+    sp[k] = Math.max(0, parseFloat(String(t.value).replace(",", ".")) || 0);
+    o.set(sp, sizes.reduce((a, x) => a + sp[x], 0));
+    MG.render();
+  });
+  document.getElementById("main").addEventListener("click", (ev) => {
+    const t = ev.target.closest("[data-splitmode]"); if (!t) return;
+    const [key, mode] = t.dataset.splitmode.split("|"), o = splitOwners[key]; if (!o) return;
+    const { its, sizes, total, split } = o.get(), tot = perOf(its, sizes, total, split).total;
+    if (mode === "eq") o.set(null, tot);
+    else o.set(Object.fromEntries(sizes.map((k) => [k, Math.round((tot / sizes.length) * 100) / 100])), tot);
+    MG.render();
+  });
+  splitOwners.sis = {
+    get: () => { const its = items(); return { its, sizes: sizesOf(its.length), total: draft.total, split: draft.split }; },
+    set: (split, total) => { draft.split = split; draft.total = total; save(); },
+  };
 
   // ---------- scelta partite ----------
   const SUGG = {
@@ -219,7 +284,8 @@
       <div class="small muted" style="margin:6px 0">Le caselle gialle sono già riempite con la quota minima consigliata: <b>scrivi la quota vera del tuo bookmaker</b>.</div>
       <div class="small muted">Tipo di sistema (puoi sceglierne più di uno):</div>
       <div class="chips" style="margin-top:4px">${sizeChips}</div>
-      <div class="row"><label class="small muted">Importo totale (€)</label><input id="sisTot" type="number" step="0.5" min="0" inputmode="decimal" value="${draft.total}"></div>
+      <div class="row"><label class="small muted">Importo totale (€)</label><input id="sisTot" type="number" step="0.5" min="0" inputmode="decimal" value="${draft.split ? perOf(its, sizesOf(n), draft.total, draft.split).total : draft.total}"></div>
+      ${splitBox("sis", its, sizesOf(n), draft.total, draft.split)}
       <div id="sisRes">${resultsHtml(its)}</div>
       <div class="row" style="margin-top:10px"><button class="btn" data-act="save">Salva sistema</button><button class="btn" style="background:var(--nob)" data-act="clear">Svuota</button></div>
     </div>`;
@@ -227,9 +293,9 @@
 
   function resultsHtml(its) {
     const r = compute(its);
-    const cols = columns(its, r.sizes, r.per, 300);
+    const cols = columns(its, r.sizes, r.perK, 300);
     return `<div class="grid2">
-        <div class="kpi"><div class="v">${r.cols}</div><div class="l">colonne da ${eur(r.per)}</div></div>
+        <div class="kpi"><div class="v">${r.cols}</div><div class="l">${colsLabel(r)}</div></div>
         <div class="kpi"><div class="v">${eur(r.minCol)}</div><div class="l">vincita minima (esce solo la colonna più bassa)</div></div>
         <div class="kpi"><div class="v">${eur(r.maxAll)}</div><div class="l">vincita massima teorica</div></div>
         <div class="kpi"><div class="v">${pct(r.pAny)}</div><div class="l">probabilità di vincere qualcosa</div></div>
@@ -239,8 +305,8 @@
       <div class="small muted" style="margin-top:6px">Calcolato simulando 20.000 volte le partite, con le percentuali corrette sullo storico e <b>con le quote che hai scritto</b>: se metti quote più basse di quella minima, la resa diventa negativa.
       ${r.minCol < r.total ? `<br><b>Attenzione:</b> se esce una sola colonna, la vincita (${eur(r.minCol)}) è più bassa dell'importo giocato.` : ""}</div>
       <details style="margin-top:8px"><summary class="small"><b>Vedi le colonne</b>${r.cols > cols.length ? ` (prime ${cols.length} di ${r.cols})` : ""}</summary>
-        <div class="tw" style="margin-top:6px"><table><tr><th>#</th><th>Giocate</th><th>Quota</th><th>Vincita</th></tr>
-        ${cols.map((c, i) => `<tr><td>${i + 1}</td><td style="text-align:left;white-space:normal">${c.c.map(([it, o]) => `${esc(it.fx.home)}: ${esc(MK[o.mk])}`).join("<br>")}</td><td>${q2(c.q)}</td><td>${eur(c.win)}</td></tr>`).join("")}
+        <div class="tw" style="margin-top:6px"><table><tr><th>#</th><th>Giocate</th><th>Quota</th>${r.split ? "<th>Puntata</th>" : ""}<th>Vincita</th></tr>
+        ${cols.map((c, i) => `<tr><td>${i + 1}</td><td style="text-align:left;white-space:normal">${c.c.map(([it, o]) => `${esc(it.fx.home)}: ${esc(MK[o.mk])}`).join("<br>")}</td><td>${q2(c.q)}</td>${r.split ? `<td>${eur(c.st)}</td>` : ""}<td>${eur(c.win)}</td></tr>`).join("")}
         </table></div></details>`;
   }
 
@@ -268,7 +334,7 @@
     });
     const n = v.length;
     if (played === n) {
-      const e = elem(v), pay = sv.sizes.reduce((s, k) => s + e[k], 0) * sv.per;
+      const e = elem(v), pay = sv.sizes.reduce((s, k) => s + e[k] * (sv.perK ? sv.perK[k] : sv.per), 0);
       return { done: true, pay, label: pay > 0 ? "VINTA" : "PERSA" };
     }
     const zeros = v.filter((x) => x === 0).length;
@@ -285,7 +351,7 @@
         <div class="small muted">salvato ${fdate(sv.created)}${st.done ? ` · vincita ${eur(st.pay)} · utile <b class="${st.pay - sv.total >= 0 ? "esito-W" : "esito-L"}">${eur(st.pay - sv.total)}</b>` : " · " + esc(st.label)}</div></summary>
         ${sv.items.map((it) => `<div class="pick" style="grid-template-columns:minmax(0,1fr) auto"><div><span class="m">${esc(it.home)} – ${esc(it.away)}</span><div class="small muted">${fdate(it.date)}${it.score ? " · " + esc(it.score) : ""}</div></div>
           <div class="r">${it.opts.map((o) => `<div class="${o.ok === true ? "esito-W" : o.ok === false ? "esito-L" : ""}">${esc(MK[o.mk])} @ ${q2(o.odds)}</div>`).join("")}</div></div>`).join("")}
-        <div class="small muted">Tipo: ${sv.sizes.map((k) => `${k} su ${sv.items.length}`).join(", ")} · colonne da ${eur(sv.per)}</div>
+        <div class="small muted">Tipo: ${sv.sizes.map((k) => `${k} su ${sv.items.length}${sv.perK ? ` (${eur(sv.perK[k])} a colonna)` : ""}`).join(", ")}${sv.perK ? "" : ` · colonne da ${eur(sv.per)}`}</div>
         <button class="btn" style="background:var(--lose);margin-top:8px" data-del="${esc(sv.id)}">Elimina</button></details>`;
     }).join("");
     return `<h2>I miei sistemi</h2>
@@ -298,9 +364,9 @@
 
   // ---------- eventi ----------
   MG.views.sistema = view;
-  MG.sis = { FX, MK, compute, columns, elem, defOdds, hit, findResult, saveSystem: (its, r) => { saved.push(packSaved(its, r)); store(KEY_SAVED, saved); },
-    openInBuilder(its, sizes, total) {
-      draft = { sel: {}, sizes: sizes.length === 1 && sizes[0] === its.length ? [] : sizes, total };
+  MG.sis = { FX, MK, compute, columns, elem, defOdds, hit, findResult, splitBox, colsLabel, splitOwners, saveSystem: (its, r) => { saved.push(packSaved(its, r)); store(KEY_SAVED, saved); },
+    openInBuilder(its, sizes, total, split) {
+      draft = { sel: {}, sizes: sizes.length === 1 && sizes[0] === its.length ? [] : sizes, total, split: normSplit(split, sizes) };
       its.forEach((it) => { draft.sel[it.fx.id] = Object.fromEntries(it.opts.map((o) => [o.mk, o.odds])); });
       save(); MG.goTab("sistema");
     } };
@@ -319,6 +385,7 @@
       s = s.includes(k) ? s.filter((x) => x !== k) : [...s, k].sort((a, b) => a - b);
       draft.sizes = s.length === 1 && s[0] === n ? [] : s;
       if (!s.length) draft.sizes = [];
+      draft.split = null;
       save();
     } else if (ds.act === "clear") { draft = { sel: {}, sizes: [], total: draft.total }; save(); }
     else if (ds.act === "save") {
@@ -339,7 +406,11 @@
       const [id, mk] = t.dataset.odds.split("|"), v = parseFloat(String(t.value).replace(",", "."));
       if (draft.sel[id] && v > 1) { draft.sel[id][mk] = v; save(); }
       refresh();
-    } else if (t.id === "sisTot") { draft.total = parseFloat(String(t.value).replace(",", ".")) || 0; save(); refresh(); }
+    } else if (t.id === "sisTot") {
+      const v = parseFloat(String(t.value).replace(",", ".")) || 0, n = Object.keys(draft.sel).length;
+      draft.split = scaleSplit(draft.split, sizesOf(n), v);
+      draft.total = v; save(); MG.render();
+    }
   });
 
   // aggiorna solo i risultati, così il cursore resta nella casella che stai scrivendo
@@ -350,7 +421,7 @@
 
   function packSaved(its, r) {
     return {
-      id: Date.now().toString(36), created: D.oggi, sizes: r.sizes, total: r.total, per: r.per, cols: r.cols,
+      id: Date.now().toString(36), created: D.oggi, sizes: r.sizes, total: r.total, per: r.per, cols: r.cols, ...(r.split ? { perK: r.perK } : {}),
       items: its.map((it) => ({ lg: it.fx.lg, date: it.fx.date, home: it.fx.home, away: it.fx.away, opts: it.opts.map((o) => ({ mk: o.mk, odds: o.odds })) })),
     };
   }
