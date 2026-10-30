@@ -289,7 +289,7 @@
 
   // ---------- eventi ----------
   MG.views.sistema = view;
-  MG.sis = { FX, MK, compute, columns, elem, defOdds, saveSystem: (its, r) => { saved.push(packSaved(its, r)); store(KEY_SAVED, saved); },
+  MG.sis = { FX, MK, compute, columns, elem, defOdds, hit, findResult, saveSystem: (its, r) => { saved.push(packSaved(its, r)); store(KEY_SAVED, saved); },
     openInBuilder(its, sizes, total) {
       draft = { sel: {}, sizes: sizes.length === 1 && sizes[0] === its.length ? [] : sizes, total };
       its.forEach((it) => { draft.sel[it.fx.id] = Object.fromEntries(it.opts.map((o) => [o.mk, o.odds])); });

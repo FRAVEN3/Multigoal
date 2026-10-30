@@ -10,6 +10,7 @@ Doppio clic su **Aggiorna.bat**: scarica i risultati, ricalcola tutto e apre la 
 - **Metodo**: media Batistuta delle due squadre. Fino al 46% è RADUCIOIU, dal 60% è BATISTUTA, in mezzo NO BET (soglie in `config.json`).
 - **Bollette**: Multigol a raddoppio, singole, Batistuta (GG-GG/GG-NG/NG-GG), sistemi, Raducioiu Under 2.5 e risultati esatti.
 - **Bomba IA**: scrivi importo e numero di partite e scegli lo stile (Prudente / Equilibrato / Coraggioso); sceglie giocate dalle bollette e il tipo di sistema migliore tra quelli provati con la simulazione.
+- **Scalata**: catena di bollette a raddoppio. Scegli importo, numero di gradini e quota obiettivo; la vincita di ogni gradino diventa la puntata del successivo. I gradini vanno in ordine di orario (anche più nello stesso giorno: il successivo parte almeno 2h15 dopo l'ultima partita del precedente). Le partite si possono cambiare a mano, scrivendo le quote vere. Le scalate avviate si controllano da sole e i gradini non ancora iniziati si possono ricalcolare quando escono nuove partite.
 - **Sistema**: scegli partite e giocate (anche più giocate sulla stessa partita e categorie diverse), scrivi le quote del bookmaker; calcola colonne (integrale o a correzione, es. 2 su 4), vincite, probabilità e resa. I sistemi salvati restano sul dispositivo e si controllano da soli.
 - **Storico**: controlla da solo se le bollette sono vinte o perse.
 - **Verifica**: prova il metodo sulle due stagioni passate.
