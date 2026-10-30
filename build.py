@@ -10,7 +10,7 @@ import os
 import sys
 from datetime import date, datetime, timedelta
 
-from engine import backtest, calibration, data, tracker
+from engine import backtest, calibration, data, exact, tracker
 from engine.markets import MARKETS
 from engine.slips import build_slips
 from engine.stats import TeamIndex, estimate, league_summary, team_table
@@ -39,7 +39,7 @@ def main():
 
     # --- backtest (ricalcolato solo se cambiano stagioni o impostazioni) -------
     bt_path = os.path.join(ROOT, "data", "backtest.json")
-    bt_key = hashlib.md5((json.dumps(cfg, sort_keys=True) + ",".join(seasons[1:])).encode()).hexdigest()
+    bt_key = hashlib.md5(("v2-esatto" + json.dumps(cfg, sort_keys=True) + ",".join(seasons[1:])).encode()).hexdigest()
     bt = None
     if os.path.exists(bt_path):
         with open(bt_path, encoding="utf-8") as f:
@@ -59,6 +59,9 @@ def main():
     fixtures = []
     horizon = (today + timedelta(days=7)).isoformat()
     min_g = cfg["statistiche"]["partite_minime"]
+    lg_pool = {lg: exact.league_pool(sorted((m for m in played if m["lg"] == lg), key=lambda m: m["date"]), current)
+               for lg in leagues}
+    re_names = {}
     for fx in data.load_fixtures(leagues):
         if not (today.isoformat() <= fx["date"] <= horizon):
             continue
@@ -73,6 +76,18 @@ def main():
         sc = lambda ms: [[m["fh"], m["fa"], m["hh"], m["ha"]] for m in ms]
         fx["sample_h"] = sc(index.sample(fx["home"], current, cfg))
         fx["sample_a"] = sc(index.sample(fx["away"], current, cfg))
+        # risultati esatti (modello a gol attesi, tarato con il backtest come gli altri mercati)
+        rx = exact.estimate(fx["home"], fx["away"], current, index, lg_pool.get(fx["lg"], []), cfg)
+        if rx:
+            lh, la, cells = rx
+            for (h, a), v in cells.items():
+                if h <= exact.SHOW_G and a <= exact.SHOW_G:
+                    k = exact.code(h, a)
+                    re_names[k] = f"Risultato esatto {h}-{a}"
+                    fx["est"]["raw"][k] = round(v, 4)
+                    fx["est"]["probs"][k] = calibration.apply(curves, "RS", round(v, 4))
+            fx["re"] = {"lh": round(lh, 2), "la": round(la, 2),
+                        "m": [[round(cells[(h, a)], 4) for a in range(exact.MAX_G + 1)] for h in range(exact.MAX_G + 1)]}
         fx["ok"] = fx["est"]["games_home"] >= min_g and fx["est"]["games_away"] >= min_g
         fixtures.append(fx)
     fixtures.sort(key=lambda f: (f["date"], f["time"], f["lg"]))
@@ -101,7 +116,7 @@ def main():
         "oggi": today.isoformat(),
         "stagione": data.season_label(current),
         "config": cfg,
-        "mercati": {m[0]: m[1] for m in MARKETS},
+        "mercati": {**{m[0]: m[1] for m in MARKETS}, "RS": "Risultato esatto (singolo)", **re_names},
         "partite": fixtures,
         "consigli": tips,
         "bollette": slips,

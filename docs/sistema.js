@@ -3,7 +3,7 @@
   "use strict";
   const MG = window.MG;
   if (!MG || !MG.D) return;
-  const { D, esc, pct, q2, eur, lgName, fdate, badge } = MG;
+  const { D, esc, pct, q2, eur, lgName, fdate, badge, started, startedTag } = MG;
   const MK = D.mercati;
   const margin = D.config.bollette.margine_valore;
   const FX = Object.fromEntries(D.partite.map((f) => [f.id, f]));
@@ -13,6 +13,7 @@
   const TEMPI = new Set(["BAT", "RAD", "GGGG", "GGNG", "NGGG"]);
   function hit(mk, r) {
     const [fh, fa, hh, ha] = r, t = fh + fa;
+    if (/^RS\d\d$/.test(mk)) return fh === +mk[2] && fa === +mk[3];   // risultato esatto singolo, es. RS10 = 1-0
     if (TEMPI.has(mk) && (hh == null || ha == null)) return false;
     const s1 = hh > 0 && ha > 0, s2 = fh - hh > 0 && fa - ha > 0;
     switch (mk) {
@@ -85,7 +86,14 @@
     const h = it.fx.sample_h || [], a = it.fx.sample_a || [];
     const rows = [];
     const add = (list, w) => list.forEach((r) => rows.push({ hits: it.opts.map((o) => hit(o.mk, r)), w }));
-    if (h.length && a.length) { add(h, 0.5 / h.length); add(a, 0.5 / a.length); }
+    // con i risultati esatti le poche partite di riferimento non bastano (un 3-1 potrebbe non esserci mai):
+    // uso la tabella dei risultati del modello, se non ci sono giocate sui tempi
+    const re = it.fx.re && it.opts.some((o) => /^RS/.test(o.mk)) && !it.opts.some((o) => TEMPI.has(o.mk));
+    if (re) {
+      it.fx.re.m.forEach((row, hg) => row.forEach((p, ag) => rows.push({ hits: it.opts.map((o) => hit(o.mk, [hg, ag, null, null])), w: p })));
+      const rest = 1 - rows.reduce((s, r) => s + r.w, 0);
+      if (rest > 0) rows.push({ hits: it.opts.map(() => false), w: rest });   // risultati oltre 5-5
+    } else if (h.length && a.length) { add(h, 0.5 / h.length); add(a, 0.5 / a.length); }
     else add(h.length ? h : a, 1 / Math.max(1, h.length + a.length));
     for (let iter = 0; iter < 20; iter++) {
       it.opts.forEach((o, j) => {
@@ -170,8 +178,8 @@
     const batAll = ["GGGG", "GGNG", "NGGG"].every((m) => e.probs[m] != null)
       ? `<button class="chip" data-bat="${fx.id}">+ Batistuta: tutte e 3 le combinazioni</button>` : "";
     const added = extra.filter((m) => m in s);
-    return `<div class="card ${Object.keys(s).length ? "selcard" : ""}">
-      <div><b>${esc(fx.home)} – ${esc(fx.away)}</b></div>
+    return `<div class="card ${Object.keys(s).length ? "selcard" : ""}${started(fx) ? " gone" : ""}">
+      <div><b>${esc(fx.home)} – ${esc(fx.away)}</b>${startedTag(fx)}</div>
       <div class="small muted" style="margin-bottom:6px">${esc(lgName(fx.lg))} · ${fdate(fx.date, fx.time)} · ${badge(e.metodo)}${e.M != null ? " " + pct(e.M) : ""}</div>
       <div class="chips" style="margin:0">${base.map(chip).join("")}${added.map(chip).join("")}${batAll}
         <select data-add="${fx.id}" style="padding:5px 8px;font-size:13px"><option value="">+ altro mercato…</option>${extra.filter((m) => !(m in s)).map((m) => `<option value="${m}">${esc(MK[m])} ${pct(e.probs[m])}</option>`).join("")}</select>
@@ -182,7 +190,8 @@
   function view() {
     const its = items();
     const groups = {};
-    D.partite.filter((f) => f.ok).forEach((f) => (groups[groupOf(f)] = groups[groupOf(f)] || []).push(f));
+    // le partite già iniziate vanno in fondo
+    D.partite.filter((f) => f.ok).sort((a, b) => started(a) - started(b)).forEach((f) => (groups[groupOf(f)] = groups[groupOf(f)] || []).push(f));
     const order = ["Consigliate Multigol", "Batistuta", "Raducioiu", "Altre partite"].filter((g) => groups[g]);
     return `${builder(its)}
       <h2>Scegli le partite</h2>
@@ -202,7 +211,7 @@
     return `<div class="card" style="border:2px solid var(--brand2)">
       <h3>Il tuo sistema · ${n} partite</h3>
       ${its.map((it) => `<div class="pick" style="grid-template-columns:minmax(0,1fr)">
-        <div><span class="m">${esc(it.fx.home)} – ${esc(it.fx.away)}</span> <span class="small muted">${fdate(it.fx.date, it.fx.time)}</span></div>
+        <div><span class="m">${esc(it.fx.home)} – ${esc(it.fx.away)}</span>${startedTag(it.fx)} <span class="small muted">${fdate(it.fx.date, it.fx.time)}</span></div>
         ${it.opts.map((o) => `<div class="optrow"><span>${esc(MK[o.mk])} <span class="small muted">${pct(it.fx.est.probs[o.mk])}</span></span>
           <span><input class="odds" type="number" step="0.01" min="1.01" inputmode="decimal" value="${o.odds}" data-odds="${it.fx.id}|${o.mk}">
           <button class="x" data-tg="${it.fx.id}|${o.mk}" title="Togli">✕</button></span></div>`).join("")}

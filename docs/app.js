@@ -14,7 +14,22 @@
   const eur = (x) => (x == null || !isFinite(x) ? "–" : x.toFixed(2) + " €");
   const lgName = (c) => (LG[c] ? LG[c].name : c);
   const gg = ["dom", "lun", "mar", "mer", "gio", "ven", "sab"];
-  const fdate = (iso, t) => { const d = new Date(iso + "T12:00:00"); return `${gg[d.getDay()]} ${d.getDate()}/${d.getMonth() + 1}${t ? " " + t : ""}`; };
+  // Gli orari dei dati sono in ora inglese (Londra): li converto nell'ora del telefono (Italia).
+  const LON = new Intl.DateTimeFormat("en-GB", { timeZone: "Europe/London", hourCycle: "h23", year: "numeric", month: "numeric", day: "numeric", hour: "numeric", minute: "numeric" });
+  const ko = (iso, t) => {
+    const [y, m, d] = iso.split("-").map(Number), [h, mi] = (t || "15:00").split(":").map(Number);
+    const guess = Date.UTC(y, m - 1, d, h, mi);
+    const p = Object.fromEntries(LON.formatToParts(guess).map((x) => [x.type, +x.value]));
+    return guess - (Date.UTC(p.year, p.month - 1, p.day, p.hour, p.minute) - guess);
+  };
+  const hm = (ts) => { const d = new Date(ts); return `${String(d.getHours()).padStart(2, "0")}:${String(d.getMinutes()).padStart(2, "0")}`; };
+  const fdate = (iso, t) => {
+    const d = t ? new Date(ko(iso, t)) : new Date(iso + "T12:00:00");
+    return `${gg[d.getDay()]} ${d.getDate()}/${d.getMonth() + 1}${t ? " " + hm(d) : ""}`;
+  };
+  // Partita già iniziata = non si può più giocare
+  const started = (f) => !!(f && f.date) && ko(f.date, f.time) <= Date.now();
+  const startedTag = (f) => (started(f) ? ` <span class="started">⏱ iniziata</span>` : "");
   const views = {};
   const badge = (m) => `<span class="badge b-${esc(String(m).replace(/\s/g, ""))}">${esc(m ?? "dati pochi")}</span>`;
 
@@ -42,8 +57,9 @@
   // ---------- bollette ----------
   function pickHtml(pk) {
     const es = pk.esito ? ` <span class="esito-${pk.esito}">${pk.esito === "W" ? "✔" : pk.esito === "L" ? "✘" : "annullata"}${pk.score ? " " + esc(pk.score) : ""}</span>` : "";
-    return `<div class="pick">
-      <div><div class="m">${esc(pk.home)} – ${esc(pk.away)}</div>
+    const go = !pk.esito && started(pk);
+    return `<div class="pick${go ? " gone" : ""}">
+      <div><div class="m">${esc(pk.home)} – ${esc(pk.away)}${go ? startedTag(pk) : ""}</div>
         <div class="small muted">${esc(lgName(pk.lg))} · ${fdate(pk.date, pk.time)}</div></div>
       <div class="r"><div class="w">${esc(pk.name)}${es}</div>
         <div class="small muted">${pct(pk.p)} · quota min ${q2(pk.min_odds)}${pk.real ? " · bookmaker " + q2(pk.real) : ""}</div></div>
@@ -56,6 +72,7 @@
       <div class="row" style="margin:0 0 4px">${badge(s.method)} ${withStatus ? badge(s.status) : ""}
         <h3 style="margin:0">${esc(s.title)}</h3></div>
       ${s.descr ? `<div class="small muted">${esc(s.descr)}</div>` : ""}
+      ${!withStatus && s.picks.some(started) ? `<div class="gonenote">⏱ Una o più partite sono già iniziate: questa bolletta non si può più giocare così com'è.</div>` : ""}
       ${s.picks.map(pickHtml).join("")}
       <div class="tot">
         <span>Probabilità <b>${pct(s.prob)}</b></span>
@@ -88,8 +105,8 @@
       ${list.length ? list.map((f) => {
         const e = f.est;
         const rows = SHOW.filter((m) => e.probs[m] != null).map((m) => `<tr class="${tip[f.id] === m ? "hi" : ""}"><td>${esc(MK[m])}</td><td>${pct(e.probs[m])}</td><td class="lo">${pct(e.raw[m])}</td><td>${q2(1 / e.probs[m])}</td></tr>`).join("");
-        return `<details class="card"><summary>
-          <div class="row" style="margin:0"><b>${esc(f.home)} – ${esc(f.away)}</b></div>
+        return `<details class="card${started(f) ? " gone" : ""}"><summary>
+          <div class="row" style="margin:0"><b>${esc(f.home)} – ${esc(f.away)}</b>${startedTag(f)}</div>
           <div class="small muted">${esc(lgName(f.lg))} · ${fdate(f.date, f.time)} · ${f.ok ? badge(e.metodo) + (e.M != null ? ` media Batistuta ${pct(e.M)}` : "") : "poche partite giocate, esclusa dalle bollette"}
           ${tip[f.id] ? ` · consiglio <b>${esc(MK[tip[f.id]])}</b>` : ""}</div></summary>
           <div class="tw" style="margin-top:8px"><table><tr><th>Mercato</th><th>% corretta</th><th>% Excel</th><th>Quota equa</th></tr>${rows}</table></div>
@@ -247,7 +264,7 @@
     if (sc) sc.onchange = () => { state.calMk = sc.value; render(); };
     if (state.tab === "calcolatori") { main.querySelectorAll("input,textarea").forEach((i) => (i.oninput = calc)); calc(); }
   }
-  window.MG = { D, state, views, esc, pct, q2, eur, lgName, fdate, badge, render,
+  window.MG = { D, state, views, esc, pct, q2, eur, lgName, fdate, badge, render, ko, hm, started, startedTag,
     goTab(t) { state.tab = t; document.querySelectorAll(".tabs button").forEach((x) => x.classList.toggle("on", x.dataset.tab === t)); render(); window.scrollTo(0, 0); } };
   document.addEventListener("DOMContentLoaded", render);
 })();

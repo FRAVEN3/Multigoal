@@ -4,11 +4,11 @@
   "use strict";
   const MG = window.MG;
   if (!MG || !MG.D || !MG.sis) return;
-  const { D, esc, pct, q2, eur, lgName, fdate, badge } = MG;
-  const { FX, MK, compute, columns, defOdds } = MG.sis;
+  const { D, esc, pct, q2, eur, lgName, fdate, badge, started } = MG;
+  const { FX, MK, compute, columns, defOdds, elem } = MG.sis;
 
   const KEY = "mg_bomba";
-  let opts = Object.assign({ importo: 10, n: 4, stile: "equilibrato" }, JSON.parse(localStorage.getItem(KEY) || "{}"));
+  let opts = Object.assign({ importo: 10, n: 4, stile: "equilibrato", sizes: [] }, JSON.parse(localStorage.getItem(KEY) || "{}"));
   let result = null, seed = 0;
 
   const STILI = {
@@ -23,7 +23,7 @@
     const by = {};
     const add = (fxId, mks, method) => {
       const fx = FX[fxId];
-      if (!fx || !fx.ok) return;
+      if (!fx || !fx.ok || started(fx)) return;   // le partite già iniziate non si possono più giocare
       const list = (mks[0] === "BAT" ? ["GGGG", "GGNG", "NGGG"] : mks).filter((m) => fx.est.probs[m] != null);
       if (!list.length) return;
       const p = mks[0] === "BAT" ? fx.est.probs.BAT : Math.min(0.99, list.reduce((s, m) => s + fx.est.probs[m], 0));
@@ -75,21 +75,32 @@
     const its = chosen.map((c) => ({ fx: c.fx, method: c.method, opts: c.mks.map((mk) => ({ mk, odds: defOdds(c.fx, mk) })) }));
     let best = null;
     const tried = [];
-    for (const sizes of sizeOptions(its.length)) {
+    // sistema scelto a mano (es. 2 su 3 + 3 su 3): viene confrontato insieme agli altri
+    const manual = (opts.sizes || []).filter((k) => k >= 1 && k <= its.length).sort((a, b) => a - b);
+    const list = sizeOptions(its.length);
+    if (manual.length && !list.some((z) => z.join() === manual.join())) list.unshift(manual);
+    for (const sizes of list) {
       const r = compute(its, sizes, importo, 6000);
       const sc = score(r, opts.stile, importo);
       tried.push({ sizes, r, sc });
       if (!best || sc > best.sc) best = { sizes, r, sc };
     }
-    if (!best || best.sc === -Infinity) return { error: `Con ${eur(importo)} le colonne verrebbero sotto i ${eur(MIN_COL)}: aumenta l'importo o riduci le partite.` };
+    if (manual.length) best = tried.find((t) => t.sizes.join() === manual.join());
+    else if (!best || best.sc === -Infinity) return { error: `Con ${eur(importo)} le colonne verrebbero sotto i ${eur(MIN_COL)}: aumenta l'importo o riduci le partite.` };
     const final = compute(its, best.sizes, importo, 20000);
-    return { its, sizes: best.sizes, r: final, tried, importo, short: chosen.length < opts.n };
+    const auto = tried.reduce((a, t) => (!a || t.sc > a.sc ? t : a), null);
+    return { its, sizes: best.sizes, r: final, tried, importo, manual: manual.length > 0, auto, short: chosen.length < opts.n };
   }
 
   function why(res) {
     const n = res.its.length, s = res.sizes;
     const errs = n - Math.min(...s);
     const cover = errs === 0 ? "devono uscire tutte le partite" : `puoi sbagliare fino a ${errs} partit${errs === 1 ? "a" : "e"} e vincere comunque qualcosa`;
+    if (res.manual) {
+      const low = res.r.per < MIN_COL ? ` ⚠ Le colonne sono da ${eur(res.r.per)}: molti bookmaker non accettano meno di ${eur(MIN_COL)}, aumenta l'importo o togli qualche formula.` : "";
+      const tip = res.auto && res.auto.sc > -Infinity && res.auto.sizes.join() !== s.join() ? ` Per lo stile scelto io avrei proposto <b>${sizeLabel(res.auto.sizes, n)}</b>.` : "";
+      return `Hai scelto tu il sistema <b>${sizeLabel(s, n)}</b>: ${cover}.${tip}${low}`;
+    }
     const goal = { prudente: "dà la probabilità più alta di rientrare dell'importo", equilibrato: "bilancia meglio probabilità di rientrare e vincita", coraggioso: "punta alla vincita più alta" }[opts.stile];
     return `Ho provato ${res.tried.length} tipi di sistema: <b>${sizeLabel(s, n)}</b> ${goal}. Con questo sistema ${cover}.`;
   }
@@ -102,6 +113,12 @@
     const nChips = Array.from({ length: Math.min(maxN, 10) - 1 }, (_, i) => i + 2)
       .map((k) => `<button class="chip ${k === +opts.n ? "on" : ""}" data-bn="${k}">${k}</button>`).join("");
     const stChips = Object.entries(STILI).map(([k, v]) => `<button class="chip ${k === opts.stile ? "on" : ""}" data-bs="${k}">${v.label}</button>`).join("");
+    // scelta del tipo di sistema: Automatico oppure una o più formule "k su n"
+    const nIts = res.its ? res.its.length : +opts.n;
+    const eC = res.its ? elem(res.its.map((it) => it.opts.length)) : null;
+    const sel = (opts.sizes || []).filter((k) => k <= nIts);
+    const szChips = `<button class="chip ${sel.length ? "" : "on"}" data-bz="auto">🤖 Automatico</button>` +
+      Array.from({ length: nIts }, (_, i) => i + 1).map((k) => `<button class="chip ${sel.includes(k) ? "on" : ""}" data-bz="${k}">${k === nIts ? `${k} su ${k} integrale` : `${k} su ${nIts}`}${eC ? ` · ${eC[k]} col.` : ""}</button>`).join("");
     let body;
     if (res.error) body = `<div class="empty">${esc(res.error)}</div>`;
     else {
@@ -144,6 +161,8 @@
         <div class="small muted">Numero di partite</div><div class="chips" style="margin-top:4px">${nChips}</div>
         <div class="small muted">Stile</div><div class="chips" style="margin:4px 0 0">${stChips}</div>
         <div class="small muted">${esc(STILI[opts.stile].desc)}</div>
+        <div class="small muted" style="margin-top:10px">Tipo di sistema (puoi sceglierne più di uno, es. 2 su 3 + 3 su 3)</div>
+        <div class="chips" style="margin:4px 0 0">${szChips}</div>
       </div>
       ${body}`;
   }
@@ -152,10 +171,15 @@
   const persist = () => localStorage.setItem(KEY, JSON.stringify(opts));
   const main = document.getElementById("main");
   main.addEventListener("click", (ev) => {
-    const t = ev.target.closest("[data-bn],[data-bs],[data-ba]");
+    const t = ev.target.closest("[data-bn],[data-bs],[data-ba],[data-bz]");
     if (!t || MG.state.tab !== "bomba") return;
     const d = t.dataset;
-    if (d.bn) { opts.n = +d.bn; seed = 0; result = null; }
+    if (d.bn) { opts.n = +d.bn; opts.sizes = []; seed = 0; result = null; }
+    else if (d.bz) {
+      if (d.bz === "auto") opts.sizes = [];
+      else { const k = +d.bz, s = opts.sizes || []; opts.sizes = s.includes(k) ? s.filter((x) => x !== k) : [...s, k]; }
+      result = null;   // stesse partite, cambia solo il sistema
+    }
     else if (d.bs) { opts.stile = d.bs; seed = 0; result = null; }
     else if (d.ba === "again") { seed++; result = null; }
     else if (d.ba === "open" && result && !result.error) { MG.sis.openInBuilder(result.its, result.sizes, result.importo); return; }

@@ -5,7 +5,7 @@
   "use strict";
   const MG = window.MG;
   if (!MG || !MG.D || !MG.sis) return;
-  const { D, esc, pct, q2, eur, lgName, fdate, badge } = MG;
+  const { D, esc, pct, q2, eur, lgName, fdate, badge, ko, hm, startedTag } = MG;
   const { FX, MK, defOdds, hit, findResult } = MG.sis;
 
   const MIN = 60000;
@@ -15,8 +15,6 @@
   const SAFE = ["MG14", "MG13", "MG24", "MG25", "MG12", "MG23", "MG35", "U35", "O15", "U25", "O25", "GG", "NG"];
   const tipOf = Object.fromEntries(D.consigli.map((t) => [t.fx, t.markets[0]]));
 
-  const ko = (date, time) => new Date(`${date}T${time || "15:00"}:00`).getTime();
-  const hm = (ts) => { const d = new Date(ts); return `${String(d.getHours()).padStart(2, "0")}:${String(d.getMinutes()).padStart(2, "0")}`; };
   const num = (v) => parseFloat(String(v).replace(",", "."));
 
   // ---------- stato (salvato sul dispositivo) ----------
@@ -205,7 +203,7 @@
       ? `<input class="odds" type="number" step="0.01" min="1.01" inputmode="decimal" value="${o.odds}" data-sc-odds="${owner}|${i}|${j}"><button class="x" data-sc-rm="${owner}|${i}|${j}" title="Togli">✕</button>`
       : `@ <b>${q2(o.odds)}</b>`;
     return `<div class="pick" style="grid-template-columns:minmax(0,1fr)">
-      <div><span class="m">${esc(o.home)} – ${esc(o.away)}</span> <span class="small muted">${esc(lgName(o.lg))} · ${fdate(o.date, o.time)}${o.score ? ` · <b class="${cls}">${esc(o.score)}</b>` : ""}</span></div>
+      <div><span class="m">${esc(o.home)} – ${esc(o.away)}</span>${editable ? startedTag(o) : ""} <span class="small muted">${esc(lgName(o.lg))} · ${fdate(o.date, o.time)}${o.score ? ` · <b class="${cls}">${esc(o.score)}</b>` : ""}</span></div>
       <div class="optrow"><span>${mkPart} <span class="small muted">${pct(o.p)}</span></span><span>${oddsPart}</span></div></div>`;
   }
 
