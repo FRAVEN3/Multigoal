@@ -180,7 +180,7 @@
     const added = extra.filter((m) => m in s);
     return `<div class="card ${Object.keys(s).length ? "selcard" : ""}${started(fx) ? " gone" : ""}">
       <div><b>${esc(fx.home)} – ${esc(fx.away)}</b>${startedTag(fx)}</div>
-      <div class="small muted" style="margin-bottom:6px">${esc(lgName(fx.lg))} · ${fdate(fx.date, fx.time)} · ${badge(e.metodo)}${e.M != null ? " " + pct(e.M) : ""}</div>
+      <div class="small muted" style="margin-bottom:6px">${esc(lgName(fx.lg))} · ${fdate(fx.date, fx.time)} · ${badge(e.metodo, fx)}${e.M != null ? " " + pct(e.M) : ""}</div>
       <div class="chips" style="margin:0">${base.map(chip).join("")}${added.map(chip).join("")}${batAll}
         <select data-add="${fx.id}" style="padding:5px 8px;font-size:13px"><option value="">+ altro mercato…</option>${extra.filter((m) => !(m in s)).map((m) => `<option value="${m}">${esc(MK[m])} ${pct(e.probs[m])}</option>`).join("")}</select>
       </div></div>`;

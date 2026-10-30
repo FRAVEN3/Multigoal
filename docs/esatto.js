@@ -167,7 +167,7 @@
       <h2>Partite <span class="small muted">(le più "chiuse" prima: conta la probabilità dei 3 risultati più probabili)</span></h2>
       <div class="chips"><button class="chip ${st.filtro === "RAD" ? "on" : ""}" data-re-f="RAD">Solo Raducioiu</button><button class="chip ${st.filtro === "ALL" ? "on" : ""}" data-re-f="ALL">Tutte le partite</button></div>
       ${L.length ? L.map(({ f, top3 }) => `<div class="card ${st.sel[f.id] && Object.keys(st.sel[f.id]).length ? "selcard" : ""}">
-        <div class="row" style="margin:0 0 2px"><b>${esc(f.home)} – ${esc(f.away)}</b> ${badge(f.est.metodo)}</div>
+        <div class="row" style="margin:0 0 2px"><b>${esc(f.home)} – ${esc(f.away)}</b> ${badge(f.est.metodo, f)}</div>
         <div class="small muted" style="margin-bottom:6px">${esc(lgName(f.lg))} · ${fdate(f.date, f.time)} · gol attesi ${q2(f.re.lh)} – ${q2(f.re.la)} · i 3 più probabili ${pct(top3)}</div>
         ${gridHtml(f)}
         <div class="row" style="margin:8px 0 0"><button class="btn small" style="margin-left:0" data-re-top="${f.id}">i 3 più probabili</button>

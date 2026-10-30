@@ -31,7 +31,74 @@
   const started = (f) => !!(f && f.date) && ko(f.date, f.time) <= Date.now();
   const startedTag = (f) => (started(f) ? ` <span class="started">⏱ iniziata</span>` : "");
   const views = {};
-  const badge = (m) => `<span class="badge b-${esc(String(m).replace(/\s/g, ""))}">${esc(m ?? "dati pochi")}</span>`;
+  // Bollino colorato. Per i metodi (Raducioiu, Batistuta, ...) si apre una spiegazione:
+  // ctx = la partita (oggetto con id) oppure l'elenco delle partite di una bolletta.
+  const METODI = new Set(["RADUCIOIU", "BATISTUTA", "NO BET", "MULTIGOL"]);
+  const badge = (m, ctx) => {
+    const cls = `badge b-${esc(String(m).replace(/\s/g, ""))}`;
+    if (!METODI.has(m)) return `<span class="${cls}">${esc(m ?? "dati pochi")}</span>`;
+    const ids = (Array.isArray(ctx) ? ctx : ctx ? [ctx] : []).map((x) => (typeof x === "string" ? x : x.fx || x.id)).filter(Boolean);
+    return `<span class="${cls} tipme" tabindex="0" data-tip="${esc(m)}|${esc(ids.join(","))}">${esc(m)} ⓘ</span>`;
+  };
+
+  // ---------- spiegazione dei bollini ----------
+  const FXI = D ? Object.fromEntries(D.partite.map((f) => [f.id, f])) : {};
+  function tipHtml(m, ids) {
+    const c = D.config, rmax = pct(c.metodo.raducioiu_max), bmin = pct(c.metodo.batistuta_min), nP = c.statistiche.partite_campione;
+    const fxs = ids.map((id) => FXI[id]).filter((f) => f && f.est);
+    const media = (f) => `${esc(f.home)} ${pct(f.est.bat_home)}, ${esc(f.away)} ${pct(f.est.bat_away)} → media <b>${pct(f.est.M)}</b>`;
+    const G = {
+      RADUCIOIU: [`<b>RADUCIOIU</b> – partita da pochi gol.`, `Media Batistuta fino al ${rmax}: le due squadre fanno raramente GG in un tempo.`, `Si gioca sul poco: Under 2.5, NG nei due tempi, risultati esatti bassi.`],
+      BATISTUTA: [`<b>BATISTUTA</b> – partita da gol.`, `Media Batistuta dal ${bmin} in su: le due squadre fanno spesso GG in almeno un tempo.`, `Si gioca sul gol: GG in almeno un tempo (GG-GG / GG-NG / NG-GG), Over 2.5, Goal.`],
+      "NO BET": [`<b>NO BET</b> – partita incerta.`, `Media Batistuta tra il ${rmax} e il ${bmin}: né Raducioiu né Batistuta.`, `Si valutano solo i consigli Multigol.`],
+      MULTIGOL: [`<b>MULTIGOL</b> – fascia di gol.`, `Consiglio sulla fascia di gol (es. 1-3) più stretta che supera il ${pct(c.bollette.soglia_consiglio)} di probabilità.`],
+    }[m];
+    let h = `<div>${G[0]}</div>`;
+    if (m === "MULTIGOL") {
+      const tip = fxs.length === 1 && D.consigli.find((t) => t.fx === fxs[0].id);
+      return h + `<div>${G[1]}</div>` + (tip ? `<div>Qui: <b>${esc(MK[tip.markets[0]])}</b> al ${pct(fxs[0].est.probs[tip.markets[0]])}.</div>` : "");
+    }
+    const why = `<div class="small" style="opacity:.85">"Media Batistuta" = quante volte, nelle ultime ${nP} partite di ciascuna squadra, c'è stato GG in almeno un tempo.</div>`;
+    if (fxs.length === 1 && fxs[0].est.metodo === m && fxs[0].est.M != null) {
+      const f = fxs[0], sopra = m === "RADUCIOIU" ? `pari o sotto la soglia del ${rmax}` : m === "BATISTUTA" ? `pari o sopra la soglia del ${bmin}` : `tra il ${rmax} e il ${bmin}`;
+      return h + `<div>GG in almeno un tempo nelle ultime ${nP}: ${media(f)}, ${sopra}.</div><div>${G[2]}</div>` + why;
+    }
+    h += `<div>${G[1]}</div><div>${G[2]}</div>`;
+    const withM = fxs.filter((f) => f.est.M != null);
+    if (withM.length) h += `<div style="margin-top:4px">In questa bolletta:</div>` + withM.map((f) => `<div class="small">• ${media(f)}</div>`).join("");
+    return h + why;
+  }
+  const tipBox = document.createElement("div");
+  tipBox.className = "tipbox";
+  tipBox.hidden = true;
+  document.body.appendChild(tipBox);
+  let tipEl = null;
+  function showTip(el) {
+    const [m, ids] = el.dataset.tip.split("|");
+    tipBox.innerHTML = tipHtml(m, ids ? ids.split(",") : []);
+    tipBox.hidden = false;
+    tipEl = el;
+    const r = el.getBoundingClientRect(), w = Math.min(320, window.innerWidth - 16);
+    tipBox.style.width = w + "px";
+    tipBox.style.left = Math.max(8, Math.min(r.left, window.innerWidth - w - 8)) + window.scrollX + "px";
+    const below = r.bottom + 6, hgt = tipBox.offsetHeight;
+    tipBox.style.top = (below + hgt > window.innerHeight && r.top > hgt + 6 ? r.top - hgt - 6 : below) + window.scrollY + "px";
+  }
+  const hideTip = () => { tipBox.hidden = true; tipEl = null; };
+  // PC: si apre passando con il mouse
+  document.addEventListener("mouseover", (e) => {
+    if (!D || !matchMedia("(hover: hover)").matches) return;
+    const el = e.target.closest(".tipme");
+    if (el && el !== tipEl) showTip(el);
+    else if (!el && tipEl && !e.target.closest(".tipbox")) hideTip();
+  });
+  // telefono: si apre toccando (e non apre/chiude la scheda sotto)
+  document.addEventListener("click", (e) => {
+    const el = e.target.closest(".tipme");
+    if (el) { e.preventDefault(); e.stopPropagation(); if (el === tipEl && !matchMedia("(hover: hover)").matches) hideTip(); else showTip(el); return; }
+    if (tipEl && !e.target.closest(".tipbox")) hideTip();
+  }, true);
+  window.addEventListener("scroll", () => { if (tipEl) hideTip(); }, { passive: true });
 
   if (!D) { main.innerHTML = `<div class="empty">Dati non trovati. Esegui <b>python build.py</b>.</div>`; return; }
   document.getElementById("upd").innerHTML = `Stagione ${esc(D.stagione)}<br>agg. ${esc(D.aggiornato)}`;
@@ -69,7 +136,7 @@
     const stake = D.config.bollette.puntata;
     const perCol = s.combos ? ` · ${s.combos} colonne da ${eur(stake / s.combos)}` : "";
     return `<div class="card">
-      <div class="row" style="margin:0 0 4px">${badge(s.method)} ${withStatus ? badge(s.status) : ""}
+      <div class="row" style="margin:0 0 4px">${badge(s.method, s.picks)} ${withStatus ? badge(s.status) : ""}
         <h3 style="margin:0">${esc(s.title)}</h3></div>
       ${s.descr ? `<div class="small muted">${esc(s.descr)}</div>` : ""}
       ${!withStatus && s.picks.some(started) ? `<div class="gonenote">⏱ Una o più partite sono già iniziate: questa bolletta non si può più giocare così com'è.</div>` : ""}
@@ -107,7 +174,7 @@
         const rows = SHOW.filter((m) => e.probs[m] != null).map((m) => `<tr class="${tip[f.id] === m ? "hi" : ""}"><td>${esc(MK[m])}</td><td>${pct(e.probs[m])}</td><td class="lo">${pct(e.raw[m])}</td><td>${q2(1 / e.probs[m])}</td></tr>`).join("");
         return `<details class="card${started(f) ? " gone" : ""}"><summary>
           <div class="row" style="margin:0"><b>${esc(f.home)} – ${esc(f.away)}</b>${startedTag(f)}</div>
-          <div class="small muted">${esc(lgName(f.lg))} · ${fdate(f.date, f.time)} · ${f.ok ? badge(e.metodo) + (e.M != null ? ` media Batistuta ${pct(e.M)}` : "") : "poche partite giocate, esclusa dalle bollette"}
+          <div class="small muted">${esc(lgName(f.lg))} · ${fdate(f.date, f.time)} · ${f.ok ? badge(e.metodo, f) + (e.M != null ? ` media Batistuta ${pct(e.M)}` : "") : "poche partite giocate, esclusa dalle bollette"}
           ${tip[f.id] ? ` · consiglio <b>${esc(MK[tip[f.id]])}</b>` : ""}</div></summary>
           <div class="tw" style="margin-top:8px"><table><tr><th>Mercato</th><th>% corretta</th><th>% Excel</th><th>Quota equa</th></tr>${rows}</table></div>
           <div class="small muted" style="margin-top:6px">"% Excel" è il calcolo diretto del tuo metodo (media delle due squadre). "% corretta" è quanto è uscito davvero in passato con quella stima.
@@ -161,7 +228,7 @@
       ${keys.map((x) => `<tr><td>${esc(x)}</td><td>${sum[x].n}</td><td>${sum[x].vinte}</td><td>${pct(sum[x].perc)}</td><td>${pct(sum[x].p_attesa)}</td><td>${sum[x].n_quote ? eur(sum[x].utile) : "–"}</td></tr>`).join("")}
       </table></div><div class="small muted" style="margin:6px 4px">* utile calcolato solo dove c'è la quota vera del bookmaker (Under/Over 2.5), con ${eur(D.config.bollette.puntata)} a bolletta.</div>` : ""}
       <h2>Tutte le bollette</h2>
-      ${h.length ? h.map((s) => `<details><summary class="card" style="list-style:none">${badge(s.status)} ${badge(s.method)} <b>${esc(s.title)}</b>
+      ${h.length ? h.map((s) => `<details><summary class="card" style="list-style:none">${badge(s.status)} ${badge(s.method, s.picks)} <b>${esc(s.title)}</b>
         <div class="small muted">creata ${fdate(s.created)} · prob. ${pct(s.prob)} · quota ${q2(s.real || s.fair)}</div></summary>${slipHtml(s, true)}</details>`).join("") : `<div class="empty">Ancora nessuna bolletta.</div>`}`;
   }
 

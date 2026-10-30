@@ -87,3 +87,7 @@ table.regrid td:first-child, table.regrid th:first-child { text-align: left; }
 .recell { cursor: pointer; font-size: 12px; line-height: 1.25; border-left: 1px solid var(--line); }
 .recell.top { box-shadow: inset 0 0 0 2px var(--rad); }
 .recell.on { background: var(--brand2); color: #fff; }
+.tipme { cursor: help; }
+.tipbox { position: absolute; z-index: 50; background: var(--ink); color: var(--card); font-size: 13px; line-height: 1.4;
+  padding: 10px 12px; border-radius: 10px; box-shadow: 0 6px 20px rgba(0,0,0,.25); }
+.tipbox div + div { margin-top: 3px; }
