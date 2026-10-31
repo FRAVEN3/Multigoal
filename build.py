@@ -139,7 +139,32 @@ def main():
         f.write("window.MG_DATA = ")
         json.dump(out, f, ensure_ascii=False, separators=(",", ":"))
         f.write(";\n")
+    stamp_versions()
     print("Fatto: docs/data.js aggiornato.")
+
+
+def stamp_versions():
+    """Aggiunge a ogni file della pagina un numero di versione (?v=...) che cambia quando cambia il file:
+    così il telefono scarica subito i file nuovi invece di tenere quelli vecchi in memoria."""
+    import re
+    docs = os.path.join(ROOT, "docs")
+    path = os.path.join(docs, "index.html")
+    with open(path, encoding="utf-8") as f:
+        html = f.read()
+
+    def ver(m):
+        name = m.group(2)
+        fp = os.path.join(docs, name)
+        if not os.path.exists(fp):
+            return m.group(0)
+        with open(fp, "rb") as f:
+            h = hashlib.md5(f.read()).hexdigest()[:8]
+        return f'{m.group(1)}="{name}?v={h}"'
+
+    new = re.sub(r'(src|href)="([\w.-]+\.(?:js|css))(?:\?v=\w+)?"', ver, html)
+    if new != html:
+        with open(path, "w", encoding="utf-8") as f:
+            f.write(new)
 
 
 if __name__ == "__main__":
