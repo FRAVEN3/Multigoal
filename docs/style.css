@@ -91,3 +91,26 @@ table.regrid td:first-child, table.regrid th:first-child { text-align: left; }
 .tipbox { position: absolute; z-index: 50; background: var(--ink); color: var(--card); font-size: 13px; line-height: 1.4;
   padding: 10px 12px; border-radius: 10px; box-shadow: 0 6px 20px rgba(0,0,0,.25); }
 .tipbox div + div { margin-top: 3px; }
+
+/* ---------- Live ---------- */
+.lvrow { border: 1px solid var(--line); border-left: 5px solid var(--line); border-radius: 10px; padding: 8px 10px; margin: 6px 0; background: var(--card); }
+.lvrow.row-W { border-left-color: var(--win); background: rgba(25,135,84,.14); }
+.lvrow.row-L { border-left-color: var(--lose); background: rgba(192,57,43,.14); }
+.lvrow.row-w { border-left-color: var(--win); }
+.lvrow.row-l { border-left-color: var(--lose); }
+.lvmain { display: flex; justify-content: space-between; gap: 10px; align-items: flex-start; }
+.lvsc { text-align: right; flex: 0 0 auto; }
+.lvnum { font-size: 22px; font-weight: 800; letter-spacing: 1px; }
+.lvst { font-size: 12px; }
+.lvon { color: var(--lose); font-weight: 700; }
+.dot { display: inline-block; width: 8px; height: 8px; border-radius: 50%; background: var(--lose); margin-right: 4px; animation: blink 1.2s infinite; }
+@keyframes blink { 50% { opacity: .2; } }
+.lvpks { display: flex; flex-wrap: wrap; gap: 5px; margin-top: 6px; }
+.lvpk { font-size: 12px; font-weight: 600; padding: 3px 8px; border-radius: 99px; border: 2px solid var(--line); }
+.lvpk .q { font-weight: 400; opacity: .8; }
+.pk-W { background: var(--win); border-color: var(--win); color: #fff; }
+.pk-L { background: var(--lose); border-color: var(--lose); color: #fff; }
+.pk-w { border-color: var(--win); color: var(--win); }
+.pk-l { border-color: var(--lose); color: var(--lose); }
+.lvstar { border: 0; background: none; font-size: 17px; line-height: 1; cursor: pointer; color: var(--muted); padding: 0 4px; }
+.lvstar.on { color: #e0a800; }
