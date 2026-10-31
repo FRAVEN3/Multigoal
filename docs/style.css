@@ -114,3 +114,18 @@ table.regrid td:first-child, table.regrid th:first-child { text-align: left; }
 .pk-l { border-color: var(--lose); color: var(--lose); }
 .lvstar { border: 0; background: none; font-size: 17px; line-height: 1; cursor: pointer; color: var(--muted); padding: 0 4px; }
 .lvstar.on { color: #e0a800; }
+
+/* ---------- Rendimento ---------- */
+.chart { position: relative; background: var(--card); border: 1px solid var(--line); border-radius: 12px; padding: 8px 6px 4px; }
+.chart svg { width: 100%; height: auto; display: block; }
+.chart .cg { stroke: var(--line); stroke-width: 1; }
+.chart .ct { font-size: 10px; fill: var(--muted); }
+.chart .cv { fill: var(--ink); font-weight: 700; font-size: 11px; }
+.chart .cb { fill: var(--brand2); }
+.chart .cl { fill: none; stroke: var(--brand2); stroke-width: 2; stroke-linejoin: round; stroke-linecap: round; }
+.chart .cd { fill: var(--brand2); stroke: var(--card); stroke-width: 2; }
+.chart .cr { stroke: var(--ink); stroke-width: 1; stroke-dasharray: 4 3; opacity: .6; }
+.chart .ch { fill: transparent; cursor: pointer; }
+.chart .ch.on { fill: rgba(127,127,127,.12); }
+.chart .ctip { font-size: 12px; padding: 4px 6px; color: var(--ink); }
+button.btn.giocata { background: var(--win); }

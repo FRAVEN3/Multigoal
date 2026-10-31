@@ -364,7 +364,7 @@
 
   // ---------- eventi ----------
   MG.views.sistema = view;
-  MG.sis = { FX, MK, compute, columns, elem, defOdds, hit, findResult, splitBox, colsLabel, splitOwners, saveSystem: (its, r) => { saved.push(packSaved(its, r)); store(KEY_SAVED, saved); },
+  MG.sis = { FX, MK, compute, columns, elem, defOdds, hit, findResult, settle, splitBox, colsLabel, splitOwners, saveSystem: (its, r) => { saved.push(packSaved(its, r)); store(KEY_SAVED, saved); },
     openInBuilder(its, sizes, total, split) {
       draft = { sel: {}, sizes: sizes.length === 1 && sizes[0] === its.length ? [] : sizes, total, split: normSplit(split, sizes) };
       its.forEach((it) => { draft.sel[it.fx.id] = Object.fromEntries(it.opts.map((o) => [o.mk, o.odds])); });

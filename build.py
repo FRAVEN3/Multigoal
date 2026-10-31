@@ -10,7 +10,7 @@ import os
 import sys
 from datetime import date, datetime, timedelta
 
-from engine import backtest, calibration, data, exact, tracker
+from engine import backtest, calibration, data, exact, replay, tracker
 from engine.markets import MARKETS
 from engine.slips import build_slips
 from engine.stats import TeamIndex, estimate, league_summary, team_table
@@ -53,6 +53,11 @@ def main():
             json.dump({"key": bt_key, "data": bt}, f)
 
     curves = calibration.build(bt["calibrazione"])
+    if "bollette" not in bt:
+        print("Bollette rifatte sulle stagioni passate (una tantum)...")
+        bt["bollette"] = replay.run(played, seasons[1:], cfg, curves)
+        with open(bt_path, "w", encoding="utf-8") as f:
+            json.dump({"key": bt_key, "data": bt}, f)
 
     # --- partite in programma -------------------------------------------------
     print("Calendario e stime...")

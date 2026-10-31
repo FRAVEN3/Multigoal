@@ -147,6 +147,7 @@
         ${s.real ? `<span>Quota bookmaker <b>${q2(s.real)}</b></span>` : ""}
         <span>Puntata <b>${eur(stake)}</b>${perCol}</span>
         ${!withStatus ? `<button class="btn small" data-slip="${esc(s.id)}">Apri come sistema</button>` : ""}
+        ${window.MG && MG.giocBtn ? MG.giocBtn(s) : ""}
         ${s.profit != null ? `<span>Utile <b class="${s.profit >= 0 ? "esito-W" : "esito-L"}">${eur(s.profit)}</b></span>` : ""}
       </div></div>`;
   }
