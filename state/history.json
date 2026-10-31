@@ -1468,6 +1468,195 @@
    "combos": 4,
    "created": "2026-10-30",
    "status": "IN CORSO"
+  },
+  {
+   "id": "ed99b567a3",
+   "kind": "multipla",
+   "method": "MULTIGOL",
+   "title": "Multigol a raddoppio #1",
+   "descr": "Le fasce Multigol più sicure fino a quota ~2",
+   "picks": [
+    {
+     "fx": "05ebf4db",
+     "lg": "F2",
+     "date": "2026-10-31",
+     "time": "13:00",
+     "home": "Annecy",
+     "away": "Montpellier",
+     "markets": [
+      "MG14"
+     ],
+     "name": "Multigol 1-4",
+     "p": 0.8317,
+     "fair": 1.2,
+     "min_odds": 1.26,
+     "real": null
+    },
+    {
+     "fx": "0d7f5d68",
+     "lg": "T1",
+     "date": "2026-10-31",
+     "time": "13:00",
+     "home": "Kocaelispor",
+     "away": "Rizespor",
+     "markets": [
+      "MG14"
+     ],
+     "name": "Multigol 1-4",
+     "p": 0.8317,
+     "fair": 1.2,
+     "min_odds": 1.26,
+     "real": null
+    },
+    {
+     "fx": "e7aa541c",
+     "lg": "I2",
+     "date": "2026-11-01",
+     "time": "14:00",
+     "home": "Empoli",
+     "away": "Juve Stabia",
+     "markets": [
+      "MG14"
+     ],
+     "name": "Multigol 1-4",
+     "p": 0.8317,
+     "fair": 1.2,
+     "min_odds": 1.26,
+     "real": null
+    },
+    {
+     "fx": "ad38face",
+     "lg": "E1",
+     "date": "2026-10-31",
+     "time": "15:00",
+     "home": "Millwall",
+     "away": "Derby",
+     "markets": [
+      "MG14"
+     ],
+     "name": "Multigol 1-4",
+     "p": 0.8182,
+     "fair": 1.22,
+     "min_odds": 1.28,
+     "real": null
+    }
+   ],
+   "prob": 0.4707,
+   "fair": 2.12,
+   "real": null,
+   "combos": null,
+   "created": "2026-10-31",
+   "status": "IN CORSO"
+  },
+  {
+   "id": "7719c9308d",
+   "kind": "multipla",
+   "method": "MULTIGOL",
+   "title": "Multigol a raddoppio #2",
+   "descr": "Le fasce Multigol più sicure fino a quota ~2",
+   "picks": [
+    {
+     "fx": "7355d60a",
+     "lg": "I2",
+     "date": "2026-10-31",
+     "time": "14:00",
+     "home": "Modena",
+     "away": "Mantova",
+     "markets": [
+      "MG14"
+     ],
+     "name": "Multigol 1-4",
+     "p": 0.8114,
+     "fair": 1.23,
+     "min_odds": 1.29,
+     "real": null
+    },
+    {
+     "fx": "27bd8382",
+     "lg": "E0",
+     "date": "2026-10-31",
+     "time": "15:00",
+     "home": "Brentford",
+     "away": "Nott'm Forest",
+     "markets": [
+      "MG14"
+     ],
+     "name": "Multigol 1-4",
+     "p": 0.8114,
+     "fair": 1.23,
+     "min_odds": 1.29,
+     "real": null
+    },
+    {
+     "fx": "6bc5797d",
+     "lg": "B1",
+     "date": "2026-10-31",
+     "time": "17:15",
+     "home": "Standard",
+     "away": "Kortrijk",
+     "markets": [
+      "MG14"
+     ],
+     "name": "Multigol 1-4",
+     "p": 0.8114,
+     "fair": 1.23,
+     "min_odds": 1.29,
+     "real": null
+    },
+    {
+     "fx": "95a50c2c",
+     "lg": "AUT",
+     "date": "2026-10-31",
+     "time": "18:30",
+     "home": "LASK",
+     "away": "Tirol",
+     "markets": [
+      "MG14"
+     ],
+     "name": "Multigol 1-4",
+     "p": 0.8114,
+     "fair": 1.23,
+     "min_odds": 1.29,
+     "real": null
+    }
+   ],
+   "prob": 0.4335,
+   "fair": 2.31,
+   "real": null,
+   "combos": null,
+   "created": "2026-10-31",
+   "status": "IN CORSO"
+  },
+  {
+   "id": "1018a82ecf",
+   "kind": "singola",
+   "method": "MULTIGOL",
+   "title": "Singola Multigol",
+   "descr": "",
+   "picks": [
+    {
+     "fx": "7355d60a",
+     "lg": "I2",
+     "date": "2026-10-31",
+     "time": "14:00",
+     "home": "Modena",
+     "away": "Mantova",
+     "markets": [
+      "MG14"
+     ],
+     "name": "Multigol 1-4",
+     "p": 0.8114,
+     "fair": 1.23,
+     "min_odds": 1.29,
+     "real": null
+    }
+   ],
+   "prob": 0.8114,
+   "fair": 1.23,
+   "real": null,
+   "combos": null,
+   "created": "2026-10-31",
+   "status": "IN CORSO"
   }
  ]
 }
