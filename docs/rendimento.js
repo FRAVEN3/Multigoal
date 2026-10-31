@@ -24,7 +24,7 @@
 
   // ---------- dati: bollette dell'app (quest'anno) e rifatte sulle stagioni passate ----------
   const ES = { VINTA: "V", PERSA: "P", ANNULLATA: "A", "IN CORSO": "C" };
-  const cur = D.storico.map((s) => ({
+  const curList = () => D.storico.map((s) => ({
     id: s.id, w: s.created, end: s.settled || s.created, m: s.method, k: s.kind, t: normTitle(s.title), p: s.prob, q: s.real,
     s: ES[s.status] || "C", pk: s.picks.map((pk) => [pk.lg, pk.markets.join("+"), pk.p, pk.esito === "ANN" ? "A" : pk.esito || null, pk.date]),
   }));
@@ -103,7 +103,7 @@
   function appHtml() {
     const t0 = ui.per === "4s" ? addDays(D.oggi, -28) : "";
     const fM = (s) => ui.met === "TUTTI" || s.m === ui.met;
-    const list = cur.filter((s) => fM(s) && s.w >= t0), pl = past.filter(fM);
+    const list = curList().filter((s) => fM(s) && s.w >= t0), pl = past.filter(fM);
     const A = aggSlips(list), Ap = aggSlips(pl), P = aggPicks(list).tot || { n: 0, w: 0, p: 0 }, Pp = aggPicks(pl).tot || { n: 0, w: 0, p: 0 };
     const st = streaks(list);
     const few = A.n < 30 ? `<div class="note">Per ora ci sono solo <b>${A.n}</b> bollette concluse: le percentuali possono cambiare molto. La colonna <b>"Stagioni passate"</b> mostra come sono andate le stesse bollette rifatte sulle ultime ${D.backtest.stagioni.length} stagioni (${Ap.n} bollette): è il numero più affidabile.</div>` : "";

@@ -136,7 +136,7 @@
     const stake = D.config.bollette.puntata;
     const perCol = s.combos ? ` · ${s.combos} colonne da ${eur(stake / s.combos)}` : "";
     return `<div class="card">
-      <div class="row" style="margin:0 0 4px">${badge(s.method, s.picks)} ${withStatus ? badge(s.status) : ""}
+      <div class="row" style="margin:0 0 4px">${badge(s.method, s.picks)} ${withStatus ? badge(s.status) + (s.live ? ` <span class="small muted" title="Risultato preso dal live: verrà confermato con l'aggiornamento">· live</span>` : "") : ""}
         <h3 style="margin:0">${esc(s.title)}</h3></div>
       ${s.descr ? `<div class="small muted">${esc(s.descr)}</div>` : ""}
       ${!withStatus && s.picks.some(started) ? `<div class="gonenote">⏱ Una o più partite sono già iniziate: questa bolletta non si può più giocare così com'è.</div>` : ""}

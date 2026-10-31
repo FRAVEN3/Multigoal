@@ -276,8 +276,81 @@
     const list = needed().filter((k) => k.split("|")[1] <= today());   // domani non serve ancora
     await Promise.all(list.map((k) => { const [slug, date] = k.split("|"); return fetchOne(slug, date); }));
     lastFetch = Date.now(); loading = false;
-    if (MG.state.tab === "live") MG.render();
+    const changed = useFinals();
+    if (MG.state.tab === "live" || (changed && AFTER.has(MG.state.tab))) MG.render();
   }
+
+  // ---------- risultati finali dal live, finché non arriva quello ufficiale ----------
+  // Così storico, rendimento, sistemi e scalate si chiudono appena finisce la partita invece di aspettare il lunedì.
+  const FKEY = "mg_live_finali", AFTER = new Set(["storico", "rendimento", "sistema", "scalata", "bollette"]);
+  let FIN = load(FKEY, {});
+  for (const k of Object.keys(FIN)) if (FIN[k].date < addDays(today(), -30)) delete FIN[k];
+  MG.liveFinal = (p) => {
+    const f = FIN[keyOf(p)];
+    return f ? { lg: p.lg, date: p.date, home: p.home, away: p.away, fh: f.fh, fa: f.fa, hh: f.hh, ha: f.ha, live: true } : null;
+  };
+  const official = (p) => (D.risultati || []).some((m) => m.lg === p.lg && m.home === p.home && m.away === p.away && Math.abs(new Date(m.date) - new Date(p.date)) <= 4 * 864e5);
+  // partite giocate (fino a 5 giorni fa) senza risultato ufficiale, in bollette dell'app, sistemi e scalate
+  function pending() {
+    const from = addDays(today(), -5), t = today(), out = [];
+    const add = (p) => { if (p.date >= from && p.date <= t && SLUG[p.lg] && p.lg !== "SWZ" && !FIN[keyOf(p)] && !official(p)) out.push(p); };
+    D.storico.forEach((s) => s.status === "IN CORSO" && s.picks.forEach((pk) => !pk.esito && add(pk)));
+    load("mg_sistemi_salvati", []).forEach((sv) => sv.items.forEach(add));
+    load("mg_scalate", []).forEach((sc) => (sc.steps || []).forEach((st) => st.picks.forEach(add)));
+    follow.forEach(add);
+    return out;
+  }
+  // salvo i risultati finali trovati (solo se si conosce anche il primo tempo, che serve per GG/NG nei tempi)
+  function saveFinals(list) {
+    let n = 0;
+    list.forEach((p) => {
+      const ev = espnFor(p);
+      if (ev && ev.st === "post" && ev.hh != null) { FIN[keyOf(p)] = { fh: ev.fh, fa: ev.fa, hh: ev.hh, ha: ev.ha, date: p.date }; n++; }
+    });
+    if (n) store(FKEY, FIN);
+    return n;
+  }
+  // chiude le bollette dell'app con i risultati live (stesse regole dell'aggiornamento)
+  function settleStorico() {
+    let changed = false;
+    const stake = D.config.bollette.puntata, R = D.storico_riepilogo;
+    D.storico.forEach((s) => {
+      if (s.status !== "IN CORSO") return;
+      s.picks.forEach((pk) => {
+        if (pk.esito) return;
+        const r = MG.liveFinal(pk);
+        if (!r) return;
+        pk.esito = pk.markets.some((m) => hit(m, [r.fh, r.fa, r.hh, r.ha])) ? "W" : "L";
+        pk.score = `${r.fh}-${r.fa} (${r.hh}-${r.ha})`;
+        pk.live = true; changed = true;
+      });
+      const lost = s.picks.some((pk) => pk.esito === "L"), done = s.picks.every((pk) => pk.esito === "W" || pk.esito === "ANN");
+      if (!lost && !(done && s.picks.some((pk) => pk.esito === "W"))) return;
+      s.status = lost ? "PERSA" : "VINTA"; s.settled = today(); s.live = true;
+      if (s.real) { s.stake = stake; s.profit = Math.round((s.status === "VINTA" ? stake * s.real - stake : -stake) * 100) / 100; }
+      // aggiorno anche il riepilogo per metodo della scheda Storico
+      const key = `${s.method} – ${s.kind}`, x = (R[key] = R[key] || { n: 0, vinte: 0, p_attesa: 0, n_quote: 0, utile: 0, giocato: 0 });
+      x.p_attesa = (x.p_attesa * x.n + s.prob) / (x.n + 1);
+      x.n++; x.vinte += s.status === "VINTA"; x.perc = x.vinte / x.n;
+      if (s.real) { x.n_quote++; x.utile += s.profit; x.giocato += stake; }
+    });
+    return changed;
+  }
+  function useFinals() { saveFinals(pending()); return settleStorico(); }
+  async function checkFinals() {
+    const list = pending();
+    if (!list.length) return;
+    const pairs = [...new Set(list.map((p) => `${SLUG[p.lg]}|${p.date}`))];
+    await Promise.all(pairs.map((k) => { const [slug, date] = k.split("|"), c = cache[`${slug}|${date.replace(/-/g, "")}`];
+      return c && Date.now() - c.t < 50000 ? null : fetchOne(slug, date); }));
+    const n = saveFinals(list), ch = settleStorico();
+    // ridisegno solo se è cambiato qualcosa e non stai scrivendo in una casella
+    const typing = document.activeElement && /INPUT|TEXTAREA|SELECT/.test(document.activeElement.tagName);
+    if ((n || ch) && AFTER.has(MG.state.tab) && !typing) MG.render();
+  }
+  settleStorico();   // risultati live salvati le volte prima
+  checkFinals();
+  setInterval(() => { if (document.visibilityState === "visible") checkFinals(); }, 5 * 60 * 1000);
 
   function view() {
     if (!lastFetch && !loading) refreshData(true);

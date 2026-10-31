@@ -319,7 +319,9 @@
       const dd = Math.abs(new Date(m.date + "T12:00:00") - d0) / 864e5;
       if (dd <= 4 && (!best || dd < best[0])) best = [dd, m];
     }
-    return best && best[1];
+    if (best) return best[1];
+    // risultato ufficiale non ancora arrivato: uso quello finale preso dal live (scheda Live)
+    return MG.liveFinal ? MG.liveFinal(p) : null;
   }
   function settle(sv) {
     let played = 0;
