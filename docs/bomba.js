@@ -128,7 +128,7 @@
         <h3>💣 La tua Bomba · ${n} partite · ${esc(sizeLabel(res.sizes, n))}</h3>
         ${res.short ? `<div class="small muted">Ci sono solo ${n} partite con giocate consigliate in questo momento.</div>` : ""}
         ${res.its.map((it) => `<div class="pick">
-          <div><div class="m">${esc(it.fx.home)} – ${esc(it.fx.away)}</div>
+          <div><div class="m">${esc(it.fx.home)} – ${esc(it.fx.away)}${MG.liveTag ? MG.liveTag(it.fx, it.opts.map((o) => o.mk)) : ""}</div>
           <div class="small muted">${esc(lgName(it.fx.lg))} · ${fdate(it.fx.date, it.fx.time)} · ${badge(it.method, it.fx)}</div></div>
           <div class="r">${it.opts.map((o) => `<div class="w">${esc(MK[o.mk])}</div><div class="small muted">${pct(it.fx.est.probs[o.mk])} · quota min ${q2(o.odds)}</div>`).join("")}</div>
         </div>`).join("")}

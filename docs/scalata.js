@@ -203,7 +203,7 @@
       ? `<input class="odds" type="number" step="0.01" min="1.01" inputmode="decimal" value="${o.odds}" data-sc-odds="${owner}|${i}|${j}"><button class="x" data-sc-rm="${owner}|${i}|${j}" title="Togli">✕</button>`
       : `@ <b>${q2(o.odds)}</b>`;
     return `<div class="pick" style="grid-template-columns:minmax(0,1fr)">
-      <div><span class="m">${esc(o.home)} – ${esc(o.away)}</span>${editable ? startedTag(o) : ""} <span class="small muted">${esc(lgName(o.lg))} · ${fdate(o.date, o.time)}${o.score ? ` · <b class="${cls}">${esc(o.score)}</b>` : ""}</span></div>
+      <div><span class="m">${esc(o.home)} – ${esc(o.away)}</span>${editable ? startedTag(o) : ""} <span class="small muted">${esc(lgName(o.lg))} · ${fdate(o.date, o.time)}${o.score ? ` · <b class="${cls}">${esc(o.score)}</b>` : MG.liveTag ? MG.liveTag(o, [o.mk]) : ""}</span></div>
       <div class="optrow"><span>${mkPart} <span class="small muted">${pct(o.p)}</span></span><span>${oddsPart}</span></div></div>`;
   }
 

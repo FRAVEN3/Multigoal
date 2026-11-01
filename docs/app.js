@@ -122,24 +122,36 @@
   }
 
   // ---------- bollette ----------
+  // risultato in diretta / finale della giocata (dalla scheda Live), se la partita è iniziata
+  const liveJ = (pk) => (MG.liveJ && !pk.esito ? MG.liveJ(pk, pk.markets) : null);
   function pickHtml(pk) {
     const es = pk.esito ? ` <span class="esito-${pk.esito}">${pk.esito === "W" ? "✔" : pk.esito === "L" ? "✘" : "annullata"}${pk.score ? " " + esc(pk.score) : ""}</span>` : "";
-    const go = !pk.esito && started(pk);
-    return `<div class="pick${go ? " gone" : ""}">
-      <div><div class="m">${esc(pk.home)} – ${esc(pk.away)}${go ? startedTag(pk) : ""}</div>
+    const tag = !pk.esito && MG.liveTag ? MG.liveTag(pk, pk.markets) : "";
+    const j = pk.esito === "W" || pk.esito === "L" ? pk.esito : liveJ(pk);
+    const go = !pk.esito && !tag && started(pk);
+    return `<div class="pick${go ? " gone" : ""}${j ? " lvp-" + j : ""}">
+      <div><div class="m">${esc(pk.home)} – ${esc(pk.away)}${go ? startedTag(pk) : ""}${tag}</div>
         <div class="small muted">${esc(lgName(pk.lg))} · ${fdate(pk.date, pk.time)}</div></div>
       <div class="r"><div class="w">${esc(pk.name)}${es}</div>
         <div class="small muted">${pct(pk.p)} · quota min ${q2(pk.min_odds)}${pk.real ? " · bookmaker " + q2(pk.real) : ""}</div></div>
     </div>`;
   }
+  // stato della bolletta della settimana dai risultati: persa appena una giocata è persa, vinta quando sono vinte tutte
+  function liveStatus(s) {
+    const js = s.picks.map(liveJ);
+    if (js.includes("L")) return badge("PERSA") + " ";
+    if (js.every((j) => j === "W")) return badge("VINTA") + " ";
+    if (js.some((j) => j)) return badge("IN CORSO") + " ";
+    return "";
+  }
   function slipHtml(s, withStatus) {
     const stake = D.config.bollette.puntata;
     const perCol = s.combos ? ` · ${s.combos} colonne da ${eur(stake / s.combos)}` : "";
     return `<div class="card">
-      <div class="row" style="margin:0 0 4px">${badge(s.method, s.picks)} ${withStatus ? badge(s.status) + (s.live ? ` <span class="small muted" title="Risultato preso dal live: verrà confermato con l'aggiornamento">· live</span>` : "") : ""}
+      <div class="row" style="margin:0 0 4px">${badge(s.method, s.picks)} ${!withStatus ? liveStatus(s) : ""}${withStatus ? badge(s.status) + (s.live ? ` <span class="small muted" title="Risultato preso dal live: verrà confermato con l'aggiornamento">· live</span>` : "") : ""}
         <h3 style="margin:0">${esc(s.title)}</h3></div>
       ${s.descr ? `<div class="small muted">${esc(s.descr)}</div>` : ""}
-      ${!withStatus && s.picks.some(started) ? `<div class="gonenote">⏱ Una o più partite sono già iniziate: questa bolletta non si può più giocare così com'è.</div>` : ""}
+      ${!withStatus && s.picks.some(started) && !s.picks.some(liveJ) ? `<div class="gonenote">⏱ Una o più partite sono già iniziate: questa bolletta non si può più giocare così com'è.</div>` : ""}
       ${s.picks.map(pickHtml).join("")}
       <div class="tot">
         <span>Probabilità <b>${pct(s.prob)}</b></span>

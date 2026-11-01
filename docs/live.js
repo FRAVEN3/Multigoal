@@ -151,6 +151,19 @@
 
   // ---------- disegno ----------
   const ICON = { W: "✔", L: "✘", w: "✔", l: "✘", n: "" };
+
+  // ---------- bollino risultato per le altre schede (Bollette, Storico, Sistema, Scalata, Bomba) ----------
+  // mks = giocate alternative sulla stessa partita (basta che ne esca una). Vuoto se la partita non è iniziata.
+  MG.liveJ = (p, mks) => { const L = liveOf(p); return L && L.st !== "pre" ? rowJ(mks.map((m) => judge(m, L))) : null; };
+  MG.liveTag = (p, mks) => {
+    const L = liveOf(p);
+    if (!L || L.st === "pre") return "";
+    if (L.st === "rinv") return ` <span class="lvtag">rinviata</span>`;
+    const j = rowJ(mks.map((m) => judge(m, L))), live = L.st === "in" || L.st === "ht";
+    const when = L.st === "ht" ? "int." : live ? esc(L.clock) : "fin.";
+    const ht = L.hh != null && !(L.st === "in" && L.period === 1) ? ` <span class="q">(${L.hh}-${L.ha})</span>` : "";
+    return ` <span class="lvtag pk-${j}" title="${j === "w" || j === "l" ? "se finisse adesso" : ""}">${live ? `<i class="dot"></i>` : ""}${L.fh}-${L.fa}${ht} <span class="q">${when}</span>${ICON[j] ? " " + ICON[j] : ""}</span>`;
+  };
   function scoreHtml(L, p) {
     if (!L) {
       const t = timeOf(p);
@@ -266,6 +279,7 @@
     D.partite.filter((f) => f.date === today()).forEach(add);
     load("mg_sistemi_salvati", []).forEach((sv) => sv.items.forEach(add));
     load("mg_scalate", []).forEach((sc) => (sc.steps || []).forEach((s) => s.picks.forEach(add)));
+    D.storico.forEach((s) => s.status === "IN CORSO" && s.picks.forEach(add));
     follow.forEach(add);
     return [...need];
   }
@@ -277,8 +291,14 @@
     await Promise.all(list.map((k) => { const [slug, date] = k.split("|"); return fetchOne(slug, date); }));
     lastFetch = Date.now(); loading = false;
     const changed = useFinals();
-    if (MG.state.tab === "live" || (changed && AFTER.has(MG.state.tab))) MG.render();
+    const sig = Object.values(cache).map((c) => c.events.map((e) => `${e.st}${e.fh}${e.fa}${e.clock}`).join()).join("|");
+    const typing = document.activeElement && /INPUT|TEXTAREA|SELECT/.test(document.activeElement.tagName);
+    if (MG.state.tab === "live") MG.render();
+    else if ((changed || sig !== lastSig) && SHOWN.has(MG.state.tab) && !typing) MG.render();
+    lastSig = sig;
   }
+  let lastSig = "";
+  const SHOWN = new Set(["bollette", "storico", "sistema", "scalata", "bomba", "rendimento"]);
 
   // ---------- risultati finali dal live, finché non arriva quello ufficiale ----------
   // Così storico, rendimento, sistemi e scalate si chiudono appena finisce la partita invece di aspettare il lunedì.
@@ -379,6 +399,8 @@
     }
     MG.render();
   });
-  setInterval(() => { if (MG.state.tab === "live" && document.visibilityState === "visible") refreshData(); }, 15000);
-  document.addEventListener("visibilitychange", () => { if (document.visibilityState === "visible" && MG.state.tab === "live") refreshData(); });
+  const showsLive = () => MG.state.tab === "live" || SHOWN.has(MG.state.tab);
+  setInterval(() => { if (showsLive() && document.visibilityState === "visible") refreshData(); }, 15000);
+  document.addEventListener("visibilitychange", () => { if (document.visibilityState === "visible" && showsLive()) refreshData(); });
+  refreshData(true);   // risultati subito, anche se apri l'app su Bollette
 })();

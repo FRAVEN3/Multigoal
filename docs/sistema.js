@@ -276,7 +276,7 @@
     return `<div class="card" style="border:2px solid var(--brand2)">
       <h3>Il tuo sistema · ${n} partite</h3>
       ${its.map((it) => `<div class="pick" style="grid-template-columns:minmax(0,1fr)">
-        <div><span class="m">${esc(it.fx.home)} – ${esc(it.fx.away)}</span>${startedTag(it.fx)} <span class="small muted">${fdate(it.fx.date, it.fx.time)}</span></div>
+        <div><span class="m">${esc(it.fx.home)} – ${esc(it.fx.away)}</span>${startedTag(it.fx)} <span class="small muted">${fdate(it.fx.date, it.fx.time)}</span>${MG.liveTag ? MG.liveTag(it.fx, it.opts.map((o) => o.mk)) : ""}</div>
         ${it.opts.map((o) => `<div class="optrow"><span>${esc(MK[o.mk])} <span class="small muted">${pct(it.fx.est.probs[o.mk])}</span></span>
           <span><input class="odds" type="number" step="0.01" min="1.01" inputmode="decimal" value="${o.odds}" data-odds="${it.fx.id}|${o.mk}">
           <button class="x" data-tg="${it.fx.id}|${o.mk}" title="Togli">✕</button></span></div>`).join("")}
@@ -351,7 +351,7 @@
       if (st.done) { giocato += sv.total; vinto += st.pay; }
       return `<details class="card"><summary>${badge(st.label.startsWith("IN") ? "IN CORSO" : st.label)} <b>${sv.items.length} partite · ${sv.cols} colonne · ${eur(sv.total)}</b>
         <div class="small muted">salvato ${fdate(sv.created)}${st.done ? ` · vincita ${eur(st.pay)} · utile <b class="${st.pay - sv.total >= 0 ? "esito-W" : "esito-L"}">${eur(st.pay - sv.total)}</b>` : " · " + esc(st.label)}</div></summary>
-        ${sv.items.map((it) => `<div class="pick" style="grid-template-columns:minmax(0,1fr) auto"><div><span class="m">${esc(it.home)} – ${esc(it.away)}</span><div class="small muted">${fdate(it.date)}${it.score ? " · " + esc(it.score) : ""}</div></div>
+        ${sv.items.map((it) => `<div class="pick" style="grid-template-columns:minmax(0,1fr) auto"><div><span class="m">${esc(it.home)} – ${esc(it.away)}</span><div class="small muted">${fdate(it.date)}${it.score ? " · " + esc(it.score) : MG.liveTag ? MG.liveTag(it, it.opts.map((o) => o.mk)) : ""}</div></div>
           <div class="r">${it.opts.map((o) => `<div class="${o.ok === true ? "esito-W" : o.ok === false ? "esito-L" : ""}">${esc(MK[o.mk])} @ ${q2(o.odds)}</div>`).join("")}</div></div>`).join("")}
         <div class="small muted">Tipo: ${sv.sizes.map((k) => `${k} su ${sv.items.length}${sv.perK ? ` (${eur(sv.perK[k])} a colonna)` : ""}`).join(", ")}${sv.perK ? "" : ` · colonne da ${eur(sv.per)}`}</div>
         <button class="btn" style="background:var(--lose);margin-top:8px" data-del="${esc(sv.id)}">Elimina</button></details>`;

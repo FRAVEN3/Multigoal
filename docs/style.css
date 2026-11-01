@@ -129,3 +129,11 @@ table.regrid td:first-child, table.regrid th:first-child { text-align: left; }
 .chart .ch.on { fill: rgba(127,127,127,.12); }
 .chart .ctip { font-size: 12px; padding: 4px 6px; color: var(--ink); }
 button.btn.giocata { background: var(--win); }
+
+/* risultato live nelle altre schede */
+.lvtag { display: inline-block; font-size: 12px; font-weight: 700; padding: 1px 7px; border-radius: 99px; border: 2px solid var(--line); margin-left: 4px; white-space: nowrap; vertical-align: middle; }
+.lvtag .q { font-weight: 400; opacity: .85; }
+.pick.lvp-W { background: rgba(25,135,84,.12); box-shadow: inset 4px 0 0 var(--win); padding-left: 8px; }
+.pick.lvp-L { background: rgba(192,57,43,.12); box-shadow: inset 4px 0 0 var(--lose); padding-left: 8px; }
+.pick.lvp-w { box-shadow: inset 4px 0 0 var(--win); padding-left: 8px; }
+.pick.lvp-l { box-shadow: inset 4px 0 0 var(--lose); padding-left: 8px; }
