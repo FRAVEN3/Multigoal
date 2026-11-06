@@ -3069,7 +3069,9 @@
      "p": 0.7955,
      "fair": 1.26,
      "min_odds": 1.32,
-     "real": null
+     "real": null,
+     "esito": "W",
+     "score": "1-2 (1-0)"
     },
     {
      "fx": "4b658dc7",
@@ -3085,7 +3087,9 @@
      "p": 0.7868,
      "fair": 1.27,
      "min_odds": 1.33,
-     "real": null
+     "real": null,
+     "esito": "L",
+     "score": "3-3 (3-0)"
     },
     {
      "fx": "f61df8d0",
@@ -3101,7 +3105,9 @@
      "p": 0.7868,
      "fair": 1.27,
      "min_odds": 1.33,
-     "real": null
+     "real": null,
+     "esito": "W",
+     "score": "2-0 (0-0)"
     }
    ],
    "prob": 0.4925,
@@ -3109,7 +3115,8 @@
    "real": null,
    "combos": null,
    "created": "2026-11-04",
-   "status": "IN CORSO"
+   "status": "PERSA",
+   "settled": "2026-11-06"
   },
   {
    "id": "0df3c366a7",
@@ -3132,7 +3139,9 @@
      "p": 0.7955,
      "fair": 1.26,
      "min_odds": 1.32,
-     "real": null
+     "real": null,
+     "esito": "W",
+     "score": "1-2 (1-0)"
     }
    ],
    "prob": 0.7955,
@@ -3140,7 +3149,8 @@
    "real": null,
    "combos": null,
    "created": "2026-11-04",
-   "status": "IN CORSO"
+   "status": "VINTA",
+   "settled": "2026-11-06"
   },
   {
    "id": "ea645183aa",
@@ -3163,7 +3173,9 @@
      "p": 0.7868,
      "fair": 1.27,
      "min_odds": 1.33,
-     "real": null
+     "real": null,
+     "esito": "L",
+     "score": "3-3 (3-0)"
     }
    ],
    "prob": 0.7868,
@@ -3171,7 +3183,8 @@
    "real": null,
    "combos": null,
    "created": "2026-11-04",
-   "status": "IN CORSO"
+   "status": "PERSA",
+   "settled": "2026-11-06"
   },
   {
    "id": "16d38db392",
@@ -3194,7 +3207,9 @@
      "p": 0.7868,
      "fair": 1.27,
      "min_odds": 1.33,
-     "real": null
+     "real": null,
+     "esito": "W",
+     "score": "2-0 (0-0)"
     }
    ],
    "prob": 0.7868,
@@ -3202,7 +3217,8 @@
    "real": null,
    "combos": null,
    "created": "2026-11-04",
-   "status": "IN CORSO"
+   "status": "VINTA",
+   "settled": "2026-11-06"
   },
   {
    "id": "09d471b7a4",
@@ -3225,7 +3241,9 @@
      "p": 0.6007,
      "fair": 1.66,
      "min_odds": 1.75,
-     "real": null
+     "real": null,
+     "esito": "W",
+     "score": "2-0 (0-0)"
     }
    ],
    "prob": 0.6007,
@@ -3233,6 +3251,836 @@
    "real": null,
    "combos": null,
    "created": "2026-11-04",
+   "status": "VINTA",
+   "settled": "2026-11-06"
+  },
+  {
+   "id": "3fb5314f28",
+   "kind": "multipla",
+   "method": "MULTIGOL",
+   "title": "Multigol a raddoppio #1",
+   "descr": "Le fasce Multigol più sicure fino a quota ~2",
+   "picks": [
+    {
+     "fx": "3ff26fb2",
+     "lg": "B1",
+     "date": "2026-11-08",
+     "time": "15:00",
+     "home": "Gent",
+     "away": "Kortrijk",
+     "markets": [
+      "MG14"
+     ],
+     "name": "Multigol 1-4",
+     "p": 0.852,
+     "fair": 1.17,
+     "min_odds": 1.23,
+     "real": null
+    },
+    {
+     "fx": "16e81ddc",
+     "lg": "I2",
+     "date": "2026-11-07",
+     "time": "14:00",
+     "home": "Padova",
+     "away": "Empoli",
+     "markets": [
+      "MG14"
+     ],
+     "name": "Multigol 1-4",
+     "p": 0.8317,
+     "fair": 1.2,
+     "min_odds": 1.26,
+     "real": null
+    },
+    {
+     "fx": "b38ddff4",
+     "lg": "E0",
+     "date": "2026-11-07",
+     "time": "15:00",
+     "home": "Arsenal",
+     "away": "Hull",
+     "markets": [
+      "MG14"
+     ],
+     "name": "Multigol 1-4",
+     "p": 0.8317,
+     "fair": 1.2,
+     "min_odds": 1.26,
+     "real": null
+    },
+    {
+     "fx": "afc35b4b",
+     "lg": "I2",
+     "date": "2026-11-07",
+     "time": "18:30",
+     "home": "Benevento",
+     "away": "Avellino",
+     "markets": [
+      "MG14"
+     ],
+     "name": "Multigol 1-4",
+     "p": 0.8317,
+     "fair": 1.2,
+     "min_odds": 1.26,
+     "real": null
+    }
+   ],
+   "prob": 0.4902,
+   "fair": 2.04,
+   "real": null,
+   "combos": null,
+   "created": "2026-11-06",
+   "status": "IN CORSO"
+  },
+  {
+   "id": "2ba9b9b7bc",
+   "kind": "multipla",
+   "method": "MULTIGOL",
+   "title": "Multigol a raddoppio #2",
+   "descr": "Le fasce Multigol più sicure fino a quota ~2",
+   "picks": [
+    {
+     "fx": "022d03b0",
+     "lg": "P1",
+     "date": "2026-11-07",
+     "time": "20:30",
+     "home": "Sp Lisbon",
+     "away": "Moreirense",
+     "markets": [
+      "MG14"
+     ],
+     "name": "Multigol 1-4",
+     "p": 0.8317,
+     "fair": 1.2,
+     "min_odds": 1.26,
+     "real": null
+    },
+    {
+     "fx": "c9b5916b",
+     "lg": "I2",
+     "date": "2026-11-08",
+     "time": "16:15",
+     "home": "Carrarese",
+     "away": "Sampdoria",
+     "markets": [
+      "MG14"
+     ],
+     "name": "Multigol 1-4",
+     "p": 0.8317,
+     "fair": 1.2,
+     "min_odds": 1.26,
+     "real": null
+    },
+    {
+     "fx": "26a596ec",
+     "lg": "SP1",
+     "date": "2026-11-07",
+     "time": "15:15",
+     "home": "Espanol",
+     "away": "La Coruna",
+     "markets": [
+      "MG14"
+     ],
+     "name": "Multigol 1-4",
+     "p": 0.8151,
+     "fair": 1.23,
+     "min_odds": 1.29,
+     "real": null
+    },
+    {
+     "fx": "a17dfc70",
+     "lg": "AUT",
+     "date": "2026-11-08",
+     "time": "13:30",
+     "home": "Tirol",
+     "away": "Austria Vienna",
+     "markets": [
+      "MG14"
+     ],
+     "name": "Multigol 1-4",
+     "p": 0.8151,
+     "fair": 1.23,
+     "min_odds": 1.29,
+     "real": null
+    }
+   ],
+   "prob": 0.4596,
+   "fair": 2.18,
+   "real": null,
+   "combos": null,
+   "created": "2026-11-06",
+   "status": "IN CORSO"
+  },
+  {
+   "id": "ee7eb4612b",
+   "kind": "singola",
+   "method": "MULTIGOL",
+   "title": "Singola Multigol",
+   "descr": "",
+   "picks": [
+    {
+     "fx": "3ff26fb2",
+     "lg": "B1",
+     "date": "2026-11-08",
+     "time": "15:00",
+     "home": "Gent",
+     "away": "Kortrijk",
+     "markets": [
+      "MG14"
+     ],
+     "name": "Multigol 1-4",
+     "p": 0.852,
+     "fair": 1.17,
+     "min_odds": 1.23,
+     "real": null
+    }
+   ],
+   "prob": 0.852,
+   "fair": 1.17,
+   "real": null,
+   "combos": null,
+   "created": "2026-11-06",
+   "status": "IN CORSO"
+  },
+  {
+   "id": "748175f1ee",
+   "kind": "singola",
+   "method": "MULTIGOL",
+   "title": "Singola Multigol",
+   "descr": "",
+   "picks": [
+    {
+     "fx": "16e81ddc",
+     "lg": "I2",
+     "date": "2026-11-07",
+     "time": "14:00",
+     "home": "Padova",
+     "away": "Empoli",
+     "markets": [
+      "MG14"
+     ],
+     "name": "Multigol 1-4",
+     "p": 0.8317,
+     "fair": 1.2,
+     "min_odds": 1.26,
+     "real": null
+    }
+   ],
+   "prob": 0.8317,
+   "fair": 1.2,
+   "real": null,
+   "combos": null,
+   "created": "2026-11-06",
+   "status": "IN CORSO"
+  },
+  {
+   "id": "364f783068",
+   "kind": "singola",
+   "method": "MULTIGOL",
+   "title": "Singola Multigol",
+   "descr": "",
+   "picks": [
+    {
+     "fx": "b38ddff4",
+     "lg": "E0",
+     "date": "2026-11-07",
+     "time": "15:00",
+     "home": "Arsenal",
+     "away": "Hull",
+     "markets": [
+      "MG14"
+     ],
+     "name": "Multigol 1-4",
+     "p": 0.8317,
+     "fair": 1.2,
+     "min_odds": 1.26,
+     "real": null
+    }
+   ],
+   "prob": 0.8317,
+   "fair": 1.2,
+   "real": null,
+   "combos": null,
+   "created": "2026-11-06",
+   "status": "IN CORSO"
+  },
+  {
+   "id": "7131efd2ae",
+   "kind": "singola",
+   "method": "MULTIGOL",
+   "title": "Singola Multigol",
+   "descr": "",
+   "picks": [
+    {
+     "fx": "afc35b4b",
+     "lg": "I2",
+     "date": "2026-11-07",
+     "time": "18:30",
+     "home": "Benevento",
+     "away": "Avellino",
+     "markets": [
+      "MG14"
+     ],
+     "name": "Multigol 1-4",
+     "p": 0.8317,
+     "fair": 1.2,
+     "min_odds": 1.26,
+     "real": null
+    }
+   ],
+   "prob": 0.8317,
+   "fair": 1.2,
+   "real": null,
+   "combos": null,
+   "created": "2026-11-06",
+   "status": "IN CORSO"
+  },
+  {
+   "id": "860eb04e17",
+   "kind": "singola",
+   "method": "MULTIGOL",
+   "title": "Singola Multigol",
+   "descr": "",
+   "picks": [
+    {
+     "fx": "022d03b0",
+     "lg": "P1",
+     "date": "2026-11-07",
+     "time": "20:30",
+     "home": "Sp Lisbon",
+     "away": "Moreirense",
+     "markets": [
+      "MG14"
+     ],
+     "name": "Multigol 1-4",
+     "p": 0.8317,
+     "fair": 1.2,
+     "min_odds": 1.26,
+     "real": null
+    }
+   ],
+   "prob": 0.8317,
+   "fair": 1.2,
+   "real": null,
+   "combos": null,
+   "created": "2026-11-06",
+   "status": "IN CORSO"
+  },
+  {
+   "id": "78ed601fa4",
+   "kind": "singola",
+   "method": "BATISTUTA",
+   "title": "Batistuta: GG-GG / GG-NG / NG-GG",
+   "descr": "Si giocano le 3 combinazioni divise (calcolatore 'Contabilizzatore')",
+   "picks": [
+    {
+     "fx": "b25d8d0c",
+     "lg": "I1",
+     "date": "2026-11-08",
+     "time": "14:00",
+     "home": "Monza",
+     "away": "Atalanta",
+     "markets": [
+      "BAT"
+     ],
+     "name": "GG in almeno un tempo (Batistuta)",
+     "p": 0.5075,
+     "fair": 1.97,
+     "min_odds": 2.07,
+     "real": null
+    }
+   ],
+   "prob": 0.5075,
+   "fair": 1.97,
+   "real": null,
+   "combos": null,
+   "created": "2026-11-06",
+   "status": "IN CORSO"
+  },
+  {
+   "id": "04d62f01cd",
+   "kind": "singola",
+   "method": "BATISTUTA",
+   "title": "Batistuta: GG-GG / GG-NG / NG-GG",
+   "descr": "Si giocano le 3 combinazioni divise (calcolatore 'Contabilizzatore')",
+   "picks": [
+    {
+     "fx": "89435e6f",
+     "lg": "N1",
+     "date": "2026-11-08",
+     "time": "19:00",
+     "home": "Utrecht",
+     "away": "Nijmegen",
+     "markets": [
+      "BAT"
+     ],
+     "name": "GG in almeno un tempo (Batistuta)",
+     "p": 0.5075,
+     "fair": 1.97,
+     "min_odds": 2.07,
+     "real": null
+    }
+   ],
+   "prob": 0.5075,
+   "fair": 1.97,
+   "real": null,
+   "combos": null,
+   "created": "2026-11-06",
+   "status": "IN CORSO"
+  },
+  {
+   "id": "3fa8b26122",
+   "kind": "singola",
+   "method": "BATISTUTA",
+   "title": "Batistuta: GG-GG / GG-NG / NG-GG",
+   "descr": "Si giocano le 3 combinazioni divise (calcolatore 'Contabilizzatore')",
+   "picks": [
+    {
+     "fx": "32c1828a",
+     "lg": "N1",
+     "date": "2026-11-07",
+     "time": "17:45",
+     "home": "Den Haag",
+     "away": "Sparta Rotterdam",
+     "markets": [
+      "BAT"
+     ],
+     "name": "GG in almeno un tempo (Batistuta)",
+     "p": 0.5075,
+     "fair": 1.97,
+     "min_odds": 2.07,
+     "real": null
+    }
+   ],
+   "prob": 0.5075,
+   "fair": 1.97,
+   "real": null,
+   "combos": null,
+   "created": "2026-11-06",
+   "status": "IN CORSO"
+  },
+  {
+   "id": "c750359b25",
+   "kind": "singola",
+   "method": "BATISTUTA",
+   "title": "Batistuta: GG-GG / GG-NG / NG-GG",
+   "descr": "Si giocano le 3 combinazioni divise (calcolatore 'Contabilizzatore')",
+   "picks": [
+    {
+     "fx": "a4992bc1",
+     "lg": "D1",
+     "date": "2026-11-07",
+     "time": "14:30",
+     "home": "Mainz",
+     "away": "Bayern Munich",
+     "markets": [
+      "BAT"
+     ],
+     "name": "GG in almeno un tempo (Batistuta)",
+     "p": 0.4871,
+     "fair": 2.05,
+     "min_odds": 2.16,
+     "real": null
+    }
+   ],
+   "prob": 0.4871,
+   "fair": 2.05,
+   "real": null,
+   "combos": null,
+   "created": "2026-11-06",
+   "status": "IN CORSO"
+  },
+  {
+   "id": "d67441bf43",
+   "kind": "singola",
+   "method": "BATISTUTA",
+   "title": "Batistuta: GG-GG / GG-NG / NG-GG",
+   "descr": "Si giocano le 3 combinazioni divise (calcolatore 'Contabilizzatore')",
+   "picks": [
+    {
+     "fx": "49e8352d",
+     "lg": "I1",
+     "date": "2026-11-07",
+     "time": "19:45",
+     "home": "Roma",
+     "away": "Sassuolo",
+     "markets": [
+      "BAT"
+     ],
+     "name": "GG in almeno un tempo (Batistuta)",
+     "p": 0.4871,
+     "fair": 2.05,
+     "min_odds": 2.16,
+     "real": null
+    }
+   ],
+   "prob": 0.4871,
+   "fair": 2.05,
+   "real": null,
+   "combos": null,
+   "created": "2026-11-06",
+   "status": "IN CORSO"
+  },
+  {
+   "id": "540658a6cf",
+   "kind": "sistema",
+   "method": "BATISTUTA",
+   "title": "Sistema Batistuta 2 partite × 3 combinazioni",
+   "descr": "9 colonne: GG-GG / GG-NG / NG-GG per ogni partita",
+   "picks": [
+    {
+     "fx": "b25d8d0c",
+     "lg": "I1",
+     "date": "2026-11-08",
+     "time": "14:00",
+     "home": "Monza",
+     "away": "Atalanta",
+     "markets": [
+      "BAT"
+     ],
+     "name": "GG in almeno un tempo (Batistuta)",
+     "p": 0.5075,
+     "fair": 1.97,
+     "min_odds": 2.07,
+     "real": null
+    },
+    {
+     "fx": "89435e6f",
+     "lg": "N1",
+     "date": "2026-11-08",
+     "time": "19:00",
+     "home": "Utrecht",
+     "away": "Nijmegen",
+     "markets": [
+      "BAT"
+     ],
+     "name": "GG in almeno un tempo (Batistuta)",
+     "p": 0.5075,
+     "fair": 1.97,
+     "min_odds": 2.07,
+     "real": null
+    }
+   ],
+   "prob": 0.2576,
+   "fair": 3.88,
+   "real": null,
+   "combos": 9,
+   "created": "2026-11-06",
+   "status": "IN CORSO"
+  },
+  {
+   "id": "d22387c38d",
+   "kind": "sistema",
+   "method": "BATISTUTA",
+   "title": "Sistema Batistuta 3 partite × 3 combinazioni",
+   "descr": "27 colonne: GG-GG / GG-NG / NG-GG per ogni partita",
+   "picks": [
+    {
+     "fx": "b25d8d0c",
+     "lg": "I1",
+     "date": "2026-11-08",
+     "time": "14:00",
+     "home": "Monza",
+     "away": "Atalanta",
+     "markets": [
+      "BAT"
+     ],
+     "name": "GG in almeno un tempo (Batistuta)",
+     "p": 0.5075,
+     "fair": 1.97,
+     "min_odds": 2.07,
+     "real": null
+    },
+    {
+     "fx": "89435e6f",
+     "lg": "N1",
+     "date": "2026-11-08",
+     "time": "19:00",
+     "home": "Utrecht",
+     "away": "Nijmegen",
+     "markets": [
+      "BAT"
+     ],
+     "name": "GG in almeno un tempo (Batistuta)",
+     "p": 0.5075,
+     "fair": 1.97,
+     "min_odds": 2.07,
+     "real": null
+    },
+    {
+     "fx": "32c1828a",
+     "lg": "N1",
+     "date": "2026-11-07",
+     "time": "17:45",
+     "home": "Den Haag",
+     "away": "Sparta Rotterdam",
+     "markets": [
+      "BAT"
+     ],
+     "name": "GG in almeno un tempo (Batistuta)",
+     "p": 0.5075,
+     "fair": 1.97,
+     "min_odds": 2.07,
+     "real": null
+    }
+   ],
+   "prob": 0.1307,
+   "fair": 7.65,
+   "real": null,
+   "combos": 27,
+   "created": "2026-11-06",
+   "status": "IN CORSO"
+  },
+  {
+   "id": "e6f7d8d290",
+   "kind": "multipla",
+   "method": "RADUCIOIU",
+   "title": "Raducioiu multipla Under 2.5",
+   "descr": "Partite con media Batistuta bassa, quota ~2",
+   "picks": [
+    {
+     "fx": "e5d01432",
+     "lg": "P1",
+     "date": "2026-11-08",
+     "time": "15:30",
+     "home": "Santa Clara",
+     "away": "Gil Vicente",
+     "markets": [
+      "U25"
+     ],
+     "name": "Under 2.5",
+     "p": 0.582,
+     "fair": 1.72,
+     "min_odds": 1.8,
+     "real": 1.49
+    },
+    {
+     "fx": "29f0a5e1",
+     "lg": "E0",
+     "date": "2026-11-07",
+     "time": "12:30",
+     "home": "Leeds",
+     "away": "Tottenham",
+     "markets": [
+      "U25"
+     ],
+     "name": "Under 2.5",
+     "p": 0.582,
+     "fair": 1.72,
+     "min_odds": 1.8,
+     "real": 1.83
+    }
+   ],
+   "prob": 0.3387,
+   "fair": 2.95,
+   "real": 2.73,
+   "combos": null,
+   "created": "2026-11-06",
+   "status": "IN CORSO"
+  },
+  {
+   "id": "513acb8d17",
+   "kind": "singola",
+   "method": "RADUCIOIU",
+   "title": "Raducioiu: NG 1°T + NG 2°T",
+   "descr": "",
+   "picks": [
+    {
+     "fx": "e5d01432",
+     "lg": "P1",
+     "date": "2026-11-08",
+     "time": "15:30",
+     "home": "Santa Clara",
+     "away": "Gil Vicente",
+     "markets": [
+      "RAD"
+     ],
+     "name": "NG-NG nei due tempi (Raducioiu)",
+     "p": 0.6364,
+     "fair": 1.57,
+     "min_odds": 1.65,
+     "real": null
+    }
+   ],
+   "prob": 0.6364,
+   "fair": 1.57,
+   "real": null,
+   "combos": null,
+   "created": "2026-11-06",
+   "status": "IN CORSO"
+  },
+  {
+   "id": "18cf4070a1",
+   "kind": "singola",
+   "method": "RADUCIOIU",
+   "title": "Raducioiu: NG 1°T + NG 2°T",
+   "descr": "",
+   "picks": [
+    {
+     "fx": "fa2f6d12",
+     "lg": "T1",
+     "date": "2026-11-07",
+     "time": "10:30",
+     "home": "Eyupspor",
+     "away": "Kocaelispor",
+     "markets": [
+      "RAD"
+     ],
+     "name": "NG-NG nei due tempi (Raducioiu)",
+     "p": 0.6364,
+     "fair": 1.57,
+     "min_odds": 1.65,
+     "real": null
+    }
+   ],
+   "prob": 0.6364,
+   "fair": 1.57,
+   "real": null,
+   "combos": null,
+   "created": "2026-11-06",
+   "status": "IN CORSO"
+  },
+  {
+   "id": "3263dcd2fc",
+   "kind": "singola",
+   "method": "RADUCIOIU",
+   "title": "Raducioiu: NG 1°T + NG 2°T",
+   "descr": "",
+   "picks": [
+    {
+     "fx": "51c5eb78",
+     "lg": "G1",
+     "date": "2026-11-08",
+     "time": "15:00",
+     "home": "AEK",
+     "away": "Levadeiakos",
+     "markets": [
+      "RAD"
+     ],
+     "name": "NG-NG nei due tempi (Raducioiu)",
+     "p": 0.6364,
+     "fair": 1.57,
+     "min_odds": 1.65,
+     "real": null
+    }
+   ],
+   "prob": 0.6364,
+   "fair": 1.57,
+   "real": null,
+   "combos": null,
+   "created": "2026-11-06",
+   "status": "IN CORSO"
+  },
+  {
+   "id": "8dcf7b0976",
+   "kind": "singola",
+   "method": "RADUCIOIU",
+   "title": "Raducioiu: NG 1°T + NG 2°T",
+   "descr": "",
+   "picks": [
+    {
+     "fx": "01c17adb",
+     "lg": "P1",
+     "date": "2026-11-08",
+     "time": "20:30",
+     "home": "Rio Ave",
+     "away": "Sp Braga",
+     "markets": [
+      "RAD"
+     ],
+     "name": "NG-NG nei due tempi (Raducioiu)",
+     "p": 0.6364,
+     "fair": 1.57,
+     "min_odds": 1.65,
+     "real": null
+    }
+   ],
+   "prob": 0.6364,
+   "fair": 1.57,
+   "real": null,
+   "combos": null,
+   "created": "2026-11-06",
+   "status": "IN CORSO"
+  },
+  {
+   "id": "23da1b3222",
+   "kind": "singola",
+   "method": "RADUCIOIU",
+   "title": "Raducioiu: NG 1°T + NG 2°T",
+   "descr": "",
+   "picks": [
+    {
+     "fx": "0d428b96",
+     "lg": "F2",
+     "date": "2026-11-06",
+     "time": "19:00",
+     "home": "Boulogne",
+     "away": "Annecy",
+     "markets": [
+      "RAD"
+     ],
+     "name": "NG-NG nei due tempi (Raducioiu)",
+     "p": 0.6354,
+     "fair": 1.57,
+     "min_odds": 1.65,
+     "real": null
+    }
+   ],
+   "prob": 0.6354,
+   "fair": 1.57,
+   "real": null,
+   "combos": null,
+   "created": "2026-11-06",
+   "status": "IN CORSO"
+  },
+  {
+   "id": "7abadc60b3",
+   "kind": "sistema",
+   "method": "RADUCIOIU",
+   "title": "Sistema Risultato Esatto 2 partite × 2 gruppi",
+   "descr": "4 colonne, come il foglio 'Contab Sistema RE'",
+   "picks": [
+    {
+     "fx": "e5d01432",
+     "lg": "P1",
+     "date": "2026-11-08",
+     "time": "15:30",
+     "home": "Santa Clara",
+     "away": "Gil Vicente",
+     "markets": [
+      "RE_X",
+      "RE_C"
+     ],
+     "name": "Ris. esatto 0-0 / 1-1 / 2-2 oppure Ris. esatto 1-0 / 2-0 / 2-1",
+     "p": 0.4994,
+     "fair": 2.0,
+     "min_odds": 2.1,
+     "real": null
+    },
+    {
+     "fx": "fa2f6d12",
+     "lg": "T1",
+     "date": "2026-11-07",
+     "time": "10:30",
+     "home": "Eyupspor",
+     "away": "Kocaelispor",
+     "markets": [
+      "RE_C",
+      "RE_O"
+     ],
+     "name": "Ris. esatto 1-0 / 2-0 / 2-1 oppure Ris. esatto 0-1 / 0-2 / 1-2",
+     "p": 0.4902,
+     "fair": 2.04,
+     "min_odds": 2.14,
+     "real": null
+    }
+   ],
+   "prob": 0.2448,
+   "fair": 4.08,
+   "real": null,
+   "combos": 4,
+   "created": "2026-11-06",
    "status": "IN CORSO"
   }
  ]
