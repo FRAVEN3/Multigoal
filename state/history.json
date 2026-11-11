@@ -4189,7 +4189,9 @@
      "p": 0.7742,
      "fair": 1.29,
      "min_odds": 1.36,
-     "real": null
+     "real": null,
+     "esito": "L",
+     "score": "0-0 (0-0)"
     }
    ],
    "prob": 0.7742,
@@ -4197,7 +4199,8 @@
    "real": null,
    "combos": null,
    "created": "2026-11-09",
-   "status": "IN CORSO"
+   "status": "PERSA",
+   "settled": "2026-11-11"
   },
   {
    "id": "5297b92755",
@@ -4220,7 +4223,9 @@
      "p": 0.5912,
      "fair": 1.69,
      "min_odds": 1.78,
-     "real": null
+     "real": null,
+     "esito": "W",
+     "score": "0-0 (0-0)"
     }
    ],
    "prob": 0.5912,
@@ -4228,7 +4233,8 @@
    "real": null,
    "combos": null,
    "created": "2026-11-09",
-   "status": "IN CORSO"
+   "status": "VINTA",
+   "settled": "2026-11-11"
   }
  ]
 }
