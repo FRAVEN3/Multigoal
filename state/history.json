@@ -4235,6 +4235,570 @@
    "created": "2026-11-09",
    "status": "VINTA",
    "settled": "2026-11-11"
+  },
+  {
+   "id": "0f8ce146bf",
+   "kind": "multipla",
+   "method": "MULTIGOL",
+   "title": "Multigol a raddoppio #1",
+   "descr": "Le fasce Multigol più sicure fino a quota ~2",
+   "picks": [
+    {
+     "fx": "f91f3597",
+     "lg": "SP2",
+     "date": "2026-11-15",
+     "time": "17:30",
+     "home": "Eibar",
+     "away": "Cadiz",
+     "markets": [
+      "MG14"
+     ],
+     "name": "Multigol 1-4",
+     "p": 0.8059,
+     "fair": 1.24,
+     "min_odds": 1.3,
+     "real": null
+    },
+    {
+     "fx": "eda8bb86",
+     "lg": "SP2",
+     "date": "2026-11-15",
+     "time": "13:00",
+     "home": "Tenerife",
+     "away": "Ceuta",
+     "markets": [
+      "MG14"
+     ],
+     "name": "Multigol 1-4",
+     "p": 0.8054,
+     "fair": 1.24,
+     "min_odds": 1.3,
+     "real": null
+    },
+    {
+     "fx": "3f30b93b",
+     "lg": "E3",
+     "date": "2026-11-14",
+     "time": "17:30",
+     "home": "Fleetwood Town",
+     "away": "Tranmere",
+     "markets": [
+      "MG14"
+     ],
+     "name": "Multigol 1-4",
+     "p": 0.8024,
+     "fair": 1.25,
+     "min_odds": 1.31,
+     "real": null
+    },
+    {
+     "fx": "5b51f323",
+     "lg": "E3",
+     "date": "2026-11-14",
+     "time": "15:00",
+     "home": "Salford",
+     "away": "Northampton",
+     "markets": [
+      "MG14"
+     ],
+     "name": "Multigol 1-4",
+     "p": 0.8021,
+     "fair": 1.25,
+     "min_odds": 1.31,
+     "real": null
+    }
+   ],
+   "prob": 0.4177,
+   "fair": 2.39,
+   "real": null,
+   "combos": null,
+   "created": "2026-11-13",
+   "status": "IN CORSO"
+  },
+  {
+   "id": "86cd047a4b",
+   "kind": "multipla",
+   "method": "MULTIGOL",
+   "title": "Multigol a raddoppio #2",
+   "descr": "Le fasce Multigol più sicure fino a quota ~2",
+   "picks": [
+    {
+     "fx": "5c8ad66b",
+     "lg": "E3",
+     "date": "2026-11-14",
+     "time": "15:00",
+     "home": "Shrewsbury",
+     "away": "Oldham",
+     "markets": [
+      "MG14"
+     ],
+     "name": "Multigol 1-4",
+     "p": 0.7974,
+     "fair": 1.25,
+     "min_odds": 1.32,
+     "real": null
+    },
+    {
+     "fx": "f5c7f9a0",
+     "lg": "E3",
+     "date": "2026-11-14",
+     "time": "15:00",
+     "home": "Swindon",
+     "away": "Grimsby",
+     "markets": [
+      "MG14"
+     ],
+     "name": "Multigol 1-4",
+     "p": 0.7974,
+     "fair": 1.25,
+     "min_odds": 1.32,
+     "real": null
+    },
+    {
+     "fx": "2af6b018",
+     "lg": "SP2",
+     "date": "2026-11-14",
+     "time": "13:00",
+     "home": "Valladolid",
+     "away": "Castellon",
+     "markets": [
+      "MG14"
+     ],
+     "name": "Multigol 1-4",
+     "p": 0.7946,
+     "fair": 1.26,
+     "min_odds": 1.32,
+     "real": null
+    },
+    {
+     "fx": "1096ef87",
+     "lg": "SP2",
+     "date": "2026-11-14",
+     "time": "17:30",
+     "home": "Mallorca",
+     "away": "Cordoba",
+     "markets": [
+      "MG14"
+     ],
+     "name": "Multigol 1-4",
+     "p": 0.7946,
+     "fair": 1.26,
+     "min_odds": 1.32,
+     "real": null
+    }
+   ],
+   "prob": 0.4015,
+   "fair": 2.49,
+   "real": null,
+   "combos": null,
+   "created": "2026-11-13",
+   "status": "IN CORSO"
+  },
+  {
+   "id": "cbc1982c86",
+   "kind": "singola",
+   "method": "MULTIGOL",
+   "title": "Singola Multigol",
+   "descr": "",
+   "picks": [
+    {
+     "fx": "f91f3597",
+     "lg": "SP2",
+     "date": "2026-11-15",
+     "time": "17:30",
+     "home": "Eibar",
+     "away": "Cadiz",
+     "markets": [
+      "MG14"
+     ],
+     "name": "Multigol 1-4",
+     "p": 0.8059,
+     "fair": 1.24,
+     "min_odds": 1.3,
+     "real": null
+    }
+   ],
+   "prob": 0.8059,
+   "fair": 1.24,
+   "real": null,
+   "combos": null,
+   "created": "2026-11-13",
+   "status": "IN CORSO"
+  },
+  {
+   "id": "35f702ad0a",
+   "kind": "singola",
+   "method": "MULTIGOL",
+   "title": "Singola Multigol",
+   "descr": "",
+   "picks": [
+    {
+     "fx": "eda8bb86",
+     "lg": "SP2",
+     "date": "2026-11-15",
+     "time": "13:00",
+     "home": "Tenerife",
+     "away": "Ceuta",
+     "markets": [
+      "MG14"
+     ],
+     "name": "Multigol 1-4",
+     "p": 0.8054,
+     "fair": 1.24,
+     "min_odds": 1.3,
+     "real": null
+    }
+   ],
+   "prob": 0.8054,
+   "fair": 1.24,
+   "real": null,
+   "combos": null,
+   "created": "2026-11-13",
+   "status": "IN CORSO"
+  },
+  {
+   "id": "211f88b967",
+   "kind": "singola",
+   "method": "MULTIGOL",
+   "title": "Singola Multigol",
+   "descr": "",
+   "picks": [
+    {
+     "fx": "3f30b93b",
+     "lg": "E3",
+     "date": "2026-11-14",
+     "time": "17:30",
+     "home": "Fleetwood Town",
+     "away": "Tranmere",
+     "markets": [
+      "MG14"
+     ],
+     "name": "Multigol 1-4",
+     "p": 0.8024,
+     "fair": 1.25,
+     "min_odds": 1.31,
+     "real": null
+    }
+   ],
+   "prob": 0.8024,
+   "fair": 1.25,
+   "real": null,
+   "combos": null,
+   "created": "2026-11-13",
+   "status": "IN CORSO"
+  },
+  {
+   "id": "e88105473f",
+   "kind": "singola",
+   "method": "MULTIGOL",
+   "title": "Singola Multigol",
+   "descr": "",
+   "picks": [
+    {
+     "fx": "5b51f323",
+     "lg": "E3",
+     "date": "2026-11-14",
+     "time": "15:00",
+     "home": "Salford",
+     "away": "Northampton",
+     "markets": [
+      "MG14"
+     ],
+     "name": "Multigol 1-4",
+     "p": 0.8021,
+     "fair": 1.25,
+     "min_odds": 1.31,
+     "real": null
+    }
+   ],
+   "prob": 0.8021,
+   "fair": 1.25,
+   "real": null,
+   "combos": null,
+   "created": "2026-11-13",
+   "status": "IN CORSO"
+  },
+  {
+   "id": "e3fc039aa2",
+   "kind": "singola",
+   "method": "MULTIGOL",
+   "title": "Singola Multigol",
+   "descr": "",
+   "picks": [
+    {
+     "fx": "5c8ad66b",
+     "lg": "E3",
+     "date": "2026-11-14",
+     "time": "15:00",
+     "home": "Shrewsbury",
+     "away": "Oldham",
+     "markets": [
+      "MG14"
+     ],
+     "name": "Multigol 1-4",
+     "p": 0.7974,
+     "fair": 1.25,
+     "min_odds": 1.32,
+     "real": null
+    }
+   ],
+   "prob": 0.7974,
+   "fair": 1.25,
+   "real": null,
+   "combos": null,
+   "created": "2026-11-13",
+   "status": "IN CORSO"
+  },
+  {
+   "id": "276ae0a70f",
+   "kind": "multipla",
+   "method": "RADUCIOIU",
+   "title": "Raducioiu multipla Under 2.5",
+   "descr": "Partite con media Batistuta bassa, quota ~2",
+   "picks": [
+    {
+     "fx": "5b51f323",
+     "lg": "E3",
+     "date": "2026-11-14",
+     "time": "15:00",
+     "home": "Salford",
+     "away": "Northampton",
+     "markets": [
+      "U25"
+     ],
+     "name": "Under 2.5",
+     "p": 0.5871,
+     "fair": 1.7,
+     "min_odds": 1.79,
+     "real": 1.84
+    },
+    {
+     "fx": "e7efcad1",
+     "lg": "E3",
+     "date": "2026-11-14",
+     "time": "15:00",
+     "home": "Port Vale",
+     "away": "Accrington",
+     "markets": [
+      "U25"
+     ],
+     "name": "Under 2.5",
+     "p": 0.5665,
+     "fair": 1.77,
+     "min_odds": 1.85,
+     "real": 1.71
+    }
+   ],
+   "prob": 0.3326,
+   "fair": 3.01,
+   "real": 3.15,
+   "combos": null,
+   "created": "2026-11-13",
+   "status": "IN CORSO"
+  },
+  {
+   "id": "0895b377f8",
+   "kind": "singola",
+   "method": "RADUCIOIU",
+   "title": "Raducioiu: NG 1°T + NG 2°T",
+   "descr": "",
+   "picks": [
+    {
+     "fx": "5b51f323",
+     "lg": "E3",
+     "date": "2026-11-14",
+     "time": "15:00",
+     "home": "Salford",
+     "away": "Northampton",
+     "markets": [
+      "RAD"
+     ],
+     "name": "NG-NG nei due tempi (Raducioiu)",
+     "p": 0.6245,
+     "fair": 1.6,
+     "min_odds": 1.68,
+     "real": null
+    }
+   ],
+   "prob": 0.6245,
+   "fair": 1.6,
+   "real": null,
+   "combos": null,
+   "created": "2026-11-13",
+   "status": "IN CORSO"
+  },
+  {
+   "id": "486d017839",
+   "kind": "singola",
+   "method": "RADUCIOIU",
+   "title": "Raducioiu: NG 1°T + NG 2°T",
+   "descr": "",
+   "picks": [
+    {
+     "fx": "d6ffe01f",
+     "lg": "SP2",
+     "date": "2026-11-14",
+     "time": "17:30",
+     "home": "Almeria",
+     "away": "Andorra",
+     "markets": [
+      "RAD"
+     ],
+     "name": "NG-NG nei due tempi (Raducioiu)",
+     "p": 0.6143,
+     "fair": 1.63,
+     "min_odds": 1.71,
+     "real": null
+    }
+   ],
+   "prob": 0.6143,
+   "fair": 1.63,
+   "real": null,
+   "combos": null,
+   "created": "2026-11-13",
+   "status": "IN CORSO"
+  },
+  {
+   "id": "0928969e47",
+   "kind": "singola",
+   "method": "RADUCIOIU",
+   "title": "Raducioiu: NG 1°T + NG 2°T",
+   "descr": "",
+   "picks": [
+    {
+     "fx": "342fdf0d",
+     "lg": "E2",
+     "date": "2026-11-14",
+     "time": "15:00",
+     "home": "Stockport",
+     "away": "Reading",
+     "markets": [
+      "RAD"
+     ],
+     "name": "NG-NG nei due tempi (Raducioiu)",
+     "p": 0.6143,
+     "fair": 1.63,
+     "min_odds": 1.71,
+     "real": null
+    }
+   ],
+   "prob": 0.6143,
+   "fair": 1.63,
+   "real": null,
+   "combos": null,
+   "created": "2026-11-13",
+   "status": "IN CORSO"
+  },
+  {
+   "id": "5b49499d17",
+   "kind": "singola",
+   "method": "RADUCIOIU",
+   "title": "Raducioiu: NG 1°T + NG 2°T",
+   "descr": "",
+   "picks": [
+    {
+     "fx": "09765a5b",
+     "lg": "E2",
+     "date": "2026-11-14",
+     "time": "15:00",
+     "home": "Wigan",
+     "away": "Barnsley",
+     "markets": [
+      "RAD"
+     ],
+     "name": "NG-NG nei due tempi (Raducioiu)",
+     "p": 0.6132,
+     "fair": 1.63,
+     "min_odds": 1.71,
+     "real": null
+    }
+   ],
+   "prob": 0.6132,
+   "fair": 1.63,
+   "real": null,
+   "combos": null,
+   "created": "2026-11-13",
+   "status": "IN CORSO"
+  },
+  {
+   "id": "b3a46f09ac",
+   "kind": "singola",
+   "method": "RADUCIOIU",
+   "title": "Raducioiu: NG 1°T + NG 2°T",
+   "descr": "",
+   "picks": [
+    {
+     "fx": "5472dcd8",
+     "lg": "SP2",
+     "date": "2026-11-14",
+     "time": "15:15",
+     "home": "Sociedad B",
+     "away": "Sp Gijon",
+     "markets": [
+      "RAD"
+     ],
+     "name": "NG-NG nei due tempi (Raducioiu)",
+     "p": 0.6129,
+     "fair": 1.63,
+     "min_odds": 1.71,
+     "real": null
+    }
+   ],
+   "prob": 0.6129,
+   "fair": 1.63,
+   "real": null,
+   "combos": null,
+   "created": "2026-11-13",
+   "status": "IN CORSO"
+  },
+  {
+   "id": "d0048ea5f6",
+   "kind": "sistema",
+   "method": "RADUCIOIU",
+   "title": "Sistema Risultato Esatto 2 partite × 2 gruppi",
+   "descr": "4 colonne, come il foglio 'Contab Sistema RE'",
+   "picks": [
+    {
+     "fx": "5b51f323",
+     "lg": "E3",
+     "date": "2026-11-14",
+     "time": "15:00",
+     "home": "Salford",
+     "away": "Northampton",
+     "markets": [
+      "RE_C",
+      "RE_X"
+     ],
+     "name": "Ris. esatto 1-0 / 2-0 / 2-1 oppure Ris. esatto 0-0 / 1-1 / 2-2",
+     "p": 0.5318,
+     "fair": 1.88,
+     "min_odds": 1.97,
+     "real": null
+    },
+    {
+     "fx": "d6ffe01f",
+     "lg": "SP2",
+     "date": "2026-11-14",
+     "time": "17:30",
+     "home": "Almeria",
+     "away": "Andorra",
+     "markets": [
+      "RE_C",
+      "RE_X"
+     ],
+     "name": "Ris. esatto 1-0 / 2-0 / 2-1 oppure Ris. esatto 0-0 / 1-1 / 2-2",
+     "p": 0.5053,
+     "fair": 1.98,
+     "min_odds": 2.08,
+     "real": null
+    }
+   ],
+   "prob": 0.2687,
+   "fair": 3.72,
+   "real": null,
+   "combos": 4,
+   "created": "2026-11-13",
+   "status": "IN CORSO"
   }
  ]
 }
