@@ -4257,7 +4257,9 @@
      "p": 0.8059,
      "fair": 1.24,
      "min_odds": 1.3,
-     "real": null
+     "real": null,
+     "esito": "W",
+     "score": "1-1 (0-0)"
     },
     {
      "fx": "eda8bb86",
@@ -4273,7 +4275,9 @@
      "p": 0.8054,
      "fair": 1.24,
      "min_odds": 1.3,
-     "real": null
+     "real": null,
+     "esito": "W",
+     "score": "2-0 (1-0)"
     },
     {
      "fx": "3f30b93b",
@@ -4289,7 +4293,9 @@
      "p": 0.8024,
      "fair": 1.25,
      "min_odds": 1.31,
-     "real": null
+     "real": null,
+     "esito": "W",
+     "score": "1-0 (0-0)"
     },
     {
      "fx": "5b51f323",
@@ -4305,7 +4311,9 @@
      "p": 0.8021,
      "fair": 1.25,
      "min_odds": 1.31,
-     "real": null
+     "real": null,
+     "esito": "W",
+     "score": "1-1 (0-1)"
     }
    ],
    "prob": 0.4177,
@@ -4313,7 +4321,8 @@
    "real": null,
    "combos": null,
    "created": "2026-11-13",
-   "status": "IN CORSO"
+   "status": "VINTA",
+   "settled": "2026-11-16"
   },
   {
    "id": "86cd047a4b",
@@ -4336,7 +4345,9 @@
      "p": 0.7974,
      "fair": 1.25,
      "min_odds": 1.32,
-     "real": null
+     "real": null,
+     "esito": "W",
+     "score": "2-1 (0-0)"
     },
     {
      "fx": "f5c7f9a0",
@@ -4352,7 +4363,9 @@
      "p": 0.7974,
      "fair": 1.25,
      "min_odds": 1.32,
-     "real": null
+     "real": null,
+     "esito": "L",
+     "score": "1-4 (0-2)"
     },
     {
      "fx": "2af6b018",
@@ -4368,7 +4381,9 @@
      "p": 0.7946,
      "fair": 1.26,
      "min_odds": 1.32,
-     "real": null
+     "real": null,
+     "esito": "W",
+     "score": "0-1 (0-0)"
     },
     {
      "fx": "1096ef87",
@@ -4384,7 +4399,9 @@
      "p": 0.7946,
      "fair": 1.26,
      "min_odds": 1.32,
-     "real": null
+     "real": null,
+     "esito": "L",
+     "score": "3-3 (0-1)"
     }
    ],
    "prob": 0.4015,
@@ -4392,7 +4409,8 @@
    "real": null,
    "combos": null,
    "created": "2026-11-13",
-   "status": "IN CORSO"
+   "status": "PERSA",
+   "settled": "2026-11-16"
   },
   {
    "id": "cbc1982c86",
@@ -4415,7 +4433,9 @@
      "p": 0.8059,
      "fair": 1.24,
      "min_odds": 1.3,
-     "real": null
+     "real": null,
+     "esito": "W",
+     "score": "1-1 (0-0)"
     }
    ],
    "prob": 0.8059,
@@ -4423,7 +4443,8 @@
    "real": null,
    "combos": null,
    "created": "2026-11-13",
-   "status": "IN CORSO"
+   "status": "VINTA",
+   "settled": "2026-11-16"
   },
   {
    "id": "35f702ad0a",
@@ -4446,7 +4467,9 @@
      "p": 0.8054,
      "fair": 1.24,
      "min_odds": 1.3,
-     "real": null
+     "real": null,
+     "esito": "W",
+     "score": "2-0 (1-0)"
     }
    ],
    "prob": 0.8054,
@@ -4454,7 +4477,8 @@
    "real": null,
    "combos": null,
    "created": "2026-11-13",
-   "status": "IN CORSO"
+   "status": "VINTA",
+   "settled": "2026-11-16"
   },
   {
    "id": "211f88b967",
@@ -4477,7 +4501,9 @@
      "p": 0.8024,
      "fair": 1.25,
      "min_odds": 1.31,
-     "real": null
+     "real": null,
+     "esito": "W",
+     "score": "1-0 (0-0)"
     }
    ],
    "prob": 0.8024,
@@ -4485,7 +4511,8 @@
    "real": null,
    "combos": null,
    "created": "2026-11-13",
-   "status": "IN CORSO"
+   "status": "VINTA",
+   "settled": "2026-11-16"
   },
   {
    "id": "e88105473f",
@@ -4508,7 +4535,9 @@
      "p": 0.8021,
      "fair": 1.25,
      "min_odds": 1.31,
-     "real": null
+     "real": null,
+     "esito": "W",
+     "score": "1-1 (0-1)"
     }
    ],
    "prob": 0.8021,
@@ -4516,7 +4545,8 @@
    "real": null,
    "combos": null,
    "created": "2026-11-13",
-   "status": "IN CORSO"
+   "status": "VINTA",
+   "settled": "2026-11-16"
   },
   {
    "id": "e3fc039aa2",
@@ -4539,7 +4569,9 @@
      "p": 0.7974,
      "fair": 1.25,
      "min_odds": 1.32,
-     "real": null
+     "real": null,
+     "esito": "W",
+     "score": "2-1 (0-0)"
     }
    ],
    "prob": 0.7974,
@@ -4547,7 +4579,8 @@
    "real": null,
    "combos": null,
    "created": "2026-11-13",
-   "status": "IN CORSO"
+   "status": "VINTA",
+   "settled": "2026-11-16"
   },
   {
    "id": "276ae0a70f",
@@ -4570,7 +4603,9 @@
      "p": 0.5871,
      "fair": 1.7,
      "min_odds": 1.79,
-     "real": 1.84
+     "real": 1.84,
+     "esito": "W",
+     "score": "1-1 (0-1)"
     },
     {
      "fx": "e7efcad1",
@@ -4586,7 +4621,9 @@
      "p": 0.5665,
      "fair": 1.77,
      "min_odds": 1.85,
-     "real": 1.71
+     "real": 1.71,
+     "esito": "L",
+     "score": "4-2 (2-0)"
     }
    ],
    "prob": 0.3326,
@@ -4594,7 +4631,10 @@
    "real": 3.15,
    "combos": null,
    "created": "2026-11-13",
-   "status": "IN CORSO"
+   "status": "PERSA",
+   "settled": "2026-11-16",
+   "stake": 10,
+   "profit": -10
   },
   {
    "id": "0895b377f8",
@@ -4617,7 +4657,9 @@
      "p": 0.6245,
      "fair": 1.6,
      "min_odds": 1.68,
-     "real": null
+     "real": null,
+     "esito": "W",
+     "score": "1-1 (0-1)"
     }
    ],
    "prob": 0.6245,
@@ -4625,7 +4667,8 @@
    "real": null,
    "combos": null,
    "created": "2026-11-13",
-   "status": "IN CORSO"
+   "status": "VINTA",
+   "settled": "2026-11-16"
   },
   {
    "id": "486d017839",
@@ -4648,7 +4691,9 @@
      "p": 0.6143,
      "fair": 1.63,
      "min_odds": 1.71,
-     "real": null
+     "real": null,
+     "esito": "W",
+     "score": "2-1 (2-0)"
     }
    ],
    "prob": 0.6143,
@@ -4656,7 +4701,8 @@
    "real": null,
    "combos": null,
    "created": "2026-11-13",
-   "status": "IN CORSO"
+   "status": "VINTA",
+   "settled": "2026-11-16"
   },
   {
    "id": "0928969e47",
@@ -4679,7 +4725,9 @@
      "p": 0.6143,
      "fair": 1.63,
      "min_odds": 1.71,
-     "real": null
+     "real": null,
+     "esito": "L",
+     "score": "3-1 (2-1)"
     }
    ],
    "prob": 0.6143,
@@ -4687,7 +4735,8 @@
    "real": null,
    "combos": null,
    "created": "2026-11-13",
-   "status": "IN CORSO"
+   "status": "PERSA",
+   "settled": "2026-11-16"
   },
   {
    "id": "5b49499d17",
@@ -4710,7 +4759,9 @@
      "p": 0.6132,
      "fair": 1.63,
      "min_odds": 1.71,
-     "real": null
+     "real": null,
+     "esito": "L",
+     "score": "2-1 (1-0)"
     }
    ],
    "prob": 0.6132,
@@ -4718,7 +4769,8 @@
    "real": null,
    "combos": null,
    "created": "2026-11-13",
-   "status": "IN CORSO"
+   "status": "PERSA",
+   "settled": "2026-11-16"
   },
   {
    "id": "b3a46f09ac",
@@ -4741,7 +4793,9 @@
      "p": 0.6129,
      "fair": 1.63,
      "min_odds": 1.71,
-     "real": null
+     "real": null,
+     "esito": "L",
+     "score": "2-2 (0-1)"
     }
    ],
    "prob": 0.6129,
@@ -4749,7 +4803,8 @@
    "real": null,
    "combos": null,
    "created": "2026-11-13",
-   "status": "IN CORSO"
+   "status": "PERSA",
+   "settled": "2026-11-16"
   },
   {
    "id": "d0048ea5f6",
@@ -4773,7 +4828,9 @@
      "p": 0.5318,
      "fair": 1.88,
      "min_odds": 1.97,
-     "real": null
+     "real": null,
+     "esito": "W",
+     "score": "1-1 (0-1)"
     },
     {
      "fx": "d6ffe01f",
@@ -4790,7 +4847,9 @@
      "p": 0.5053,
      "fair": 1.98,
      "min_odds": 2.08,
-     "real": null
+     "real": null,
+     "esito": "W",
+     "score": "2-1 (2-0)"
     }
    ],
    "prob": 0.2687,
@@ -4798,6 +4857,69 @@
    "real": null,
    "combos": 4,
    "created": "2026-11-13",
+   "status": "VINTA",
+   "settled": "2026-11-16"
+  },
+  {
+   "id": "4efb136151",
+   "kind": "singola",
+   "method": "MULTIGOL",
+   "title": "Singola Multigol",
+   "descr": "",
+   "picks": [
+    {
+     "fx": "b28622e0",
+     "lg": "SP2",
+     "date": "2026-11-16",
+     "time": "19:30",
+     "home": "Albacete",
+     "away": "Celta B",
+     "markets": [
+      "MG14"
+     ],
+     "name": "Multigol 1-4",
+     "p": 0.7868,
+     "fair": 1.27,
+     "min_odds": 1.33,
+     "real": null
+    }
+   ],
+   "prob": 0.7868,
+   "fair": 1.27,
+   "real": null,
+   "combos": null,
+   "created": "2026-11-16",
+   "status": "IN CORSO"
+  },
+  {
+   "id": "c0dab81d36",
+   "kind": "singola",
+   "method": "RADUCIOIU",
+   "title": "Raducioiu: NG 1°T + NG 2°T",
+   "descr": "",
+   "picks": [
+    {
+     "fx": "b28622e0",
+     "lg": "SP2",
+     "date": "2026-11-16",
+     "time": "19:30",
+     "home": "Albacete",
+     "away": "Celta B",
+     "markets": [
+      "RAD"
+     ],
+     "name": "NG-NG nei due tempi (Raducioiu)",
+     "p": 0.5893,
+     "fair": 1.7,
+     "min_odds": 1.78,
+     "real": null
+    }
+   ],
+   "prob": 0.5893,
+   "fair": 1.7,
+   "real": null,
+   "combos": null,
+   "created": "2026-11-16",
    "status": "IN CORSO"
   }
  ]
