@@ -1,10 +1,8 @@
-name: Aggiornamento settimanale
+name: Aggiornamento giornaliero
 
 on:
   schedule:
-    - cron: "0 6 * * 1"    # lunedì: risultati del weekend e controllo bollette
-    - cron: "0 6 * * 3"    # mercoledì: turno infrasettimanale
-    - cron: "0 15 * * 5"   # venerdì: calendario e bollette del weekend
+    - cron: "0 6 * * *"    # ogni giorno alle 6:00 UTC (7:00 in Italia d'inverno, 8:00 d'estate)
   workflow_dispatch: {}     # pulsante "Run workflow" per aggiornare a mano
 
 permissions:

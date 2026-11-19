@@ -19,7 +19,7 @@ Doppio clic su **Aggiorna.bat**: scarica i risultati, ricalcola tutto e apre la 
 - **Verifica**: prova il metodo sulle due stagioni passate.
 - **Calcolatori**: su vincita, su utile, Contabilizzatore, sistemi, raddoppio.
 
-Dati: football-data.co.uk (si aggiorna 2 volte a settimana; il calendario del weekend esce di solito il venerdì).
+Dati: football-data.co.uk (si aggiorna 2 volte a settimana; il calendario del weekend esce di solito il venerdì). L'app online si aggiorna da sola ogni giorno alle 7:00 (ora italiana d'inverno).
 
 ## Impostazioni (`config.json`)
 - `metodo.raducioiu_max` / `batistuta_min`: soglie del metodo.
