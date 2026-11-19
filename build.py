@@ -104,24 +104,28 @@ def main():
     fixtures.sort(key=lambda f: (f["date"], f["time"], f["lg"]))
     print(f"  {len(fixtures)} partite nei prossimi 7 giorni")
 
-    # due serie di bollette: con tutti i campionati (come sempre) e solo con i campionati affidabili.
-    # "set" dice in quale serie compare ogni bolletta (se è uguale nelle due, in tutte e due).
+    # tre serie di bollette: con tutti i campionati (come sempre), solo con i campionati affidabili
+    # nelle stagioni passate e solo con quelli affidabili nella stagione in corso.
+    # "set" dice in quali serie compare ogni bolletta (se è uguale in più serie, compare in tutte).
+    rel_cur = reliability.run_current(played, current, cfg, curves)
+    excl_cur = reliability.excluded(rel_cur) if cfg["affidabilita"]["attiva"] else set()
     slips, tips = build_slips(fixtures, cfg)
     for s in slips:
         s["set"] = ["tutti"]
-    if excl:
-        by_id = {s["id"]: s for s in slips}
-        for s in build_slips(fixtures, cfg, excl)[0]:
+    by_id = {s["id"]: s for s in slips}
+    for name, ex in (("affidabili", excl), ("stagione", excl_cur)):
+        for s in (build_slips(fixtures, cfg, ex)[0] if ex else list(by_id.values())):
             if s["id"] in by_id:
-                by_id[s["id"]]["set"].append("affidabili")
+                if name not in by_id[s["id"]]["set"]:
+                    by_id[s["id"]]["set"].append(name)
             else:
-                s["set"] = ["affidabili"]
+                s["set"] = [name]
+                by_id[s["id"]] = s
                 slips.append(s)
-        print(f"  campionati poco affidabili per tipo di giocata: {', '.join(f'{lg} {t}' for lg, t in sorted(excl))}")
-    else:
-        for s in slips:
-            s["set"].append("affidabili")
-    print(f"  {sum('tutti' in s['set'] for s in slips)} bollette create (+{sum(s['set'] == ['affidabili'] for s in slips)} solo campionati affidabili)")
+    for name, ex in (("stagioni passate", excl), ("stagione in corso", excl_cur)):
+        if ex:
+            print(f"  poco affidabili ({name}): {', '.join(f'{lg} {t}' for lg, t in sorted(ex))}")
+    print(f"  {sum('tutti' in s['set'] for s in slips)} bollette create (+{sum('tutti' not in s['set'] for s in slips)} solo nelle serie dei campionati affidabili)")
 
     # --- storico ---------------------------------------------------------------
     hist = tracker.load()
@@ -151,6 +155,7 @@ def main():
         "storico_riepilogo": tracker.summary(hist),
         "statistiche": stats,
         "backtest": bt,
+        "affidabilita_stagione": rel_cur,
         "risultati": [
             {k: m[k] for k in ("lg", "date", "home", "away", "fh", "fa", "hh", "ha")}
             for m in played if m["date"] >= (today - timedelta(days=45)).isoformat()

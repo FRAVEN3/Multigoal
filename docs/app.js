@@ -123,44 +123,61 @@
   }
 
   // ---------- campionati affidabili ----------
+  // due tabelle: stagioni passate (quella provata nei test) e stagione in corso (si rifà a ogni aggiornamento)
   const REL = (D.backtest && D.backtest.affidabilita) || { tabella: [], nomi: {} };
-  const relOf = (lg, tipo) => REL.tabella.find((r) => r.lg === lg && r.tipo === tipo);
+  const RELC = D.affidabilita_stagione || { tabella: [], nomi: REL.nomi };
   const relOn = D.config.affidabilita && D.config.affidabilita.attiva;
-  const esclusi = relOn ? REL.tabella.filter((r) => r.stato === "escluso") : [];
-  // serie di bollette scelta: "tutti" i campionati oppure solo quelli "affidabili"
+  const findRel = (T, lg, tipo) => T.tabella.find((r) => r.lg === lg && r.tipo === tipo);
+  const relOf = (lg, tipo) => findRel(REL, lg, tipo);
+  const exOf = (T) => (relOn ? T.tabella.filter((r) => r.stato === "escluso") : []);
+  const esclusi = exOf(REL), esclusiC = exOf(RELC);
+  const activeRel = () => (state.camp === "stagione" ? RELC : REL);
+  const DOVE = { affidabili: "nelle ultime stagioni", stagione: "in questa stagione" };
+  // serie di bollette scelta: tutti i campionati, affidabili nelle stagioni passate, affidabili quest'anno
   const inSet = (s) => (s.set || ["tutti"]).includes(state.camp);
-  const campChips = () => (esclusi.length ? `<div class="chips">${[["tutti", "Tutti i campionati"], ["affidabili", "✔ Solo campionati affidabili"]].map(([v, l]) =>
+  const campChips = () => (esclusi.length || esclusiC.length ? `<div class="chips">${[["tutti", "Tutti i campionati"], ["affidabili", "✔ Affidabili (stagioni passate)"], ["stagione", "📅 Affidabili quest'anno"]].map(([v, l]) =>
     `<button class="chip ${state.camp === v ? "on" : ""}" data-set="camp=${v}">${l}</button>`).join("")}</div>` : "");
-  const relNote = () => (!esclusi.length ? "" : state.camp === "affidabili"
-    ? `<div class="small muted" style="margin:-4px 4px 10px">Bollette senza le giocate nei campionati che storicamente escono meno del previsto:
-      ${Object.entries(esclusi.reduce((o, r) => ((o[REL.nomi[r.tipo] || r.tipo] = o[REL.nomi[r.tipo] || r.tipo] || []).push(lgName(r.lg)), o), {})).map(([t, l]) => `<b>${esc(t)}</b> in ${esc(l.join(", "))}`).join(" · ")}. Dettagli nella scheda Verifica.</div>`
-    : `<div class="small muted" style="margin:-4px 4px 10px">Accanto a ogni partita: <span class="rel-s rel-ok">✔</span> campionato affidabile per quella giocata, <span class="rel-s rel-attenzione">⚠</span> un po' sotto il previsto, <span class="rel-s rel-escluso">✘</span> poco affidabile. Dettagli nella scheda Verifica.</div>`);
-  // segno di affidabilità del campionato per la giocata
+  const listEx = (ex) => Object.entries(ex.reduce((o, r) => ((o[REL.nomi[r.tipo] || r.tipo] = o[REL.nomi[r.tipo] || r.tipo] || []).push(lgName(r.lg)), o), {})).map(([t, l]) => `<b>${esc(t)}</b> in ${esc(l.join(", "))}`).join(" · ");
+  const relNote = () => {
+    if (!esclusi.length && !esclusiC.length) return "";
+    const box = (h) => `<div class="small muted" style="margin:-4px 4px 10px">${h}</div>`;
+    if (state.camp === "tutti") return box(`Accanto a ogni partita (secondo le stagioni passate): <span class="rel-s rel-ok">✔</span> campionato affidabile per quella giocata, <span class="rel-s rel-attenzione">⚠</span> un po' sotto il previsto, <span class="rel-s rel-escluso">✘</span> poco affidabile. Dettagli nella scheda Verifica.`);
+    const ex = state.camp === "stagione" ? esclusiC : esclusi;
+    return box(`${ex.length ? `Bollette senza le giocate nei campionati che ${DOVE[state.camp]} escono meno del previsto: ${listEx(ex)}.` : `Nessun campionato escluso ${DOVE[state.camp]}: le bollette sono quelle di sempre.`}
+      ${state.camp === "stagione" ? `<br><b>Attenzione:</b> nei test sulle stagioni passate, scegliere i campionati con la sola stagione in corso non ha migliorato le bollette (con poche giornate pesa molto il caso). La scelta più provata è "Affidabili (stagioni passate)".` : ""} Dettagli nella scheda Verifica.`);
+  };
+  // segno di affidabilità del campionato per la giocata (secondo la tabella della scelta attiva)
   const tipoOf = (mks) => { const m = mks[0]; return /^MG/.test(m) ? "MULTIGOL" : m === "RAD" ? "NGNG" : m === "U25" ? "UNDER" : ["BAT", "GGGG", "GGNG", "NGGG"].includes(m) ? "BATISTUTA" : null; };
   const relSign = (pk) => {
-    const t = tipoOf(pk.markets), r = t && relOf(pk.lg, t);
+    const T = activeRel(), t = tipoOf(pk.markets), r = t && findRel(T, pk.lg, t);
     if (!r || r.stato === "pochi") return "";
     const L = { ok: ["✔", "campionato affidabile"], attenzione: ["⚠", "un po' sotto il previsto"], escluso: ["✘", "campionato poco affidabile"] }[r.stato];
-    return ` <span class="rel-s rel-${r.stato}" title="${esc(REL.nomi[t])}: ${L[1]} (${r.uscita - r.attesa >= 0 ? "+" : ""}${((r.uscita - r.attesa) * 100).toFixed(1)} punti nelle stagioni passate)">${L[0]}</span>`;
+    return ` <span class="rel-s rel-${r.stato}" title="${esc(REL.nomi[t])}: ${L[1]} (${r.uscita - r.attesa >= 0 ? "+" : ""}${((r.uscita - r.attesa) * 100).toFixed(1)} punti ${T === RELC ? "in questa stagione" : "nelle stagioni passate"})">${L[0]}</span>`;
   };
   // avviso sulla partita (scheda Partite): per quali giocate il campionato è escluso o da tenere d'occhio
   const relTag = (f) => {
     const rs = REL.tabella.filter((r) => r.lg === f.lg && (r.stato === "escluso" || r.stato === "attenzione"));
     return rs.length ? ` · <span class="${rs.some((r) => r.stato === "escluso") ? "esito-L" : "muted"}">⚠ ${rs.map((r) => `${esc(REL.nomi[r.tipo] || r.tipo)} ${r.stato === "escluso" ? "escluso" : "attenzione"}`).join(", ")}</span>` : "";
   };
-  function relTable() {
-    if (!REL.tabella.length) return "";
-    const tipi = Object.keys(REL.nomi), lgs = [...new Set(REL.tabella.map((r) => r.lg))];
+  function relGrid(T) {
+    const tipi = Object.keys(REL.nomi), lgs = [...new Set(T.tabella.map((r) => r.lg))];
     const ICO = { ok: "✔", attenzione: "⚠", escluso: "✘", pochi: "·" };
     const cell = (r) => (r ? `<td class="rel-${r.stato}" title="${r.n} partite · uscita ${pct(r.uscita)} · attesa ${pct(r.attesa)}">${ICO[r.stato]} ${r.uscita != null && r.stato !== "pochi" ? `${r.uscita - r.attesa >= 0 ? "+" : ""}${((r.uscita - r.attesa) * 100).toFixed(1)}` : ""}</td>` : "<td>–</td>");
-    const sc = (lg) => Math.min(...tipi.map((t) => (relOf(lg, t) || {}).z ?? 9));
+    const sc = (lg) => Math.min(...tipi.map((t) => (findRel(T, lg, t) || {}).z ?? 9));
+    return `<div class="tw"><table><tr><th>Campionato</th>${tipi.map((t) => `<th>${esc(REL.nomi[t])}</th>`).join("")}</tr>
+      ${lgs.sort((a, b) => sc(a) - sc(b)).map((lg) => `<tr><td>${esc(lgName(lg))}</td>${tipi.map((t) => cell(findRel(T, lg, t))).join("")}</tr>`).join("")}</table></div>`;
+  }
+  function relTable() {
+    if (!REL.tabella.length) return "";
     const P = REL.prova;
     return `<h2>Campionati affidabili</h2>
       <div class="note">Per ogni campionato e tipo di giocata: quanti punti percentuali la giocata è uscita sopra (+) o sotto (−) quanto stimato nelle ultime ${D.backtest.stagioni.length} stagioni.
-      <b>✘ escluso</b> = esce chiaramente meno del previsto: ${relOn ? "<b>tolto dalle bollette</b>" : "non tolto (opzione spenta)"}. <b>⚠ attenzione</b> = un po' sotto, resta nelle bollette. <b>·</b> = troppe poche partite per giudicare (Batistuta sempre).
+      <b>✘ escluso</b> = esce chiaramente meno del previsto: ${relOn ? `tolto dalle bollette con la scelta "Affidabili (stagioni passate)"` : "non tolto (opzione spenta)"}. <b>⚠ attenzione</b> = un po' sotto, resta nelle bollette. <b>·</b> = troppe poche partite per giudicare (Batistuta sempre).
       ${P ? `<br>Prova: decidendo con le stagioni prima del ${esc("20" + P.stagione.slice(0, 2) + "/" + P.stagione.slice(2))}, in quella stagione gli esclusi sono usciti il ${pct(P.esclusi.uscita, 1)} contro il ${pct(P.esclusi.attesa, 1)} stimato, i tenuti il ${pct(P.tenuti.uscita, 1)} contro il ${pct(P.tenuti.attesa, 1)}.` : ""}</div>
-      <div class="tw"><table><tr><th>Campionato</th>${tipi.map((t) => `<th>${esc(REL.nomi[t])}</th>`).join("")}</tr>
-      ${lgs.sort((a, b) => sc(a) - sc(b)).map((lg) => `<tr><td>${esc(lgName(lg))}</td>${tipi.map((t) => cell(relOf(lg, t))).join("")}</tr>`).join("")}</table></div>`;
+      ${relGrid(REL)}
+      ${RELC.tabella.length ? `<h2>Campionati affidabili quest'anno</h2>
+      <div class="note">Stessa tabella con le sole partite giocate in questa stagione: è quella usata dalla scelta "📅 Affidabili quest'anno". Con poche giornate i numeri cambiano molto: nei test sulle stagioni passate non ha migliorato le bollette.</div>
+      ${relGrid(RELC)}` : ""}`;
   }
 
   // ---------- bollette ----------

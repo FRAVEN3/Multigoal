@@ -114,6 +114,18 @@ def run(matches, seasons, cfg, curves):
     return {"tabella": table, "prova": prova, "nomi": NOMI}
 
 
+def run_current(matches, season, cfg, curves):
+    """Come run(), ma solo con le partite già giocate della stagione in corso (si rifà a ogni aggiornamento)."""
+    rc = cfg["affidabilita"]
+    res = _count(matches, [season], cfg, curves)[season]
+    table = []
+    for (lg, tipo), (n, h, e) in sorted(res.items()):
+        table.append({"lg": lg, "tipo": tipo, "n": n, "uscita": round(h / n, 4) if n else None,
+                      "attesa": round(e / n, 4) if n else None, "z": round(_z(n, h, e), 2),
+                      "stato": _status(n, h, e, rc, tipo)})
+    return {"tabella": table, "nomi": NOMI, "stagione": season}
+
+
 def excluded(rel):
     """{(campionato, tipo)} da togliere dalle bollette."""
     return {(r["lg"], r["tipo"]) for r in (rel or {}).get("tabella", []) if r["stato"] == "escluso"}
