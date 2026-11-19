@@ -24,7 +24,7 @@
 
   // ---------- dati: bollette dell'app (quest'anno) e rifatte sulle stagioni passate ----------
   const ES = { VINTA: "V", PERSA: "P", ANNULLATA: "A", "IN CORSO": "C" };
-  const curList = () => D.storico.map((s) => ({
+  const curList = () => D.storico.filter(MG.inSet).map((s) => ({
     id: s.id, w: s.created, end: s.settled || s.created, m: s.method, k: s.kind, t: normTitle(s.title), p: s.prob, q: s.real,
     s: ES[s.status] || "C", pk: s.picks.map((pk) => [pk.lg, pk.markets.join("+"), pk.p, pk.esito === "ANN" ? "A" : pk.esito || null, pk.date]),
   }));
@@ -225,7 +225,7 @@
     return `<div class="chips">${chip("sez", "app", "Bollette dell'app")}${chip("sez", "mie", "Le mie giocate")}</div>
       <div class="chips">${chip("per", "tutto", "Tutto")}${chip("per", "4s", "Ultime 4 settimane")}
         <span style="width:8px"></span>${chip("met", "TUTTI", "Tutti")}${chip("met", "MULTIGOL", "Multigol")}${chip("met", "BATISTUTA", "Batistuta")}${chip("met", "RADUCIOIU", "Raducioiu")}</div>
-      ${ui.sez === "app" ? appHtml() : myHtml()}`;
+      ${ui.sez === "app" ? (MG.campChips ? MG.campChips() : "") + appHtml() : myHtml()}`;
   }
 
   // ---------- "L'ho giocata" sulle bollette ----------

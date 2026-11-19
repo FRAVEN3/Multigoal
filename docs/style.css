@@ -148,3 +148,6 @@ button.btn.giocata { background: var(--win); }
 /* campionati affidabili */
 td.rel-ok { color: var(--win); } td.rel-escluso { color: #fff; background: var(--lose); font-weight: 700; }
 td.rel-attenzione { color: var(--wait); font-weight: 700; } td.rel-pochi { color: var(--muted); }
+
+.rel-s { display: inline-block; font-size: 11px; font-weight: 800; width: 18px; height: 18px; line-height: 18px; text-align: center; border-radius: 50%; vertical-align: middle; margin-left: 3px; color: #fff; }
+.rel-s.rel-ok { background: var(--win); color: #fff; } .rel-s.rel-attenzione { background: var(--wait); color: #fff; } .rel-s.rel-escluso { background: var(--lose); color: #fff; }

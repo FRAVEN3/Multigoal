@@ -22,12 +22,15 @@ def save(hist):
 
 
 def add_new(hist, slips, today: date):
-    known = {s["id"] for s in hist["slips"]}
+    known = {s["id"]: s for s in hist["slips"]}
     added = 0
     for s in slips:
         if s["id"] not in known:
             hist["slips"].append({**s, "created": today.isoformat(), "status": "IN CORSO"})
             added += 1
+        else:   # la stessa bolletta può comparire poi anche nell'altra serie (tutti / affidabili)
+            old = known[s["id"]]
+            old["set"] = sorted(set(old.get("set", ["tutti"])) | set(s.get("set", ["tutti"])))
     return added
 
 
@@ -85,7 +88,7 @@ def summary(hist):
     """Percentuale di bollette vinte per metodo, rispetto alla probabilità stimata."""
     out = {}
     for s in hist["slips"]:
-        if s["status"] not in ("VINTA", "PERSA"):
+        if s["status"] not in ("VINTA", "PERSA") or "tutti" not in s.get("set", ["tutti"]):
             continue
         k = f'{s["method"]} – {s["kind"]}'
         r = out.setdefault(k, {"n": 0, "vinte": 0, "p_attesa": 0.0, "n_quote": 0, "utile": 0.0, "giocato": 0.0})

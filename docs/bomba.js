@@ -29,7 +29,7 @@
       const p = mks[0] === "BAT" ? fx.est.probs.BAT : Math.min(0.99, list.reduce((s, m) => s + fx.est.probs[m], 0));
       (by[fxId] = by[fxId] || {})[list.join("+")] = { fx, mks: list, p, method };
     };
-    D.bollette.forEach((s) => s.picks.forEach((pk) => add(pk.fx, pk.markets, s.method)));
+    D.bollette.filter(MG.inSet).forEach((s) => s.picks.forEach((pk) => add(pk.fx, pk.markets, s.method)));   // serie scelta in Bollette
     D.consigli.forEach((t) => add(t.fx, t.markets, "MULTIGOL"));
     return Object.values(by).map((m) => Object.values(m));
   }

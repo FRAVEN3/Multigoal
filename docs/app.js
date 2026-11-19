@@ -5,7 +5,8 @@
   const main = document.getElementById("main");
   const LG = D ? D.config.leagues : {};
   const MK = D ? D.mercati : {};
-  const state = { tab: "bollette", metodo: "TUTTE", lg: null, statLg: null, team: null, sort: null, calMk: "MG13" };
+  const state = { tab: "bollette", metodo: "TUTTE", lg: null, statLg: null, team: null, sort: null, calMk: "MG13",
+    camp: (() => { try { return localStorage.getItem("mg_camp") || "tutti"; } catch (e) { return "tutti"; } })() };
 
   // ---------- utilità ----------
   const esc = (s) => String(s ?? "").replace(/[&<>"']/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]));
@@ -126,9 +127,22 @@
   const relOf = (lg, tipo) => REL.tabella.find((r) => r.lg === lg && r.tipo === tipo);
   const relOn = D.config.affidabilita && D.config.affidabilita.attiva;
   const esclusi = relOn ? REL.tabella.filter((r) => r.stato === "escluso") : [];
-  const relNote = () => (esclusi.length ? `<div class="small muted" style="margin:-4px 4px 10px">⚠ Tolti dalle bollette perché storicamente escono meno del previsto:
-    ${Object.entries(esclusi.reduce((o, r) => ((o[REL.nomi[r.tipo] || r.tipo] = o[REL.nomi[r.tipo] || r.tipo] || []).push(lgName(r.lg)), o), {})).map(([t, l]) => `<b>${esc(t)}</b> in ${esc(l.join(", "))}`).join(" · ")}.
-    Dettagli nella scheda Verifica.</div>` : "");
+  // serie di bollette scelta: "tutti" i campionati oppure solo quelli "affidabili"
+  const inSet = (s) => (s.set || ["tutti"]).includes(state.camp);
+  const campChips = () => (esclusi.length ? `<div class="chips">${[["tutti", "Tutti i campionati"], ["affidabili", "✔ Solo campionati affidabili"]].map(([v, l]) =>
+    `<button class="chip ${state.camp === v ? "on" : ""}" data-set="camp=${v}">${l}</button>`).join("")}</div>` : "");
+  const relNote = () => (!esclusi.length ? "" : state.camp === "affidabili"
+    ? `<div class="small muted" style="margin:-4px 4px 10px">Bollette senza le giocate nei campionati che storicamente escono meno del previsto:
+      ${Object.entries(esclusi.reduce((o, r) => ((o[REL.nomi[r.tipo] || r.tipo] = o[REL.nomi[r.tipo] || r.tipo] || []).push(lgName(r.lg)), o), {})).map(([t, l]) => `<b>${esc(t)}</b> in ${esc(l.join(", "))}`).join(" · ")}. Dettagli nella scheda Verifica.</div>`
+    : `<div class="small muted" style="margin:-4px 4px 10px">Accanto a ogni partita: <span class="rel-s rel-ok">✔</span> campionato affidabile per quella giocata, <span class="rel-s rel-attenzione">⚠</span> un po' sotto il previsto, <span class="rel-s rel-escluso">✘</span> poco affidabile. Dettagli nella scheda Verifica.</div>`);
+  // segno di affidabilità del campionato per la giocata
+  const tipoOf = (mks) => { const m = mks[0]; return /^MG/.test(m) ? "MULTIGOL" : m === "RAD" ? "NGNG" : m === "U25" ? "UNDER" : ["BAT", "GGGG", "GGNG", "NGGG"].includes(m) ? "BATISTUTA" : null; };
+  const relSign = (pk) => {
+    const t = tipoOf(pk.markets), r = t && relOf(pk.lg, t);
+    if (!r || r.stato === "pochi") return "";
+    const L = { ok: ["✔", "campionato affidabile"], attenzione: ["⚠", "un po' sotto il previsto"], escluso: ["✘", "campionato poco affidabile"] }[r.stato];
+    return ` <span class="rel-s rel-${r.stato}" title="${esc(REL.nomi[t])}: ${L[1]} (${r.uscita - r.attesa >= 0 ? "+" : ""}${((r.uscita - r.attesa) * 100).toFixed(1)} punti nelle stagioni passate)">${L[0]}</span>`;
+  };
   // avviso sulla partita (scheda Partite): per quali giocate il campionato è escluso o da tenere d'occhio
   const relTag = (f) => {
     const rs = REL.tabella.filter((r) => r.lg === f.lg && (r.stato === "escluso" || r.stato === "attenzione"));
@@ -158,7 +172,7 @@
     const j = pk.esito === "W" || pk.esito === "L" ? pk.esito : liveJ(pk);
     const go = !pk.esito && !tag && started(pk);
     return `<div class="pick${go ? " gone" : ""}${j ? " lvp-" + j : ""}">
-      <div><div class="m">${esc(pk.home)} – ${esc(pk.away)}${go ? startedTag(pk) : ""}${tag}</div>
+      <div><div class="m">${esc(pk.home)} – ${esc(pk.away)}${relSign(pk)}${go ? startedTag(pk) : ""}${tag}</div>
         <div class="small muted">${esc(lgName(pk.lg))} · ${fdate(pk.date, pk.time)}</div></div>
       <div class="r"><div class="w">${esc(pk.name)}${es}</div>
         <div class="small muted">${pct(pk.p)} · quota min ${q2(pk.min_odds)}${pk.real ? " · media bookmaker " + q2(pk.real) : ""}</div></div>
@@ -194,12 +208,13 @@
       </div></div>`;
   }
   function viewBollette() {
-    let list = D.bollette;
+    let list = D.bollette.filter(inSet);
     if (state.metodo !== "TUTTE") list = list.filter((s) => s.method === state.metodo);
     const nOk = D.partite.filter((f) => f.ok).length;
     return `<div class="note">Bollette per le partite dal ${fdate(D.oggi)} ai 7 giorni successivi (${nOk} partite analizzabili su ${D.partite.length}).
       Le percentuali sono già corrette con quello che è uscito davvero nelle stagioni passate.
       <b>Gioca solo se la quota del bookmaker è uguale o più alta della "quota min".</b></div>
+      ${campChips()}
       ${chips("metodo", [["TUTTE", "Tutte"], ["MULTIGOL", "Multigol"], ["BATISTUTA", "Batistuta"], ["RADUCIOIU", "Raducioiu"]])}
       ${relNote()}
       ${list.length ? list.map((s) => slipHtml(s, false)).join("") : `<div class="empty">Nessuna bolletta per ora.<br>Il calendario del fine settimana di solito esce il venerdì.</div>`}`;
@@ -262,12 +277,20 @@
 
   // ---------- storico ----------
   function viewStorico() {
-    const h = [...D.storico].reverse();
+    const h = D.storico.filter(inSet).reverse();
     const c = (st) => h.filter((s) => s.status === st).length;
-    const sum = D.storico_riepilogo;
+    // riepilogo per metodo della serie scelta
+    const sum = {};
+    h.forEach((s) => {
+      if (s.status !== "VINTA" && s.status !== "PERSA") return;
+      const r = (sum[`${s.method} – ${s.kind}`] = sum[`${s.method} – ${s.kind}`] || { n: 0, vinte: 0, p: 0, n_quote: 0, utile: 0 });
+      r.n++; r.vinte += s.status === "VINTA"; r.p += s.prob;
+      if (s.profit != null) { r.n_quote++; r.utile += s.profit; }
+      r.perc = r.vinte / r.n; r.p_attesa = r.p / r.n;
+    });
     const k = (v, l) => `<div class="kpi"><div class="v">${v}</div><div class="l">${l}</div></div>`;
     const keys = Object.keys(sum);
-    return `<div class="grid2">${k(h.length, "bollette create")}${k(c("VINTA"), "vinte")}${k(c("PERSA"), "perse")}${k(c("IN CORSO"), "in corso")}</div>
+    return `${campChips()}<div class="grid2">${k(h.length, "bollette create")}${k(c("VINTA"), "vinte")}${k(c("PERSA"), "perse")}${k(c("IN CORSO"), "in corso")}</div>
       ${keys.length ? `<h2>Risultati per metodo</h2><div class="tw"><table><tr><th>Metodo</th><th>Giocate</th><th>Vinte</th><th>% uscita</th><th>% attesa</th><th>Utile*</th></tr>
       ${keys.map((x) => `<tr><td>${esc(x)}</td><td>${sum[x].n}</td><td>${sum[x].vinte}</td><td>${pct(sum[x].perc)}</td><td>${pct(sum[x].p_attesa)}</td><td>${sum[x].n_quote ? eur(sum[x].utile) : "–"}</td></tr>`).join("")}
       </table></div><div class="small muted" style="margin:6px 4px">* utile calcolato solo dove c'è la quota vera del bookmaker (Under/Over 2.5), con ${eur(D.config.bollette.puntata)} a bolletta.</div>` : ""}
@@ -367,6 +390,7 @@
 
   // ---------- render ----------
   function render() {
+    try { localStorage.setItem("mg_camp", state.camp); } catch (e) { /* niente */ }
     const v = Object.assign({ bollette: viewBollette, partite: viewPartite, statistiche: viewStatistiche, storico: viewStorico, verifica: viewVerifica, calcolatori: viewCalcolatori }, views)[state.tab];
     main.innerHTML = v();
     if (views.after) views.after(state.tab);
@@ -376,7 +400,7 @@
     if (sc) sc.onchange = () => { state.calMk = sc.value; render(); };
     if (state.tab === "calcolatori") { main.querySelectorAll("input,textarea").forEach((i) => (i.oninput = calc)); calc(); }
   }
-  window.MG = { D, state, views, esc, pct, q2, eur, lgName, fdate, badge, render, ko, hm, started, startedTag,
+  window.MG = { D, state, views, inSet, campChips, esc, pct, q2, eur, lgName, fdate, badge, render, ko, hm, started, startedTag,
     goTab(t) { state.tab = t; document.querySelectorAll(".tabs button").forEach((x) => x.classList.toggle("on", x.dataset.tab === t)); render(); window.scrollTo(0, 0); } };
   document.addEventListener("DOMContentLoaded", render);
 })();

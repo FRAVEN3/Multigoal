@@ -58,7 +58,7 @@ def main():
         bt["affidabilita"] = reliability.run(played, seasons[1:], cfg, curves)
         with open(bt_path, "w", encoding="utf-8") as f:
             json.dump({"key": bt_key, "data": bt}, f)
-    excl = reliability.excluded(bt["affidabilita"]) if cfg["affidabilita"]["attiva"] else set()
+    excl = reliability.excluded(bt["affidabilita"]) if cfg["affidabilita"]["attiva"] else set()   # per la serie "solo affidabili"
     if "bollette" not in bt:
         print("Bollette rifatte sulle stagioni passate (una tantum)...")
         bt["bollette"] = replay.run(played, seasons[1:], cfg, curves)
@@ -104,10 +104,24 @@ def main():
     fixtures.sort(key=lambda f: (f["date"], f["time"], f["lg"]))
     print(f"  {len(fixtures)} partite nei prossimi 7 giorni")
 
-    slips, tips = build_slips(fixtures, cfg, excl)
+    # due serie di bollette: con tutti i campionati (come sempre) e solo con i campionati affidabili.
+    # "set" dice in quale serie compare ogni bolletta (se è uguale nelle due, in tutte e due).
+    slips, tips = build_slips(fixtures, cfg)
+    for s in slips:
+        s["set"] = ["tutti"]
     if excl:
-        print(f"  campionati esclusi per tipo di giocata: {', '.join(f'{lg} {t}' for lg, t in sorted(excl))}")
-    print(f"  {len(slips)} bollette create")
+        by_id = {s["id"]: s for s in slips}
+        for s in build_slips(fixtures, cfg, excl)[0]:
+            if s["id"] in by_id:
+                by_id[s["id"]]["set"].append("affidabili")
+            else:
+                s["set"] = ["affidabili"]
+                slips.append(s)
+        print(f"  campionati poco affidabili per tipo di giocata: {', '.join(f'{lg} {t}' for lg, t in sorted(excl))}")
+    else:
+        for s in slips:
+            s["set"].append("affidabili")
+    print(f"  {sum('tutti' in s['set'] for s in slips)} bollette create (+{sum(s['set'] == ['affidabili'] for s in slips)} solo campionati affidabili)")
 
     # --- storico ---------------------------------------------------------------
     hist = tracker.load()
