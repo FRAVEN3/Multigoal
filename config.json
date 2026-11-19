@@ -40,5 +40,7 @@
     "puntata": 10
   },
 
-  "backtest_stagioni": 2
+  "backtest_stagioni": 2,
+
+  "affidabilita": {"attiva": true, "z_escludi": -1.5, "z_attenzione": -1.0, "min_partite": 40}
 }

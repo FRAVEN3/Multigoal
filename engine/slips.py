@@ -67,15 +67,17 @@ def _raddoppio(cands, target, max_n):
     return chosen if odds >= target * 0.95 and len(chosen) >= 2 else []
 
 
-def build_slips(fixtures, cfg):
+def build_slips(fixtures, cfg, excl=frozenset()):
+    """excl = {(campionato, tipo)} poco affidabili da non mettere nelle bollette (vedi reliability.py)."""
     b = cfg["bollette"]
+    no = lambda fx, tipo: (fx["lg"], tipo) in excl
     ok = [f for f in fixtures if f["ok"]]
     slips = []
 
     # --- MULTIGOL -----------------------------------------------------------
     tips = []
     for fx in ok:
-        t = multigol_tip(fx, cfg)
+        t = None if no(fx, "MULTIGOL") else multigol_tip(fx, cfg)
         if t:
             tips.append(make_pick(fx, t[0], t[1], cfg=cfg))
     tips.sort(key=lambda p: -p["p"])
@@ -111,14 +113,14 @@ def build_slips(fixtures, cfg):
     under = []
     for fx in rad:
         p = fx["est"]["probs"].get("U25")
-        if p:
+        if p and not no(fx, "UNDER"):
             under.append(make_pick(fx, "U25", p, real=fx.get("u25"), cfg=cfg))
     under.sort(key=lambda p: -p["p"])
     sel = _raddoppio(under, b["quota_raddoppio"], b["max_eventi_multipla"])
     if sel:
         slips.append(make_slip("multipla", "RADUCIOIU", "Raducioiu multipla Under 2.5", sel,
                                "Partite con media Batistuta bassa, quota ~2"))
-    for fx in rad[:5]:
+    for fx in [f for f in rad if not no(f, "NGNG")][:5]:
         p = fx["est"]["probs"].get("RAD")
         if p:
             slips.append(make_slip("singola", "RADUCIOIU", "Raducioiu: NG 1°T + NG 2°T",

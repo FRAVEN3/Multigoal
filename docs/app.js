@@ -121,6 +121,34 @@
     return `<div class="chips">${items.map(([v, l]) => `<button class="chip ${String(state[key]) === String(v) ? "on" : ""}" data-set="${key}=${esc(v)}">${esc(l)}</button>`).join("")}</div>`;
   }
 
+  // ---------- campionati affidabili ----------
+  const REL = (D.backtest && D.backtest.affidabilita) || { tabella: [], nomi: {} };
+  const relOf = (lg, tipo) => REL.tabella.find((r) => r.lg === lg && r.tipo === tipo);
+  const relOn = D.config.affidabilita && D.config.affidabilita.attiva;
+  const esclusi = relOn ? REL.tabella.filter((r) => r.stato === "escluso") : [];
+  const relNote = () => (esclusi.length ? `<div class="small muted" style="margin:-4px 4px 10px">⚠ Tolti dalle bollette perché storicamente escono meno del previsto:
+    ${Object.entries(esclusi.reduce((o, r) => ((o[REL.nomi[r.tipo] || r.tipo] = o[REL.nomi[r.tipo] || r.tipo] || []).push(lgName(r.lg)), o), {})).map(([t, l]) => `<b>${esc(t)}</b> in ${esc(l.join(", "))}`).join(" · ")}.
+    Dettagli nella scheda Verifica.</div>` : "");
+  // avviso sulla partita (scheda Partite): per quali giocate il campionato è escluso o da tenere d'occhio
+  const relTag = (f) => {
+    const rs = REL.tabella.filter((r) => r.lg === f.lg && (r.stato === "escluso" || r.stato === "attenzione"));
+    return rs.length ? ` · <span class="${rs.some((r) => r.stato === "escluso") ? "esito-L" : "muted"}">⚠ ${rs.map((r) => `${esc(REL.nomi[r.tipo] || r.tipo)} ${r.stato === "escluso" ? "escluso" : "attenzione"}`).join(", ")}</span>` : "";
+  };
+  function relTable() {
+    if (!REL.tabella.length) return "";
+    const tipi = Object.keys(REL.nomi), lgs = [...new Set(REL.tabella.map((r) => r.lg))];
+    const ICO = { ok: "✔", attenzione: "⚠", escluso: "✘", pochi: "·" };
+    const cell = (r) => (r ? `<td class="rel-${r.stato}" title="${r.n} partite · uscita ${pct(r.uscita)} · attesa ${pct(r.attesa)}">${ICO[r.stato]} ${r.uscita != null && r.stato !== "pochi" ? `${r.uscita - r.attesa >= 0 ? "+" : ""}${((r.uscita - r.attesa) * 100).toFixed(1)}` : ""}</td>` : "<td>–</td>");
+    const sc = (lg) => Math.min(...tipi.map((t) => (relOf(lg, t) || {}).z ?? 9));
+    const P = REL.prova;
+    return `<h2>Campionati affidabili</h2>
+      <div class="note">Per ogni campionato e tipo di giocata: quanti punti percentuali la giocata è uscita sopra (+) o sotto (−) quanto stimato nelle ultime ${D.backtest.stagioni.length} stagioni.
+      <b>✘ escluso</b> = esce chiaramente meno del previsto: ${relOn ? "<b>tolto dalle bollette</b>" : "non tolto (opzione spenta)"}. <b>⚠ attenzione</b> = un po' sotto, resta nelle bollette. <b>·</b> = troppe poche partite per giudicare (Batistuta sempre).
+      ${P ? `<br>Prova: decidendo con le stagioni prima del ${esc("20" + P.stagione.slice(0, 2) + "/" + P.stagione.slice(2))}, in quella stagione gli esclusi sono usciti il ${pct(P.esclusi.uscita, 1)} contro il ${pct(P.esclusi.attesa, 1)} stimato, i tenuti il ${pct(P.tenuti.uscita, 1)} contro il ${pct(P.tenuti.attesa, 1)}.` : ""}</div>
+      <div class="tw"><table><tr><th>Campionato</th>${tipi.map((t) => `<th>${esc(REL.nomi[t])}</th>`).join("")}</tr>
+      ${lgs.sort((a, b) => sc(a) - sc(b)).map((lg) => `<tr><td>${esc(lgName(lg))}</td>${tipi.map((t) => cell(relOf(lg, t))).join("")}</tr>`).join("")}</table></div>`;
+  }
+
   // ---------- bollette ----------
   // risultato in diretta / finale della giocata (dalla scheda Live), se la partita è iniziata
   const liveJ = (pk) => (MG.liveJ && !pk.esito ? MG.liveJ(pk, pk.markets) : null);
@@ -173,6 +201,7 @@
       Le percentuali sono già corrette con quello che è uscito davvero nelle stagioni passate.
       <b>Gioca solo se la quota del bookmaker è uguale o più alta della "quota min".</b></div>
       ${chips("metodo", [["TUTTE", "Tutte"], ["MULTIGOL", "Multigol"], ["BATISTUTA", "Batistuta"], ["RADUCIOIU", "Raducioiu"]])}
+      ${relNote()}
       ${list.length ? list.map((s) => slipHtml(s, false)).join("") : `<div class="empty">Nessuna bolletta per ora.<br>Il calendario del fine settimana di solito esce il venerdì.</div>`}`;
   }
 
@@ -190,7 +219,7 @@
         return `<details class="card${started(f) ? " gone" : ""}"><summary>
           <div class="row" style="margin:0"><b>${esc(f.home)} – ${esc(f.away)}</b>${startedTag(f)}</div>
           <div class="small muted">${esc(lgName(f.lg))} · ${fdate(f.date, f.time)} · ${f.ok ? badge(e.metodo, f) + (e.M != null ? ` media Batistuta ${pct(e.M)}` : "") : "poche partite giocate, esclusa dalle bollette"}
-          ${tip[f.id] ? ` · consiglio <b>${esc(MK[tip[f.id]])}</b>` : ""}</div></summary>
+          ${tip[f.id] ? ` · consiglio <b>${esc(MK[tip[f.id]])}</b>` : ""}${relTag(f)}</div></summary>
           <div class="tw" style="margin-top:8px"><table><tr><th>Mercato</th><th>% corretta</th><th>% Excel</th><th>Quota equa</th></tr>${rows}</table></div>
           <div class="small muted" style="margin-top:6px">"% Excel" è il calcolo diretto del tuo metodo (media delle due squadre). "% corretta" è quanto è uscito davvero in passato con quella stima.
           Partite giocate: casa ${e.games_home}, ospite ${e.games_away}.</div>
@@ -269,6 +298,7 @@
       <div class="tw"><table><tr><th>Media Batistuta</th><th>Partite</th>${Object.values(nice).map((n) => `<th>${n}</th>`).join("")}</tr>
       ${B.fasce_M.map((f) => `<tr><td>${esc(f.fascia)}</td><td>${f.n}</td>${Object.keys(nice).map((m) => `<td>${pct(f[m])}</td>`).join("")}</tr>`).join("")}
       </table></div>
+      ${relTable()}
       <h2>Stima del metodo contro uscita reale</h2>
       <div class="row"><select id="selCal">${mks.map((m) => `<option value="${m}" ${m === state.calMk ? "selected" : ""}>${esc(MK[m])}</option>`).join("")}</select></div>
       <div class="tw"><table><tr><th>Stima Excel</th><th>Partite</th><th>Uscita reale</th><th></th></tr>

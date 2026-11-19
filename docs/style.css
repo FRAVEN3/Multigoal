@@ -144,3 +144,7 @@ button.btn.giocata { background: var(--win); }
 .qin input.odds { width: 66px; padding: 4px 6px; }
 .qv { font-weight: 700; } .qv .q { font-weight: 400; }
 .qv-ok { color: var(--win); } .qv-no { color: var(--lose); } .qv-mid { color: var(--wait); }
+
+/* campionati affidabili */
+td.rel-ok { color: var(--win); } td.rel-escluso { color: #fff; background: var(--lose); font-weight: 700; }
+td.rel-attenzione { color: var(--wait); font-weight: 700; } td.rel-pochi { color: var(--muted); }
