@@ -133,7 +133,8 @@
       <div><div class="m">${esc(pk.home)} – ${esc(pk.away)}${go ? startedTag(pk) : ""}${tag}</div>
         <div class="small muted">${esc(lgName(pk.lg))} · ${fdate(pk.date, pk.time)}</div></div>
       <div class="r"><div class="w">${esc(pk.name)}${es}</div>
-        <div class="small muted">${pct(pk.p)} · quota min ${q2(pk.min_odds)}${pk.real ? " · bookmaker " + q2(pk.real) : ""}</div></div>
+        <div class="small muted">${pct(pk.p)} · quota min ${q2(pk.min_odds)}${pk.real ? " · media bookmaker " + q2(pk.real) : ""}</div></div>
+      ${MG.quoteHtml ? `<div style="grid-column:1/-1">${MG.quoteHtml(pk)}</div>` : ""}
     </div>`;
   }
   // stato della bolletta della settimana dai risultati: persa appena una giocata è persa, vinta quando sono vinte tutte
@@ -158,6 +159,7 @@
         <span>Quota equa <b>${q2(s.fair)}</b></span>
         ${s.real ? `<span>Quota bookmaker <b>${q2(s.real)}</b></span>` : ""}
         <span>Puntata <b>${eur(stake)}</b>${perCol}</span>
+        ${!withStatus && MG.quoteSlip ? MG.quoteSlip(s) : ""}
         ${!withStatus ? `<button class="btn small" data-slip="${esc(s.id)}">Apri come sistema</button>` : ""}
         ${window.MG && MG.giocBtn ? MG.giocBtn(s) : ""}
         ${s.profit != null ? `<span>Utile <b class="${s.profit >= 0 ? "esito-W" : "esito-L"}">${eur(s.profit)}</b></span>` : ""}

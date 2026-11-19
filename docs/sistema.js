@@ -54,6 +54,8 @@
   const save = () => store(KEY, draft);
 
   const defOdds = (fx, mk) => {
+    const mine = MG.myOdds && MG.myOdds(fx.id, mk);   // quota scritta da te in Bollette
+    if (mine) return mine;
     if (mk === "O25" && fx.o25) return fx.o25;
     if (mk === "U25" && fx.u25) return fx.u25;
     const p = fx.est.probs[mk];

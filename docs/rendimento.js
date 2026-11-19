@@ -106,6 +106,10 @@
     const list = curList().filter((s) => fM(s) && s.w >= t0), pl = past.filter(fM);
     const A = aggSlips(list), Ap = aggSlips(pl), P = aggPicks(list).tot || { n: 0, w: 0, p: 0 }, Pp = aggPicks(pl).tot || { n: 0, w: 0, p: 0 };
     const st = streaks(list);
+    // utile che avresti fatto con le quote scritte da te (bollette concluse con tutte le quote)
+    const byId = Object.fromEntries(D.storico.map((x) => [x.id, x]));
+    let nMy = 0, utMy = 0;
+    list.forEach((s) => { const q = (s.s === "V" || s.s === "P") && MG.slipOdds && byId[s.id] && MG.slipOdds(byId[s.id]); if (q) { nMy++; utMy += s.s === "V" ? q - 1 : -1; } });
     const few = A.n < 30 ? `<div class="note">Per ora ci sono solo <b>${A.n}</b> bollette concluse: le percentuali possono cambiare molto. La colonna <b>"Stagioni passate"</b> mostra come sono andate le stesse bollette rifatte sulle ultime ${D.backtest.stagioni.length} stagioni (${Ap.n} bollette): è il numero più affidabile.</div>` : "";
 
     // per tipo di bolletta
@@ -140,6 +144,7 @@
         ${k(Ap.n ? pct(Ap.v / Ap.n) : "–", `bollette vinte nelle stagioni passate (${Ap.n}) · giocate ${Pp.n ? pct(Pp.w / Pp.n) : "–"}`)}
         ${k(st.curS ? `${st.cur} ${st.curS === "V" ? "vinte" : "perse"}` : "–", "serie attuale")}
         ${k(`${st.maxV} / ${st.maxP}`, "serie più lunga vinte / perse")}
+        ${nMy ? k(`<span class="${utMy >= 0 ? "esito-W" : "esito-L"}">${eur(utMy * D.config.bollette.puntata)}</span>`, `utile con le tue quote (${nMy} bollette da ${eur(D.config.bollette.puntata)})`) : ""}
         ${A.nq ? k(`<span class="${A.ut >= 0 ? "esito-W" : "esito-L"}">${eur(A.ut * D.config.bollette.puntata)}</span>`, `utile con le quote vere (${A.nq} bollette Under/Over da ${eur(D.config.bollette.puntata)})`) : ""}
       </div>
       <div class="small muted" style="margin:6px 4px">Percentuale <span class="esito-W">verde</span> = uscita almeno quanto stimato, <span class="esito-L">rossa</span> = meno del previsto. "Attesa" = la probabilità che l'app aveva dato.</div>
@@ -236,7 +241,8 @@
     const hint = s.combos || s.picks.some((p) => p.markets.length > 1 || p.markets[0] === "BAT")
       ? "Quota totale del bookmaker.\nPer sistemi e Batistuta (3 combinazioni) lascia vuoto: a fine partite scrivi quanto hai vinto."
       : "Quota totale del bookmaker (es. 2,10)";
-    const qd = g ? g.quota : s.real || (s.picks.length === 1 ? s.picks[0].min_odds : null);
+    const mine = MG.slipOdds && MG.slipOdds(s);
+    const qd = g ? g.quota : mine ? Math.round(mine * 100) / 100 : s.real || (s.picks.length === 1 ? s.picks[0].min_odds : null);
     const q = num(prompt(hint, qd != null ? qd : ""));
     return { importo: Math.round(imp * 100) / 100, quota: q && q > 1 ? q : null };
   }

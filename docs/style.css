@@ -137,3 +137,10 @@ button.btn.giocata { background: var(--win); }
 .pick.lvp-L { background: rgba(192,57,43,.12); box-shadow: inset 4px 0 0 var(--lose); padding-left: 8px; }
 .pick.lvp-w { box-shadow: inset 4px 0 0 var(--win); padding-left: 8px; }
 .pick.lvp-l { box-shadow: inset 4px 0 0 var(--lose); padding-left: 8px; }
+
+/* ---------- le tue quote ---------- */
+.qrow { display: flex; flex-wrap: wrap; align-items: center; gap: 4px 8px; margin-top: 4px; }
+.qin { display: inline-flex; align-items: center; gap: 3px; font-size: 11px; color: var(--muted); }
+.qin input.odds { width: 66px; padding: 4px 6px; }
+.qv { font-weight: 700; } .qv .q { font-weight: 400; }
+.qv-ok { color: var(--win); } .qv-no { color: var(--lose); } .qv-mid { color: var(--wait); }
