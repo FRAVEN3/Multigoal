@@ -4927,6 +4927,940 @@
    "created": "2026-11-16",
    "status": "VINTA",
    "settled": "2026-11-18"
+  },
+  {
+   "id": "4b001f69b4",
+   "kind": "multipla",
+   "method": "MULTIGOL",
+   "title": "Multigol a raddoppio #1",
+   "descr": "Le fasce Multigol più sicure fino a quota ~2",
+   "picks": [
+    {
+     "fx": "7962782e",
+     "lg": "SP1",
+     "date": "2026-11-22",
+     "time": "20:00",
+     "home": "Getafe",
+     "away": "Ath Madrid",
+     "markets": [
+      "MG14"
+     ],
+     "name": "Multigol 1-4",
+     "p": 0.852,
+     "fair": 1.17,
+     "min_odds": 1.23,
+     "real": null
+    },
+    {
+     "fx": "224af7e4",
+     "lg": "I2",
+     "date": "2026-11-21",
+     "time": "14:00",
+     "home": "Modena",
+     "away": "Juve Stabia",
+     "markets": [
+      "MG14"
+     ],
+     "name": "Multigol 1-4",
+     "p": 0.8335,
+     "fair": 1.2,
+     "min_odds": 1.26,
+     "real": null
+    },
+    {
+     "fx": "bb28ffd8",
+     "lg": "I2",
+     "date": "2026-11-21",
+     "time": "14:00",
+     "home": "Sampdoria",
+     "away": "Benevento",
+     "markets": [
+      "MG14"
+     ],
+     "name": "Multigol 1-4",
+     "p": 0.8335,
+     "fair": 1.2,
+     "min_odds": 1.26,
+     "real": null
+    },
+    {
+     "fx": "26eeead3",
+     "lg": "B1",
+     "date": "2026-11-22",
+     "time": "12:30",
+     "home": "Beveren",
+     "away": "Gent",
+     "markets": [
+      "MG14"
+     ],
+     "name": "Multigol 1-4",
+     "p": 0.8335,
+     "fair": 1.2,
+     "min_odds": 1.26,
+     "real": null
+    }
+   ],
+   "prob": 0.4934,
+   "fair": 2.03,
+   "real": null,
+   "combos": null,
+   "set": [
+    "tutti",
+    "affidabili",
+    "stagione"
+   ],
+   "created": "2026-11-20",
+   "status": "IN CORSO"
+  },
+  {
+   "id": "c2fb053f6e",
+   "kind": "multipla",
+   "method": "MULTIGOL",
+   "title": "Multigol a raddoppio #2",
+   "descr": "Le fasce Multigol più sicure fino a quota ~2",
+   "picks": [
+    {
+     "fx": "2442fbdd",
+     "lg": "F1",
+     "date": "2026-11-21",
+     "time": "19:45",
+     "home": "Lille",
+     "away": "Lyon",
+     "markets": [
+      "MG14"
+     ],
+     "name": "Multigol 1-4",
+     "p": 0.8317,
+     "fair": 1.2,
+     "min_odds": 1.26,
+     "real": null
+    },
+    {
+     "fx": "3fb78196",
+     "lg": "E0",
+     "date": "2026-11-23",
+     "time": "20:00",
+     "home": "Brentford",
+     "away": "Everton",
+     "markets": [
+      "MG14"
+     ],
+     "name": "Multigol 1-4",
+     "p": 0.8317,
+     "fair": 1.2,
+     "min_odds": 1.26,
+     "real": null
+    },
+    {
+     "fx": "d77718da",
+     "lg": "E2",
+     "date": "2026-11-21",
+     "time": "15:00",
+     "home": "Notts County",
+     "away": "Stevenage",
+     "markets": [
+      "MG14"
+     ],
+     "name": "Multigol 1-4",
+     "p": 0.8182,
+     "fair": 1.22,
+     "min_odds": 1.28,
+     "real": null
+    },
+    {
+     "fx": "93650ace",
+     "lg": "AUT",
+     "date": "2026-11-22",
+     "time": "13:30",
+     "home": "Altach",
+     "away": "Sturm Graz",
+     "markets": [
+      "MG14"
+     ],
+     "name": "Multigol 1-4",
+     "p": 0.8182,
+     "fair": 1.22,
+     "min_odds": 1.28,
+     "real": null
+    }
+   ],
+   "prob": 0.4631,
+   "fair": 2.16,
+   "real": null,
+   "combos": null,
+   "set": [
+    "tutti",
+    "affidabili",
+    "stagione"
+   ],
+   "created": "2026-11-20",
+   "status": "IN CORSO"
+  },
+  {
+   "id": "c5cb8ff575",
+   "kind": "singola",
+   "method": "MULTIGOL",
+   "title": "Singola Multigol",
+   "descr": "",
+   "picks": [
+    {
+     "fx": "7962782e",
+     "lg": "SP1",
+     "date": "2026-11-22",
+     "time": "20:00",
+     "home": "Getafe",
+     "away": "Ath Madrid",
+     "markets": [
+      "MG14"
+     ],
+     "name": "Multigol 1-4",
+     "p": 0.852,
+     "fair": 1.17,
+     "min_odds": 1.23,
+     "real": null
+    }
+   ],
+   "prob": 0.852,
+   "fair": 1.17,
+   "real": null,
+   "combos": null,
+   "set": [
+    "tutti",
+    "affidabili",
+    "stagione"
+   ],
+   "created": "2026-11-20",
+   "status": "IN CORSO"
+  },
+  {
+   "id": "2c6728ab88",
+   "kind": "singola",
+   "method": "MULTIGOL",
+   "title": "Singola Multigol",
+   "descr": "",
+   "picks": [
+    {
+     "fx": "224af7e4",
+     "lg": "I2",
+     "date": "2026-11-21",
+     "time": "14:00",
+     "home": "Modena",
+     "away": "Juve Stabia",
+     "markets": [
+      "MG14"
+     ],
+     "name": "Multigol 1-4",
+     "p": 0.8335,
+     "fair": 1.2,
+     "min_odds": 1.26,
+     "real": null
+    }
+   ],
+   "prob": 0.8335,
+   "fair": 1.2,
+   "real": null,
+   "combos": null,
+   "set": [
+    "tutti",
+    "affidabili",
+    "stagione"
+   ],
+   "created": "2026-11-20",
+   "status": "IN CORSO"
+  },
+  {
+   "id": "0e470f7a24",
+   "kind": "singola",
+   "method": "MULTIGOL",
+   "title": "Singola Multigol",
+   "descr": "",
+   "picks": [
+    {
+     "fx": "bb28ffd8",
+     "lg": "I2",
+     "date": "2026-11-21",
+     "time": "14:00",
+     "home": "Sampdoria",
+     "away": "Benevento",
+     "markets": [
+      "MG14"
+     ],
+     "name": "Multigol 1-4",
+     "p": 0.8335,
+     "fair": 1.2,
+     "min_odds": 1.26,
+     "real": null
+    }
+   ],
+   "prob": 0.8335,
+   "fair": 1.2,
+   "real": null,
+   "combos": null,
+   "set": [
+    "tutti",
+    "affidabili",
+    "stagione"
+   ],
+   "created": "2026-11-20",
+   "status": "IN CORSO"
+  },
+  {
+   "id": "5bfee69278",
+   "kind": "singola",
+   "method": "MULTIGOL",
+   "title": "Singola Multigol",
+   "descr": "",
+   "picks": [
+    {
+     "fx": "26eeead3",
+     "lg": "B1",
+     "date": "2026-11-22",
+     "time": "12:30",
+     "home": "Beveren",
+     "away": "Gent",
+     "markets": [
+      "MG14"
+     ],
+     "name": "Multigol 1-4",
+     "p": 0.8335,
+     "fair": 1.2,
+     "min_odds": 1.26,
+     "real": null
+    }
+   ],
+   "prob": 0.8335,
+   "fair": 1.2,
+   "real": null,
+   "combos": null,
+   "set": [
+    "tutti",
+    "affidabili",
+    "stagione"
+   ],
+   "created": "2026-11-20",
+   "status": "IN CORSO"
+  },
+  {
+   "id": "6eebc2f1a4",
+   "kind": "singola",
+   "method": "MULTIGOL",
+   "title": "Singola Multigol",
+   "descr": "",
+   "picks": [
+    {
+     "fx": "2442fbdd",
+     "lg": "F1",
+     "date": "2026-11-21",
+     "time": "19:45",
+     "home": "Lille",
+     "away": "Lyon",
+     "markets": [
+      "MG14"
+     ],
+     "name": "Multigol 1-4",
+     "p": 0.8317,
+     "fair": 1.2,
+     "min_odds": 1.26,
+     "real": null
+    }
+   ],
+   "prob": 0.8317,
+   "fair": 1.2,
+   "real": null,
+   "combos": null,
+   "set": [
+    "tutti",
+    "affidabili",
+    "stagione"
+   ],
+   "created": "2026-11-20",
+   "status": "IN CORSO"
+  },
+  {
+   "id": "7ab9445c04",
+   "kind": "singola",
+   "method": "BATISTUTA",
+   "title": "Batistuta: GG-GG / GG-NG / NG-GG",
+   "descr": "Si giocano le 3 combinazioni divise (calcolatore 'Contabilizzatore')",
+   "picks": [
+    {
+     "fx": "9abd87ae",
+     "lg": "G1",
+     "date": "2026-11-22",
+     "time": "17:30",
+     "home": "PAOK",
+     "away": "Kifisia",
+     "markets": [
+      "BAT"
+     ],
+     "name": "GG in almeno un tempo (Batistuta)",
+     "p": 0.5075,
+     "fair": 1.97,
+     "min_odds": 2.07,
+     "real": null
+    }
+   ],
+   "prob": 0.5075,
+   "fair": 1.97,
+   "real": null,
+   "combos": null,
+   "set": [
+    "tutti",
+    "affidabili",
+    "stagione"
+   ],
+   "created": "2026-11-20",
+   "status": "IN CORSO"
+  },
+  {
+   "id": "255b1e4c9c",
+   "kind": "singola",
+   "method": "BATISTUTA",
+   "title": "Batistuta: GG-GG / GG-NG / NG-GG",
+   "descr": "Si giocano le 3 combinazioni divise (calcolatore 'Contabilizzatore')",
+   "picks": [
+    {
+     "fx": "8f494387",
+     "lg": "N1",
+     "date": "2026-11-21",
+     "time": "17:45",
+     "home": "Utrecht",
+     "away": "Cambuur",
+     "markets": [
+      "BAT"
+     ],
+     "name": "GG in almeno un tempo (Batistuta)",
+     "p": 0.5075,
+     "fair": 1.97,
+     "min_odds": 2.07,
+     "real": null
+    }
+   ],
+   "prob": 0.5075,
+   "fair": 1.97,
+   "real": null,
+   "combos": null,
+   "set": [
+    "tutti",
+    "affidabili",
+    "stagione"
+   ],
+   "created": "2026-11-20",
+   "status": "IN CORSO"
+  },
+  {
+   "id": "d1d69dee0f",
+   "kind": "singola",
+   "method": "BATISTUTA",
+   "title": "Batistuta: GG-GG / GG-NG / NG-GG",
+   "descr": "Si giocano le 3 combinazioni divise (calcolatore 'Contabilizzatore')",
+   "picks": [
+    {
+     "fx": "632a10ce",
+     "lg": "D1",
+     "date": "2026-11-20",
+     "time": "19:30",
+     "home": "Bayern Munich",
+     "away": "FC Koln",
+     "markets": [
+      "BAT"
+     ],
+     "name": "GG in almeno un tempo (Batistuta)",
+     "p": 0.5075,
+     "fair": 1.97,
+     "min_odds": 2.07,
+     "real": null
+    }
+   ],
+   "prob": 0.5075,
+   "fair": 1.97,
+   "real": null,
+   "combos": null,
+   "set": [
+    "tutti",
+    "affidabili",
+    "stagione"
+   ],
+   "created": "2026-11-20",
+   "status": "IN CORSO"
+  },
+  {
+   "id": "2d48d4ac84",
+   "kind": "singola",
+   "method": "BATISTUTA",
+   "title": "Batistuta: GG-GG / GG-NG / NG-GG",
+   "descr": "Si giocano le 3 combinazioni divise (calcolatore 'Contabilizzatore')",
+   "picks": [
+    {
+     "fx": "12139faa",
+     "lg": "I1",
+     "date": "2026-11-23",
+     "time": "19:45",
+     "home": "Monza",
+     "away": "Fiorentina",
+     "markets": [
+      "BAT"
+     ],
+     "name": "GG in almeno un tempo (Batistuta)",
+     "p": 0.5075,
+     "fair": 1.97,
+     "min_odds": 2.07,
+     "real": null
+    }
+   ],
+   "prob": 0.5075,
+   "fair": 1.97,
+   "real": null,
+   "combos": null,
+   "set": [
+    "tutti",
+    "affidabili",
+    "stagione"
+   ],
+   "created": "2026-11-20",
+   "status": "IN CORSO"
+  },
+  {
+   "id": "4c112ab6d5",
+   "kind": "singola",
+   "method": "BATISTUTA",
+   "title": "Batistuta: GG-GG / GG-NG / NG-GG",
+   "descr": "Si giocano le 3 combinazioni divise (calcolatore 'Contabilizzatore')",
+   "picks": [
+    {
+     "fx": "8ac6cd70",
+     "lg": "N1",
+     "date": "2026-11-21",
+     "time": "15:30",
+     "home": "Nijmegen",
+     "away": "PSV Eindhoven",
+     "markets": [
+      "BAT"
+     ],
+     "name": "GG in almeno un tempo (Batistuta)",
+     "p": 0.5007,
+     "fair": 2.0,
+     "min_odds": 2.1,
+     "real": null
+    }
+   ],
+   "prob": 0.5007,
+   "fair": 2.0,
+   "real": null,
+   "combos": null,
+   "set": [
+    "tutti",
+    "affidabili",
+    "stagione"
+   ],
+   "created": "2026-11-20",
+   "status": "IN CORSO"
+  },
+  {
+   "id": "d0eb4f3ed0",
+   "kind": "sistema",
+   "method": "BATISTUTA",
+   "title": "Sistema Batistuta 2 partite × 3 combinazioni",
+   "descr": "9 colonne: GG-GG / GG-NG / NG-GG per ogni partita",
+   "picks": [
+    {
+     "fx": "9abd87ae",
+     "lg": "G1",
+     "date": "2026-11-22",
+     "time": "17:30",
+     "home": "PAOK",
+     "away": "Kifisia",
+     "markets": [
+      "BAT"
+     ],
+     "name": "GG in almeno un tempo (Batistuta)",
+     "p": 0.5075,
+     "fair": 1.97,
+     "min_odds": 2.07,
+     "real": null
+    },
+    {
+     "fx": "8f494387",
+     "lg": "N1",
+     "date": "2026-11-21",
+     "time": "17:45",
+     "home": "Utrecht",
+     "away": "Cambuur",
+     "markets": [
+      "BAT"
+     ],
+     "name": "GG in almeno un tempo (Batistuta)",
+     "p": 0.5075,
+     "fair": 1.97,
+     "min_odds": 2.07,
+     "real": null
+    }
+   ],
+   "prob": 0.2576,
+   "fair": 3.88,
+   "real": null,
+   "combos": 9,
+   "set": [
+    "tutti",
+    "affidabili",
+    "stagione"
+   ],
+   "created": "2026-11-20",
+   "status": "IN CORSO"
+  },
+  {
+   "id": "908a6cdeaa",
+   "kind": "sistema",
+   "method": "BATISTUTA",
+   "title": "Sistema Batistuta 3 partite × 3 combinazioni",
+   "descr": "27 colonne: GG-GG / GG-NG / NG-GG per ogni partita",
+   "picks": [
+    {
+     "fx": "9abd87ae",
+     "lg": "G1",
+     "date": "2026-11-22",
+     "time": "17:30",
+     "home": "PAOK",
+     "away": "Kifisia",
+     "markets": [
+      "BAT"
+     ],
+     "name": "GG in almeno un tempo (Batistuta)",
+     "p": 0.5075,
+     "fair": 1.97,
+     "min_odds": 2.07,
+     "real": null
+    },
+    {
+     "fx": "8f494387",
+     "lg": "N1",
+     "date": "2026-11-21",
+     "time": "17:45",
+     "home": "Utrecht",
+     "away": "Cambuur",
+     "markets": [
+      "BAT"
+     ],
+     "name": "GG in almeno un tempo (Batistuta)",
+     "p": 0.5075,
+     "fair": 1.97,
+     "min_odds": 2.07,
+     "real": null
+    },
+    {
+     "fx": "632a10ce",
+     "lg": "D1",
+     "date": "2026-11-20",
+     "time": "19:30",
+     "home": "Bayern Munich",
+     "away": "FC Koln",
+     "markets": [
+      "BAT"
+     ],
+     "name": "GG in almeno un tempo (Batistuta)",
+     "p": 0.5075,
+     "fair": 1.97,
+     "min_odds": 2.07,
+     "real": null
+    }
+   ],
+   "prob": 0.1307,
+   "fair": 7.65,
+   "real": null,
+   "combos": 27,
+   "set": [
+    "tutti",
+    "affidabili",
+    "stagione"
+   ],
+   "created": "2026-11-20",
+   "status": "IN CORSO"
+  },
+  {
+   "id": "69d99ddab5",
+   "kind": "multipla",
+   "method": "RADUCIOIU",
+   "title": "Raducioiu multipla Under 2.5",
+   "descr": "Partite con media Batistuta bassa, quota ~2",
+   "picks": [
+    {
+     "fx": "359545d4",
+     "lg": "E3",
+     "date": "2026-11-21",
+     "time": "15:00",
+     "home": "Northampton",
+     "away": "Rochdale",
+     "markets": [
+      "U25"
+     ],
+     "name": "Under 2.5",
+     "p": 0.582,
+     "fair": 1.72,
+     "min_odds": 1.8,
+     "real": 1.77
+    },
+    {
+     "fx": "aca75f1e",
+     "lg": "G1",
+     "date": "2026-11-22",
+     "time": "17:00",
+     "home": "Olympiakos",
+     "away": "Iraklis",
+     "markets": [
+      "U25"
+     ],
+     "name": "Under 2.5",
+     "p": 0.582,
+     "fair": 1.72,
+     "min_odds": 1.8,
+     "real": 2.5
+    }
+   ],
+   "prob": 0.3387,
+   "fair": 2.95,
+   "real": 4.42,
+   "combos": null,
+   "set": [
+    "tutti",
+    "affidabili",
+    "stagione"
+   ],
+   "created": "2026-11-20",
+   "status": "IN CORSO"
+  },
+  {
+   "id": "7f71fed5ec",
+   "kind": "singola",
+   "method": "RADUCIOIU",
+   "title": "Raducioiu: NG 1°T + NG 2°T",
+   "descr": "",
+   "picks": [
+    {
+     "fx": "98ad357e",
+     "lg": "SP2",
+     "date": "2026-11-21",
+     "time": "17:30",
+     "home": "Castellon",
+     "away": "Eldense",
+     "markets": [
+      "RAD"
+     ],
+     "name": "NG-NG nei due tempi (Raducioiu)",
+     "p": 0.6364,
+     "fair": 1.57,
+     "min_odds": 1.65,
+     "real": null
+    }
+   ],
+   "prob": 0.6364,
+   "fair": 1.57,
+   "real": null,
+   "combos": null,
+   "set": [
+    "tutti",
+    "affidabili",
+    "stagione"
+   ],
+   "created": "2026-11-20",
+   "status": "IN CORSO"
+  },
+  {
+   "id": "06fdf26095",
+   "kind": "singola",
+   "method": "RADUCIOIU",
+   "title": "Raducioiu: NG 1°T + NG 2°T",
+   "descr": "",
+   "picks": [
+    {
+     "fx": "7e5d2a8e",
+     "lg": "E0",
+     "date": "2026-11-22",
+     "time": "14:00",
+     "home": "Hull",
+     "away": "Brighton",
+     "markets": [
+      "RAD"
+     ],
+     "name": "NG-NG nei due tempi (Raducioiu)",
+     "p": 0.6364,
+     "fair": 1.57,
+     "min_odds": 1.65,
+     "real": null
+    }
+   ],
+   "prob": 0.6364,
+   "fair": 1.57,
+   "real": null,
+   "combos": null,
+   "set": [
+    "tutti",
+    "affidabili",
+    "stagione"
+   ],
+   "created": "2026-11-20",
+   "status": "IN CORSO"
+  },
+  {
+   "id": "c4c501a5a4",
+   "kind": "singola",
+   "method": "RADUCIOIU",
+   "title": "Raducioiu: NG 1°T + NG 2°T",
+   "descr": "",
+   "picks": [
+    {
+     "fx": "fc483f23",
+     "lg": "G1",
+     "date": "2026-11-22",
+     "time": "14:00",
+     "home": "Levadeiakos",
+     "away": "Atromitos",
+     "markets": [
+      "RAD"
+     ],
+     "name": "NG-NG nei due tempi (Raducioiu)",
+     "p": 0.6364,
+     "fair": 1.57,
+     "min_odds": 1.65,
+     "real": null
+    }
+   ],
+   "prob": 0.6364,
+   "fair": 1.57,
+   "real": null,
+   "combos": null,
+   "set": [
+    "tutti",
+    "affidabili",
+    "stagione"
+   ],
+   "created": "2026-11-20",
+   "status": "IN CORSO"
+  },
+  {
+   "id": "19aaf49d33",
+   "kind": "singola",
+   "method": "RADUCIOIU",
+   "title": "Raducioiu: NG 1°T + NG 2°T",
+   "descr": "",
+   "picks": [
+    {
+     "fx": "b3543798",
+     "lg": "G1",
+     "date": "2026-11-22",
+     "time": "15:00",
+     "home": "Panetolikos",
+     "away": "Volos NFC",
+     "markets": [
+      "RAD"
+     ],
+     "name": "NG-NG nei due tempi (Raducioiu)",
+     "p": 0.6364,
+     "fair": 1.57,
+     "min_odds": 1.65,
+     "real": null
+    }
+   ],
+   "prob": 0.6364,
+   "fair": 1.57,
+   "real": null,
+   "combos": null,
+   "set": [
+    "tutti",
+    "affidabili",
+    "stagione"
+   ],
+   "created": "2026-11-20",
+   "status": "IN CORSO"
+  },
+  {
+   "id": "c6b2a16756",
+   "kind": "singola",
+   "method": "RADUCIOIU",
+   "title": "Raducioiu: NG 1°T + NG 2°T",
+   "descr": "",
+   "picks": [
+    {
+     "fx": "7962782e",
+     "lg": "SP1",
+     "date": "2026-11-22",
+     "time": "20:00",
+     "home": "Getafe",
+     "away": "Ath Madrid",
+     "markets": [
+      "RAD"
+     ],
+     "name": "NG-NG nei due tempi (Raducioiu)",
+     "p": 0.6364,
+     "fair": 1.57,
+     "min_odds": 1.65,
+     "real": null
+    }
+   ],
+   "prob": 0.6364,
+   "fair": 1.57,
+   "real": null,
+   "combos": null,
+   "set": [
+    "tutti",
+    "affidabili",
+    "stagione"
+   ],
+   "created": "2026-11-20",
+   "status": "IN CORSO"
+  },
+  {
+   "id": "21565e180a",
+   "kind": "sistema",
+   "method": "RADUCIOIU",
+   "title": "Sistema Risultato Esatto 2 partite × 2 gruppi",
+   "descr": "4 colonne, come il foglio 'Contab Sistema RE'",
+   "picks": [
+    {
+     "fx": "98ad357e",
+     "lg": "SP2",
+     "date": "2026-11-21",
+     "time": "17:30",
+     "home": "Castellon",
+     "away": "Eldense",
+     "markets": [
+      "RE_C",
+      "RE_X"
+     ],
+     "name": "Ris. esatto 1-0 / 2-0 / 2-1 oppure Ris. esatto 0-0 / 1-1 / 2-2",
+     "p": 0.5098,
+     "fair": 1.96,
+     "min_odds": 2.06,
+     "real": null
+    },
+    {
+     "fx": "7e5d2a8e",
+     "lg": "E0",
+     "date": "2026-11-22",
+     "time": "14:00",
+     "home": "Hull",
+     "away": "Brighton",
+     "markets": [
+      "RE_C",
+      "RE_X"
+     ],
+     "name": "Ris. esatto 1-0 / 2-0 / 2-1 oppure Ris. esatto 0-0 / 1-1 / 2-2",
+     "p": 0.5244,
+     "fair": 1.91,
+     "min_odds": 2.0,
+     "real": null
+    }
+   ],
+   "prob": 0.2673,
+   "fair": 3.74,
+   "real": null,
+   "combos": 4,
+   "set": [
+    "tutti",
+    "affidabili",
+    "stagione"
+   ],
+   "created": "2026-11-20",
+   "status": "IN CORSO"
   }
  ]
 }
