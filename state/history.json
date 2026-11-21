@@ -5005,9 +5005,9 @@
    "real": null,
    "combos": null,
    "set": [
-    "tutti",
     "affidabili",
-    "stagione"
+    "stagione",
+    "tutti"
    ],
    "created": "2026-11-20",
    "status": "IN CORSO"
@@ -5089,9 +5089,9 @@
    "real": null,
    "combos": null,
    "set": [
-    "tutti",
     "affidabili",
-    "stagione"
+    "stagione",
+    "tutti"
    ],
    "created": "2026-11-20",
    "status": "IN CORSO"
@@ -5125,9 +5125,9 @@
    "real": null,
    "combos": null,
    "set": [
-    "tutti",
     "affidabili",
-    "stagione"
+    "stagione",
+    "tutti"
    ],
    "created": "2026-11-20",
    "status": "IN CORSO"
@@ -5161,9 +5161,9 @@
    "real": null,
    "combos": null,
    "set": [
-    "tutti",
     "affidabili",
-    "stagione"
+    "stagione",
+    "tutti"
    ],
    "created": "2026-11-20",
    "status": "IN CORSO"
@@ -5197,9 +5197,9 @@
    "real": null,
    "combos": null,
    "set": [
-    "tutti",
     "affidabili",
-    "stagione"
+    "stagione",
+    "tutti"
    ],
    "created": "2026-11-20",
    "status": "IN CORSO"
@@ -5233,9 +5233,9 @@
    "real": null,
    "combos": null,
    "set": [
-    "tutti",
     "affidabili",
-    "stagione"
+    "stagione",
+    "tutti"
    ],
    "created": "2026-11-20",
    "status": "IN CORSO"
@@ -5269,9 +5269,9 @@
    "real": null,
    "combos": null,
    "set": [
-    "tutti",
     "affidabili",
-    "stagione"
+    "stagione",
+    "tutti"
    ],
    "created": "2026-11-20",
    "status": "IN CORSO"
@@ -5305,9 +5305,9 @@
    "real": null,
    "combos": null,
    "set": [
-    "tutti",
     "affidabili",
-    "stagione"
+    "stagione",
+    "tutti"
    ],
    "created": "2026-11-20",
    "status": "IN CORSO"
@@ -5341,9 +5341,9 @@
    "real": null,
    "combos": null,
    "set": [
-    "tutti",
     "affidabili",
-    "stagione"
+    "stagione",
+    "tutti"
    ],
    "created": "2026-11-20",
    "status": "IN CORSO"
@@ -5413,9 +5413,9 @@
    "real": null,
    "combos": null,
    "set": [
-    "tutti",
     "affidabili",
-    "stagione"
+    "stagione",
+    "tutti"
    ],
    "created": "2026-11-20",
    "status": "IN CORSO"
@@ -5449,9 +5449,9 @@
    "real": null,
    "combos": null,
    "set": [
-    "tutti",
     "affidabili",
-    "stagione"
+    "stagione",
+    "tutti"
    ],
    "created": "2026-11-20",
    "status": "IN CORSO"
@@ -5501,9 +5501,9 @@
    "real": null,
    "combos": 9,
    "set": [
-    "tutti",
     "affidabili",
-    "stagione"
+    "stagione",
+    "tutti"
    ],
    "created": "2026-11-20",
    "status": "IN CORSO"
@@ -5621,9 +5621,9 @@
    "real": 4.42,
    "combos": null,
    "set": [
-    "tutti",
     "affidabili",
-    "stagione"
+    "stagione",
+    "tutti"
    ],
    "created": "2026-11-20",
    "status": "IN CORSO"
@@ -5657,9 +5657,9 @@
    "real": null,
    "combos": null,
    "set": [
-    "tutti",
     "affidabili",
-    "stagione"
+    "stagione",
+    "tutti"
    ],
    "created": "2026-11-20",
    "status": "IN CORSO"
@@ -5693,9 +5693,9 @@
    "real": null,
    "combos": null,
    "set": [
-    "tutti",
     "affidabili",
-    "stagione"
+    "stagione",
+    "tutti"
    ],
    "created": "2026-11-20",
    "status": "IN CORSO"
@@ -5729,9 +5729,9 @@
    "real": null,
    "combos": null,
    "set": [
-    "tutti",
     "affidabili",
-    "stagione"
+    "stagione",
+    "tutti"
    ],
    "created": "2026-11-20",
    "status": "IN CORSO"
@@ -5765,9 +5765,9 @@
    "real": null,
    "combos": null,
    "set": [
-    "tutti",
     "affidabili",
-    "stagione"
+    "stagione",
+    "tutti"
    ],
    "created": "2026-11-20",
    "status": "IN CORSO"
@@ -5801,9 +5801,9 @@
    "real": null,
    "combos": null,
    "set": [
-    "tutti",
     "affidabili",
-    "stagione"
+    "stagione",
+    "tutti"
    ],
    "created": "2026-11-20",
    "status": "IN CORSO"
@@ -5855,11 +5855,115 @@
    "real": null,
    "combos": 4,
    "set": [
+    "affidabili",
+    "stagione",
+    "tutti"
+   ],
+   "created": "2026-11-20",
+   "status": "IN CORSO"
+  },
+  {
+   "id": "d043c82fcd",
+   "kind": "singola",
+   "method": "BATISTUTA",
+   "title": "Batistuta: GG-GG / GG-NG / NG-GG",
+   "descr": "Si giocano le 3 combinazioni divise (calcolatore 'Contabilizzatore')",
+   "picks": [
+    {
+     "fx": "37845b76",
+     "lg": "N1",
+     "date": "2026-11-22",
+     "time": "13:30",
+     "home": "Ajax",
+     "away": "Den Haag",
+     "markets": [
+      "BAT"
+     ],
+     "name": "GG in almeno un tempo (Batistuta)",
+     "p": 0.5007,
+     "fair": 2.0,
+     "min_odds": 2.1,
+     "real": null
+    }
+   ],
+   "prob": 0.5007,
+   "fair": 2.0,
+   "real": null,
+   "combos": null,
+   "set": [
     "tutti",
     "affidabili",
     "stagione"
    ],
-   "created": "2026-11-20",
+   "created": "2026-11-21",
+   "status": "IN CORSO"
+  },
+  {
+   "id": "5de59f3239",
+   "kind": "sistema",
+   "method": "BATISTUTA",
+   "title": "Sistema Batistuta 3 partite × 3 combinazioni",
+   "descr": "27 colonne: GG-GG / GG-NG / NG-GG per ogni partita",
+   "picks": [
+    {
+     "fx": "9abd87ae",
+     "lg": "G1",
+     "date": "2026-11-22",
+     "time": "17:30",
+     "home": "PAOK",
+     "away": "Kifisia",
+     "markets": [
+      "BAT"
+     ],
+     "name": "GG in almeno un tempo (Batistuta)",
+     "p": 0.5075,
+     "fair": 1.97,
+     "min_odds": 2.07,
+     "real": null
+    },
+    {
+     "fx": "8f494387",
+     "lg": "N1",
+     "date": "2026-11-21",
+     "time": "17:45",
+     "home": "Utrecht",
+     "away": "Cambuur",
+     "markets": [
+      "BAT"
+     ],
+     "name": "GG in almeno un tempo (Batistuta)",
+     "p": 0.5075,
+     "fair": 1.97,
+     "min_odds": 2.07,
+     "real": null
+    },
+    {
+     "fx": "12139faa",
+     "lg": "I1",
+     "date": "2026-11-23",
+     "time": "19:45",
+     "home": "Monza",
+     "away": "Fiorentina",
+     "markets": [
+      "BAT"
+     ],
+     "name": "GG in almeno un tempo (Batistuta)",
+     "p": 0.5075,
+     "fair": 1.97,
+     "min_odds": 2.07,
+     "real": null
+    }
+   ],
+   "prob": 0.1307,
+   "fair": 7.65,
+   "real": null,
+   "combos": 27,
+   "set": [
+    "tutti",
+    "affidabili",
+    "stagione"
+   ],
+   "created": "2026-11-21",
    "status": "IN CORSO"
   }
  ]
