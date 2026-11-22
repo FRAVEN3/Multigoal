@@ -15,15 +15,18 @@
 
   const load = () => { try { return JSON.parse(localStorage.getItem(KEY)) || {}; } catch (e) { return {}; } };
   let FORM = load();
-  for (const id of Object.keys(FORM)) if (!PL[id]) delete FORM[id];
+  for (const id of Object.keys(FORM)) if (!PL[id] || !FORM[id].sides) delete FORM[id];
   const save = () => { try { localStorage.setItem(KEY, JSON.stringify(FORM)); } catch (e) { /* memoria piena */ } };
 
   // ricalcola le probabilità con la formazione ufficiale
+  // ogni squadra solo quando è uscita la sua formazione (ESPN a volte pubblica prima una squadra e poi l'altra)
   function apply() {
     for (const [fx, f] of Object.entries(FORM)) {
       for (const pl of Object.values(PL[fx] || {}).flat()) {
+        const ids = (f.sides || {})[pl.side];
+        if (!ids) continue;
         if (pl.p0 == null) pl.p0 = pl.p;
-        const st = f.ids[pl.id] || "fuori";
+        const st = ids[pl.id] || "fuori";
         const mu = -Math.log(1 - Math.min(0.99, pl.p0)), e = pl.e || 0.8;
         pl.uff = st;
         pl.p = Math.round((1 - Math.exp(-mu * PLAY[st] / e)) * 10000) / 10000;
@@ -36,7 +39,7 @@
     const now = Date.now();
     const todo = Object.keys(PL).filter((id) => {
       const f = FX[id];
-      if (!f || (FORM[id] && FORM[id].n)) return false;
+      if (!f || (FORM[id] && FORM[id].sides && FORM[id].sides.h && FORM[id].sides.a)) return false;   // già complete
       const ko = MG.ko(f.date, f.time);
       return ko - BEFORE <= now && now <= ko + AFTER;
     });
@@ -48,9 +51,16 @@
         if (!ev) continue;
         const r = await fetch(`https://site.api.espn.com/apis/site/v2/sports/soccer/${ev.slug}/summary?event=${ev.id}`, { cache: "no-store" });
         const j = await r.json();
-        const ids = {};
-        (j.rosters || []).forEach((t) => (t.roster || []).forEach((p) => { ids[String(p.athlete.id)] = p.starter ? "titolare" : "panchina"; }));
-        if (Object.keys(ids).length >= 22) { FORM[id] = { n: Object.keys(ids).length, ids, t: now }; changed = true; }
+        const sides = Object.assign({}, (FORM[id] || {}).sides);
+        (j.rosters || []).forEach((t) => {
+          const ro = t.roster || [];
+          if (ro.filter((p) => p.starter).length < 11) return;     // formazione di questa squadra non ancora uscita
+          const ids = {};
+          ro.forEach((p) => { ids[String(p.athlete.id)] = p.starter ? "titolare" : "panchina"; });
+          const side = t.homeAway === "away" ? "a" : "h";
+          if (!sides[side]) { sides[side] = ids; changed = true; }
+        });
+        if (changed) FORM[id] = { sides, t: now };
       } catch (e) { /* riprovo al prossimo giro */ }
     }
     if (changed) {
