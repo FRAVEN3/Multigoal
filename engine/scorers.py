@@ -246,7 +246,10 @@ def run(fixtures, played, today: date, leagues):
                 names[f"SC_{pid}"] = f"Segna {a.get('displayName')}"
                 pl.append({"id": pid, "name": a.get("displayName"), "short": a.get("shortName") or a.get("displayName"),
                            "role": role, "p": round(p, 4), "gol": int(goals), "pres": int(app), "tit": int(starts),
-                           "tiri": int(shots), "porta": int(sot), "ultima": last_s or ("?" if not lu else "fuori"), "side": side[0]})
+                           "tiri": int(shots), "porta": int(sot), "ultima": last_s or ("?" if not lu else "fuori"), "side": side[0],
+                           # quanto si prevede che giochi (1 = tutta la partita): serve all'app per ricalcolare
+                           # la probabilità quando escono le formazioni ufficiali
+                           "e": round(p_start + SUB * p_sub, 3)})
             pl.sort(key=lambda x: -x["p"])
             res[side[0]] = pl[:8]
         if res:

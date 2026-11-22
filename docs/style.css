@@ -163,3 +163,4 @@ button.add { border: 2px solid var(--brand2); background: none; color: var(--bra
 button.add.on { background: var(--brand2); color: #fff; }
 .tag { display: inline-block; font-size: 11px; padding: 0 6px; border-radius: 99px; border: 1px solid var(--line); color: var(--muted); }
 .tag.warn { border-color: var(--lose); color: var(--lose); }
+.tag.ok { border-color: var(--win); color: var(--win); }

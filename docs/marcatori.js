@@ -32,7 +32,7 @@
       <div><b>${esc(p.name)}</b> <span class="small muted">${esc(p.team)} · ${RUOLO[p.role] || ""}</span>
         ${withMatch ? `<div class="small muted">contro ${esc(p.opp)} · ${esc(lgName(p.f.lg))} · ${fdate(p.f.date, p.f.time)}</div>` : ""}
         <div class="small muted">${p.gol} gol in ${p.pres} presenze (${p.tit} da titolare) · ${p.tiri} tiri, ${p.porta} in porta</div>
-        <span class="tag ${u[1]}">${u[0]}</span>
+        ${p.uff ? MG.formTag(p) : `<span class="tag ${u[1]}">${u[0]}</span>`}
         <div class="scbar"><i style="width:${Math.round(p.p * 100)}%"></i></div></div>
       <div class="scp">${pct(p.p)}<div class="small muted" style="font-weight:400">quota min ${q2(minOdds(p.p))}</div></div>
       <button class="add ${isSel(p) ? "on" : ""}" data-scsel="${esc(p.fx)}|${esc(p.id)}" title="${isSel(p) ? "Togli" : "Aggiungi alla schedina"}">${isSel(p) ? "✓" : "+"}</button>
@@ -86,7 +86,8 @@
       }).join("") || `<div class="empty">Nessuna partita.</div>`;
     }
     const nBol = D.bollette.filter((b) => b.method === "MARCATORI").length;
-    return `<div class="note">Probabilità che il giocatore <b>segni almeno un gol</b>, calcolata con: gol e tiri in porta di questa stagione, quanto gioca da titolare, se era in campo nell'ultima partita e quanti gol la sua squadra dovrebbe fare contro quell'avversario.
+    return `<div class="note">Da 100 minuti prima di ogni partita l'app controlla le <b>formazioni ufficiali</b>: ✅ titolare, 🪑 panchina o ⛔ non convocato (infortunato, squalificato o fuori rosa), e ricalcola la probabilità. Tieni l'app aperta o riaprila poco prima della partita.</div>
+      <div class="note">Probabilità che il giocatore <b>segni almeno un gol</b>, calcolata con: gol e tiri in porta di questa stagione, quanto gioca da titolare, se era in campo nell'ultima partita e quanti gol la sua squadra dovrebbe fare contro quell'avversario.
       Dati ESPN (non ci sono gli infortuni: "non in distinta" nell'ultima partita è il segnale più vicino). Quanto sono giuste queste percentuali lo vedrai in <b>📊 Rendimento</b> alla voce "Marcatore".</div>
       ${nBol ? `<div class="row"><button class="btn" data-scbol="1">Vedi le ${nBol} bollette marcatori dell'app</button></div>` : ""}
       ${selHtml()}

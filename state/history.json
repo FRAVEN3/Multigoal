@@ -7020,9 +7020,9 @@
    "real": null,
    "combos": null,
    "set": [
-    "tutti",
     "affidabili",
-    "stagione"
+    "stagione",
+    "tutti"
    ],
    "created": "2026-11-22",
    "status": "IN CORSO"
@@ -7137,9 +7137,9 @@
    "combos": 20,
    "min_ok": 3,
    "set": [
-    "tutti",
     "affidabili",
-    "stagione"
+    "stagione",
+    "tutti"
    ],
    "created": "2026-11-22",
    "status": "IN CORSO"

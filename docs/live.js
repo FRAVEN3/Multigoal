@@ -76,7 +76,7 @@
     let hh = null, ha = null;
     if (s === "in" && period === 1) { hh = hs; ha = as; }
     else if (hT === hs && aT === as && s !== "pre") { hh = h1; ha = a1; }
-    return { home: H.team.displayName, homeS: H.team.shortDisplayName, away: A.team.displayName, awayS: A.team.shortDisplayName,
+    return { id: e.id, home: H.team.displayName, homeS: H.team.shortDisplayName, away: A.team.displayName, awayS: A.team.shortDisplayName,
       start: Date.parse(e.date), st: s, period, clock: st.displayClock || ty.shortDetail || "", fh: hs, fa: as, hh, ha, sc };
   }
 
@@ -305,7 +305,7 @@
     lastSig = sig;
   }
   let lastSig = "";
-  const SHOWN = new Set(["bollette", "storico", "sistema", "scalata", "bomba", "rendimento"]);
+  const SHOWN = new Set(["bollette", "storico", "sistema", "scalata", "bomba", "rendimento", "marcatori"]);
 
   // ---------- risultati finali dal live, finché non arriva quello ufficiale ----------
   // Così storico, rendimento, sistemi e scalate si chiudono appena finisce la partita invece di aspettare il lunedì.
@@ -397,6 +397,15 @@
   }
 
   MG.views.live = view;
+  // partita ESPN corrispondente (scarica la giornata se serve): la usa la scheda Marcatori per le formazioni ufficiali
+  MG.espnFind = async (p) => {
+    const slug = SLUG[p.lg];
+    if (!slug || p.lg === "SWZ") return null;
+    const c = cache[`${slug}|${p.date.replace(/-/g, "")}`];
+    if (!c || Date.now() - c.t > 10 * 60000) await fetchOne(slug, p.date);
+    const ev = espnFor(p);
+    return ev ? { id: ev.id, slug } : null;
+  };
   const main = document.getElementById("main");
   main.addEventListener("click", (ev) => {
     if (MG.state.tab !== "live") return;

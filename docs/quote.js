@@ -43,6 +43,8 @@
     if (!os.length || os.some((o) => !o)) return null;
     return os.reduce((a, o) => a * o.q, 1);
   }
+  // probabilità della giocata: per i marcatori quella aggiornata con le formazioni ufficiali
+  const pOf = (pk) => (pk.markets.length === 1 && /^SC_/.test(pk.markets[0]) && FX[pk.fx] && FX[pk.fx].est.probs[pk.markets[0]]) || pk.p;
   // giudizio: resa attesa = probabilità × quota − 1
   function verdict(p, q) {
     const ev = p * q - 1;
@@ -54,13 +56,13 @@
   // ---------- caselle nella bolletta ----------
   function verdHtml(pk) {
     const ps = parts(pk.markets), po = pickOdds(pk);
-    return po ? `${ps.length > 1 ? `insieme ${q2(po.q)} · ` : ""}${verdict(pk.p, po.q)}` : `<span class="muted">serve almeno ${q2(pk.min_odds)}${ps.length > 1 ? " in tutto" : ""}</span>`;
+    return po ? `${ps.length > 1 ? `insieme ${q2(po.q)} · ` : ""}${verdict(pOf(pk), po.q)}` : `<span class="muted">serve almeno ${q2(pk.min_odds)}${ps.length > 1 ? " in tutto" : ""}</span>`;
   }
   MG.quoteHtml = (pk) => {
     if (pk.esito) return "";
     const ps = parts(pk.markets), editable = !started(pk) && FX[pk.fx];
     const po = pickOdds(pk);
-    if (!editable) return po ? `<div class="small muted">quota ${q2(po.q)} · ${verdict(pk.p, po.q)}</div>` : "";
+    if (!editable) return po ? `<div class="small muted">quota ${q2(po.q)} · ${verdict(pOf(pk), po.q)}</div>` : "";
     const inputs = ps.map((m) => {
       const o = oddsOf(pk, m);
       return `<label class="qin">${ps.length > 1 ? `<span>${esc(short(m))}</span>` : ""}<input class="odds" type="number" step="0.01" min="1.01" inputmode="decimal"

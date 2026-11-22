@@ -193,6 +193,7 @@
         <div class="small muted">${esc(lgName(pk.lg))} · ${fdate(pk.date, pk.time)}</div></div>
       <div class="r"><div class="w">${esc(pk.name)}${es}</div>
         <div class="small muted">${pct(pk.p)} · quota min ${q2(pk.min_odds)}${pk.real ? " · media bookmaker " + q2(pk.real) : ""}</div></div>
+      ${MG.formPick && !pk.esito ? `<div style="grid-column:1/-1">${MG.formPick(pk)}</div>` : ""}
       ${MG.quoteHtml ? `<div style="grid-column:1/-1">${MG.quoteHtml(pk)}</div>` : ""}
     </div>`;
   }
