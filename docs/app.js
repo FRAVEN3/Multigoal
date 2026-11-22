@@ -34,7 +34,7 @@
   const views = {};
   // Bollino colorato. Per i metodi (Raducioiu, Batistuta, ...) si apre una spiegazione:
   // ctx = la partita (oggetto con id) oppure l'elenco delle partite di una bolletta.
-  const METODI = new Set(["RADUCIOIU", "BATISTUTA", "NO BET", "MULTIGOL"]);
+  const METODI = new Set(["RADUCIOIU", "BATISTUTA", "NO BET", "MULTIGOL"]);   // MARCATORI: bollino semplice
   const badge = (m, ctx) => {
     const cls = `badge b-${esc(String(m).replace(/\s/g, ""))}`;
     if (!METODI.has(m)) return `<span class="${cls}">${esc(m ?? "dati pochi")}</span>`;
@@ -199,6 +199,12 @@
   // stato della bolletta della settimana dai risultati: persa appena una giocata è persa, vinta quando sono vinte tutte
   function liveStatus(s) {
     const js = s.picks.map(liveJ);
+    if (s.min_ok) {   // sistema a correzione: vinta con almeno min_ok giocate prese
+      const w = js.filter((j) => j === "W").length, l = js.filter((j) => j === "L").length;
+      if (s.picks.length - l < s.min_ok) return badge("PERSA") + " ";
+      if (w >= s.min_ok && js.every((j) => j === "W" || j === "L")) return badge("VINTA") + " ";
+      return js.some((j) => j) ? badge("IN CORSO") + " " : "";
+    }
     if (js.includes("L")) return badge("PERSA") + " ";
     if (js.every((j) => j === "W")) return badge("VINTA") + " ";
     if (js.some((j) => j)) return badge("IN CORSO") + " ";
@@ -232,7 +238,7 @@
       Le percentuali sono già corrette con quello che è uscito davvero nelle stagioni passate.
       <b>Gioca solo se la quota del bookmaker è uguale o più alta della "quota min".</b></div>
       ${campChips()}
-      ${chips("metodo", [["TUTTE", "Tutte"], ["MULTIGOL", "Multigol"], ["BATISTUTA", "Batistuta"], ["RADUCIOIU", "Raducioiu"]])}
+      ${chips("metodo", [["TUTTE", "Tutte"], ["MULTIGOL", "Multigol"], ["BATISTUTA", "Batistuta"], ["RADUCIOIU", "Raducioiu"], ["MARCATORI", "Marcatori"]])}
       ${relNote()}
       ${list.length ? list.map((s) => slipHtml(s, false)).join("") : `<div class="empty">Nessuna bolletta per ora.<br>Il calendario del fine settimana di solito esce il venerdì.</div>`}`;
   }

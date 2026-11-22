@@ -19,8 +19,8 @@
   const addDays = (s, n) => { const d = new Date(s + "T12:00:00"); d.setDate(d.getDate() + n); return iso(d); };
   const monday = (s) => { const d = new Date(s + "T12:00:00"); d.setDate(d.getDate() - ((d.getDay() + 6) % 7)); return iso(d); };
   const normTitle = (t) => String(t).replace(/ #\d+$/, "");
-  const mkName = (k) => k.split("+").sort().map((m) => MK[m] || m).join(" / ");
-  const NOMI = { MULTIGOL: "Multigol", BATISTUTA: "Batistuta", RADUCIOIU: "Raducioiu" };
+  const mkName = (k) => (/^SC_/.test(k) ? "Marcatore (segna)" : k.split("+").sort().map((m) => MK[m] || m).join(" / "));
+  const NOMI = { MULTIGOL: "Multigol", BATISTUTA: "Batistuta", RADUCIOIU: "Raducioiu", MARCATORI: "Marcatori" };
 
   // ---------- dati: bollette dell'app (quest'anno) e rifatte sulle stagioni passate ----------
   const ES = { VINTA: "V", PERSA: "P", ANNULLATA: "A", "IN CORSO": "C" };
@@ -224,7 +224,7 @@
     const chip = (key, v, l) => `<button class="chip ${ui[key] === v ? "on" : ""}" data-rd="${key}=${v}">${l}</button>`;
     return `<div class="chips">${chip("sez", "app", "Bollette dell'app")}${chip("sez", "mie", "Le mie giocate")}</div>
       <div class="chips">${chip("per", "tutto", "Tutto")}${chip("per", "4s", "Ultime 4 settimane")}
-        <span style="width:8px"></span>${chip("met", "TUTTI", "Tutti")}${chip("met", "MULTIGOL", "Multigol")}${chip("met", "BATISTUTA", "Batistuta")}${chip("met", "RADUCIOIU", "Raducioiu")}</div>
+        <span style="width:8px"></span>${chip("met", "TUTTI", "Tutti")}${chip("met", "MULTIGOL", "Multigol")}${chip("met", "BATISTUTA", "Batistuta")}${chip("met", "RADUCIOIU", "Raducioiu")}${chip("met", "MARCATORI", "Marcatori")}</div>
       ${ui.sez === "app" ? (MG.campChips ? MG.campChips() : "") + appHtml() : myHtml()}`;
   }
 

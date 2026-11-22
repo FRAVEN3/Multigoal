@@ -45,16 +45,31 @@ def _find(results, pick):
     return best[1] if best else None
 
 
-def settle(hist, matches, today: date, stake: float):
+def settle(hist, matches, today: date, stake: float, scorers=()):
+    """scorers = marcatori delle partite giocate [{lg, date, home, away, sc: [id giocatori]}] per le giocate "segna X"."""
     results = {}
     for m in matches:
         results.setdefault((m["lg"], m["home"], m["away"]), []).append(m)
+    goals = {}
+    for e in scorers:
+        goals.setdefault((e["lg"], e["home"], e["away"]), []).append(e)
     for s in hist["slips"]:
         if s["status"] != "IN CORSO":
             continue
         any_lost, all_done = False, True
         for pk in s["picks"]:
             if pk.get("esito") in ("W", "L"):
+                any_lost |= pk["esito"] == "L"
+                continue
+            if pk["markets"][0].startswith("SC_"):
+                m = _find(goals, pk)
+                if m is None:
+                    all_done = False
+                    if date.fromisoformat(pk["date"]) < today - timedelta(days=10):
+                        pk["esito"] = "ANN"
+                    continue
+                pk["esito"] = "W" if any(mk[3:] in m["sc"] for mk in pk["markets"]) else "L"
+                pk["score"] = "ha segnato" if pk["esito"] == "W" else "non ha segnato"
                 any_lost |= pk["esito"] == "L"
                 continue
             m = _find(results, pk)
@@ -70,6 +85,16 @@ def settle(hist, matches, today: date, stake: float):
             pk["esito"] = "W" if any(res) else "L"
             pk["score"] = f'{m["fh"]}-{m["fa"]}' + (f' ({m["hh"]}-{m["ha"]})' if m.get("hh") is not None else "")
             any_lost |= pk["esito"] == "L"
+        if s.get("min_ok"):   # sistema a correzione: basta che escano min_ok giocate
+            w = sum(pk.get("esito") == "W" for pk in s["picks"])
+            l = sum(pk.get("esito") in ("L", "ANN") for pk in s["picks"])
+            if w >= s["min_ok"] and all(pk.get("esito") for pk in s["picks"]):
+                s["status"] = "VINTA"
+            elif len(s["picks"]) - l < s["min_ok"]:
+                s["status"] = "PERSA"
+            if s["status"] in ("VINTA", "PERSA"):
+                s["settled"] = today.isoformat()
+            continue
         if any_lost:
             s["status"] = "PERSA"
         elif all_done or all(pk.get("esito") in ("W", "ANN") for pk in s["picks"]):

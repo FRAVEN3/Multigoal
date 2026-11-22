@@ -13,6 +13,7 @@
   const TEMPI = new Set(["BAT", "RAD", "GGGG", "GGNG", "NGGG"]);
   function hit(mk, r) {
     const [fh, fa, hh, ha] = r, t = fh + fa;
+    if (/^SC_/.test(mk)) return (r[4] || []).includes(mk.slice(3));   // marcatore: r[4] = chi ha segnato
     if (/^RS\d\d$/.test(mk)) return fh === +mk[2] && fa === +mk[3];   // risultato esatto singolo, es. RS10 = 1-0
     if (TEMPI.has(mk) && (hh == null || ha == null)) return false;
     const s1 = hh > 0 && ha > 0, s2 = fh - hh > 0 && fa - ha > 0;
@@ -98,6 +99,13 @@
       if (rest > 0) rows.push({ hits: it.opts.map(() => false), w: rest });   // risultati oltre 5-5
     } else if (h.length && a.length) { add(h, 0.5 / h.length); add(a, 0.5 / a.length); }
     else add(h.length ? h : a, 1 / Math.max(1, h.length + a.length));
+    // marcatori: ogni riga si divide in "segna" / "non segna" con la sua probabilità
+    it.opts.forEach((o, j) => {
+      if (!/^SC_/.test(o.mk)) return;
+      const p = it.fx.est.probs[o.mk] || 0;
+      const rs = rows.splice(0);
+      rs.forEach((r) => { const a = r.hits.slice(), b = r.hits.slice(); a[j] = true; b[j] = false; rows.push({ hits: a, w: r.w * p }, { hits: b, w: r.w * (1 - p) }); });
+    });
     for (let iter = 0; iter < 20; iter++) {
       it.opts.forEach((o, j) => {
         const target = it.fx.est.probs[o.mk];
@@ -330,8 +338,9 @@
     const v = sv.items.map((it) => {
       const m = findResult(it);
       if (!m) return null;
+      if (it.opts.some((o) => /^SC_/.test(o.mk)) && !m.sc) return null;   // marcatori non ancora noti
       played++;
-      const r = [m.fh, m.fa, m.hh, m.ha];
+      const r = [m.fh, m.fa, m.hh, m.ha, m.sc];
       it.score = `${m.fh}-${m.fa}` + (m.hh != null ? ` (${m.hh}-${m.ha})` : "");
       it.opts.forEach((o) => (o.ok = hit(o.mk, r)));
       return it.opts.reduce((s, o) => s + (o.ok ? o.odds : 0), 0);

@@ -10,9 +10,9 @@ import os
 import sys
 from datetime import date, datetime, timedelta
 
-from engine import backtest, calibration, data, exact, reliability, replay, tracker
+from engine import backtest, calibration, data, exact, reliability, replay, scorers, tracker
 from engine.markets import MARKETS
-from engine.slips import build_slips
+from engine.slips import build_scorer_slips, build_slips
 from engine.stats import TeamIndex, estimate, league_summary, team_table
 
 ROOT = os.path.dirname(os.path.abspath(__file__))
@@ -125,12 +125,29 @@ def main():
     for name, ex in (("stagioni passate", excl), ("stagione in corso", excl_cur)):
         if ex:
             print(f"  poco affidabili ({name}): {', '.join(f'{lg} {t}' for lg, t in sorted(ex))}")
+    # --- marcatori (dati ESPN): probabilità di segnare e bollette marcatori ----------
+    print("Marcatori (ESPN)...")
+    try:
+        players, sc_esiti, sc_names = scorers.run(fixtures, played, today, leagues)
+    except Exception as e:   # se ESPN non risponde l'aggiornamento continua senza marcatori
+        print(f"  ! marcatori non disponibili: {e}")
+        players, sc_esiti, sc_names = {}, [], {}
+    for fx in fixtures:
+        for side in players.get(fx["id"], {}).values():
+            for pl in side:
+                fx["est"]["probs"][f"SC_{pl['id']}"] = pl["p"]
+                fx["est"]["raw"][f"SC_{pl['id']}"] = pl["p"]
+    sslips = build_scorer_slips(fixtures, players, cfg)
+    for s in sslips:
+        s["set"] = ["tutti", "affidabili", "stagione"]
+    slips += sslips
+    print(f"  marcatori: {sum(len(v) for x in players.values() for v in x.values())} giocatori in {len(players)} partite, {len(sslips)} bollette")
     print(f"  {sum('tutti' in s['set'] for s in slips)} bollette create (+{sum('tutti' not in s['set'] for s in slips)} solo nelle serie dei campionati affidabili)")
 
     # --- storico ---------------------------------------------------------------
     hist = tracker.load()
     added = tracker.add_new(hist, slips, today)
-    tracker.settle(hist, played, today, cfg["bollette"]["puntata"])
+    tracker.settle(hist, played, today, cfg["bollette"]["puntata"], sc_esiti)
     tracker.save(hist)
     print(f"  storico: {added} nuove, {len(hist['slips'])} totali")
 
@@ -142,12 +159,14 @@ def main():
         if summ:
             stats[lg] = {"riepilogo": summ, "squadre": team_table(lm, current)}
 
+    sc_map = {(e["lg"], e["date"], e["home"], e["away"]): e["sc"] for e in sc_esiti}   # chi ha segnato
     out = {
         "aggiornato": datetime.now().strftime("%d/%m/%Y %H:%M"),
         "oggi": today.isoformat(),
         "stagione": data.season_label(current),
         "config": cfg,
-        "mercati": {**{m[0]: m[1] for m in MARKETS}, "RS": "Risultato esatto (singolo)", **re_names},
+        "mercati": {**{m[0]: m[1] for m in MARKETS}, "RS": "Risultato esatto (singolo)", **re_names, **sc_names},
+        "marcatori": players,
         "partite": fixtures,
         "consigli": tips,
         "bollette": slips,
@@ -157,7 +176,8 @@ def main():
         "backtest": bt,
         "affidabilita_stagione": rel_cur,
         "risultati": [
-            {k: m[k] for k in ("lg", "date", "home", "away", "fh", "fa", "hh", "ha")}
+            {**{k: m[k] for k in ("lg", "date", "home", "away", "fh", "fa", "hh", "ha")},
+             **({"sc": sc_map[(m["lg"], m["date"], m["home"], m["away"])]} if (m["lg"], m["date"], m["home"], m["away"]) in sc_map else {})}
             for m in played if m["date"] >= (today - timedelta(days=45)).isoformat()
         ],
     }

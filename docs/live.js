@@ -64,8 +64,10 @@
     else if (s === "post" && !ty.completed) s = "rinv";
     // risultato del primo tempo dai minuti dei gol (l'autogol è già assegnato alla squadra che ne beneficia)
     let h1 = 0, a1 = 0, hT = 0, aT = 0;
+    const sc = [];   // chi ha segnato (gli autogol non contano per il marcatore)
     (c.details || []).forEach((x) => {
       if (!x.scoringPlay) return;
+      if (!x.ownGoal && x.athletesInvolved && x.athletesInvolved[0]) sc.push(String(x.athletesInvolved[0].id));
       const first = parseInt((x.clock && x.clock.displayValue) || "99", 10) <= 45;
       if (x.team && x.team.id === H.team.id) { hT++; if (first) h1++; }
       else if (x.team && x.team.id === A.team.id) { aT++; if (first) a1++; }
@@ -75,7 +77,7 @@
     if (s === "in" && period === 1) { hh = hs; ha = as; }
     else if (hT === hs && aT === as && s !== "pre") { hh = h1; ha = a1; }
     return { home: H.team.displayName, homeS: H.team.shortDisplayName, away: A.team.displayName, awayS: A.team.shortDisplayName,
-      start: Date.parse(e.date), st: s, period, clock: st.displayClock || ty.shortDetail || "", fh: hs, fa: as, hh, ha };
+      start: Date.parse(e.date), st: s, period, clock: st.displayClock || ty.shortDetail || "", fh: hs, fa: as, hh, ha, sc };
   }
 
   async function fetchOne(slug, date) {
@@ -122,11 +124,16 @@
     if (r) return fromRes(r, ev);
     return ev || null;
   }
-  const fromRes = (r, ev) => ({ st: "post", fh: r.fh, fa: r.fa, hh: r.hh ?? (ev ? ev.hh : null), ha: r.ha ?? (ev ? ev.ha : null), clock: "Finale" });
+  const fromRes = (r, ev) => ({ st: "post", fh: r.fh, fa: r.fa, hh: r.hh ?? (ev ? ev.hh : null), ha: r.ha ?? (ev ? ev.ha : null), sc: r.sc || (ev ? ev.sc : null), clock: "Finale" });
 
   // ---------- esito di una giocata: W/L = deciso, w/l = "se finisse adesso", n = non ancora ----------
   function judge(mk, L) {
     if (!L || L.st === "pre" || L.st === "rinv") return "n";
+    if (/^SC_/.test(mk)) {   // marcatore: vinta appena segna, persa solo a fine partita
+      if (!L.sc) return "n";
+      if (L.sc.includes(mk.slice(3))) return "W";
+      return L.st === "post" ? "L" : "l";
+    }
     const T = TEMPI.has(mk);
     if (L.st === "post") { if (T && L.hh == null) return "n"; return hit(mk, [L.fh, L.fa, L.hh, L.ha]) ? "W" : "L"; }
     const first = L.st === "in" && L.period === 1;
@@ -307,7 +314,7 @@
   for (const k of Object.keys(FIN)) if (FIN[k].date < addDays(today(), -30)) delete FIN[k];
   MG.liveFinal = (p) => {
     const f = FIN[keyOf(p)];
-    return f ? { lg: p.lg, date: p.date, home: p.home, away: p.away, fh: f.fh, fa: f.fa, hh: f.hh, ha: f.ha, live: true } : null;
+    return f ? { lg: p.lg, date: p.date, home: p.home, away: p.away, fh: f.fh, fa: f.fa, hh: f.hh, ha: f.ha, sc: f.sc, live: true } : null;
   };
   const official = (p) => (D.risultati || []).some((m) => m.lg === p.lg && m.home === p.home && m.away === p.away && Math.abs(new Date(m.date) - new Date(p.date)) <= 4 * 864e5);
   // partite giocate (fino a 5 giorni fa) senza risultato ufficiale, in bollette dell'app, sistemi e scalate
@@ -325,7 +332,7 @@
     let n = 0;
     list.forEach((p) => {
       const ev = espnFor(p);
-      if (ev && ev.st === "post" && ev.hh != null) { FIN[keyOf(p)] = { fh: ev.fh, fa: ev.fa, hh: ev.hh, ha: ev.ha, date: p.date }; n++; }
+      if (ev && ev.st === "post" && ev.hh != null) { FIN[keyOf(p)] = { fh: ev.fh, fa: ev.fa, hh: ev.hh, ha: ev.ha, sc: ev.sc, date: p.date }; n++; }
     });
     if (n) store(FKEY, FIN);
     return n;
@@ -340,12 +347,17 @@
         if (pk.esito) return;
         const r = MG.liveFinal(pk);
         if (!r) return;
-        pk.esito = pk.markets.some((m) => hit(m, [r.fh, r.fa, r.hh, r.ha])) ? "W" : "L";
+        if (pk.markets.some((m) => /^SC_/.test(m)) && !r.sc) return;
+        pk.esito = pk.markets.some((m) => hit(m, [r.fh, r.fa, r.hh, r.ha, r.sc])) ? "W" : "L";
         pk.score = `${r.fh}-${r.fa} (${r.hh}-${r.ha})`;
         pk.live = true; changed = true;
       });
-      const lost = s.picks.some((pk) => pk.esito === "L"), done = s.picks.every((pk) => pk.esito === "W" || pk.esito === "ANN");
-      if (!lost && !(done && s.picks.some((pk) => pk.esito === "W"))) return;
+      // sistema a correzione (marcatori 2 su 4...): basta che escano min_ok giocate
+      const nW = s.picks.filter((pk) => pk.esito === "W").length, nL = s.picks.filter((pk) => pk.esito === "L" || pk.esito === "ANN").length;
+      const lost = s.min_ok ? s.picks.length - nL < s.min_ok : s.picks.some((pk) => pk.esito === "L");
+      const done = s.picks.every((pk) => pk.esito === "W" || pk.esito === "ANN");
+      const won = s.min_ok ? nW >= s.min_ok && s.picks.every((pk) => pk.esito) : done && nW > 0;
+      if (!lost && !won) return;
       s.status = lost ? "PERSA" : "VINTA"; s.settled = today(); s.live = true;
       if (s.real) { s.stake = stake; s.profit = Math.round((s.status === "VINTA" ? stake * s.real - stake : -stake) * 100) / 100; }
       // aggiorno anche il riepilogo per metodo della scheda Storico

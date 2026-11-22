@@ -16,6 +16,12 @@ jobs:
       - uses: actions/setup-python@v5
         with:
           python-version: "3.12"
+      - name: Dati ESPN già scaricati (marcatori)
+        uses: actions/cache@v4
+        with:
+          path: data/espn
+          key: espn-${{ github.run_id }}
+          restore-keys: espn-
       - run: python build.py
       - name: Salva i nuovi dati
         run: |

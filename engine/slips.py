@@ -1,5 +1,6 @@
 """Costruzione delle bollette della settimana a partire dalle stime sulle partite in programma."""
 import hashlib
+import math
 
 from .markets import MARKET_NAMES, MULTIGOL_ORDER
 
@@ -135,3 +136,52 @@ def build_slips(fixtures, cfg, excl=frozenset()):
                                picks, "4 colonne, come il foglio 'Contab Sistema RE'", combos=4))
 
     return slips, tips
+
+
+# ---------- MARCATORI ----------
+def _at_least(ps, k):
+    """Probabilità che almeno k eventi su n escano (eventi indipendenti)."""
+    dp = [1.0] + [0.0] * len(ps)
+    for p in ps:
+        for j in range(len(ps), 0, -1):
+            dp[j] = dp[j] * (1 - p) + dp[j - 1] * p
+        dp[0] *= 1 - p
+    return sum(dp[k:])
+
+
+def build_scorer_slips(fixtures, players, cfg):
+    """Bollette sui marcatori più probabili: singole, doppia e sistemi a correzione (2 su 4, 3 su 6).
+    Una sola giocata per partita, così gli eventi sono indipendenti."""
+    margin = cfg["bollette"]["margine_valore"]
+    best = []
+    for fx in fixtures:
+        pl = players.get(fx["id"])
+        if not pl:
+            continue
+        top = max((x for side in pl.values() for x in side), key=lambda x: x["p"], default=None)
+        if top:
+            team = fx["home"] if top["side"] == "h" else fx["away"]
+            best.append((fx, top, team))
+    best.sort(key=lambda x: -x[1]["p"])
+
+    def pick(fx, pl, team):
+        p = pl["p"]
+        return {"fx": fx["id"], "lg": fx["lg"], "date": fx["date"], "time": fx.get("time", ""), "home": fx["home"], "away": fx["away"],
+                "markets": [f"SC_{pl['id']}"], "name": f"Segna {pl['name']} ({team})", "p": round(p, 4), "fair": _odds(p),
+                "min_odds": round(margin / p, 2), "real": None}
+    picks = [pick(*b) for b in best]
+    slips = []
+    for pk in picks[:5]:
+        slips.append(make_slip("singola", "MARCATORI", "Singola marcatore", [pk], "Il marcatore più probabile di una partita"))
+    if len(picks) >= 2:
+        slips.append(make_slip("multipla", "MARCATORI", "Doppia marcatori", picks[:2], "I due marcatori più probabili, in partite diverse"))
+    for k, n in ((2, 4), (3, 6)):
+        if len(picks) >= n:
+            sel = picks[:n]
+            s = make_slip("sistema", "MARCATORI", f"Sistema marcatori {k} su {n}", sel,
+                          f"Basta che segnino {k} giocatori su {n}: {math.comb(n, k)} colonne", combos=math.comb(n, k))
+            s["min_ok"] = k
+            s["prob"] = round(_at_least([p["p"] for p in sel], k), 4)
+            s["fair"] = None
+            slips.append(s)
+    return slips

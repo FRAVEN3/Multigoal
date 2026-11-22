@@ -6043,9 +6043,9 @@
    "real": null,
    "combos": null,
    "set": [
-    "tutti",
     "affidabili",
-    "stagione"
+    "stagione",
+    "tutti"
    ],
    "created": "2026-11-22",
    "status": "IN CORSO"
@@ -6127,9 +6127,9 @@
    "real": null,
    "combos": null,
    "set": [
-    "tutti",
     "affidabili",
-    "stagione"
+    "stagione",
+    "tutti"
    ],
    "created": "2026-11-22",
    "status": "IN CORSO"
@@ -6163,9 +6163,9 @@
    "real": null,
    "combos": null,
    "set": [
-    "tutti",
     "affidabili",
-    "stagione"
+    "stagione",
+    "tutti"
    ],
    "created": "2026-11-22",
    "status": "IN CORSO"
@@ -6199,9 +6199,9 @@
    "real": null,
    "combos": null,
    "set": [
-    "tutti",
     "affidabili",
-    "stagione"
+    "stagione",
+    "tutti"
    ],
    "created": "2026-11-22",
    "status": "IN CORSO"
@@ -6235,9 +6235,9 @@
    "real": null,
    "combos": null,
    "set": [
-    "tutti",
     "affidabili",
-    "stagione"
+    "stagione",
+    "tutti"
    ],
    "created": "2026-11-22",
    "status": "IN CORSO"
@@ -6271,9 +6271,9 @@
    "real": null,
    "combos": null,
    "set": [
-    "tutti",
     "affidabili",
-    "stagione"
+    "stagione",
+    "tutti"
    ],
    "created": "2026-11-22",
    "status": "IN CORSO"
@@ -6307,9 +6307,9 @@
    "real": null,
    "combos": null,
    "set": [
-    "tutti",
     "affidabili",
-    "stagione"
+    "stagione",
+    "tutti"
    ],
    "created": "2026-11-22",
    "status": "IN CORSO"
@@ -6359,9 +6359,9 @@
    "real": null,
    "combos": 9,
    "set": [
-    "tutti",
     "affidabili",
-    "stagione"
+    "stagione",
+    "tutti"
    ],
    "created": "2026-11-22",
    "status": "IN CORSO"
@@ -6427,9 +6427,9 @@
    "real": null,
    "combos": 27,
    "set": [
-    "tutti",
     "affidabili",
-    "stagione"
+    "stagione",
+    "tutti"
    ],
    "created": "2026-11-22",
    "status": "IN CORSO"
@@ -6463,8 +6463,8 @@
    "real": null,
    "combos": null,
    "set": [
-    "tutti",
-    "stagione"
+    "stagione",
+    "tutti"
    ],
    "created": "2026-11-22",
    "status": "IN CORSO"
@@ -6516,9 +6516,9 @@
    "real": null,
    "combos": 4,
    "set": [
-    "tutti",
     "affidabili",
-    "stagione"
+    "stagione",
+    "tutti"
    ],
    "created": "2026-11-22",
    "status": "IN CORSO"
@@ -6553,6 +6553,593 @@
    "combos": null,
    "set": [
     "affidabili"
+   ],
+   "created": "2026-11-22",
+   "status": "IN CORSO"
+  },
+  {
+   "id": "c2a1a5557f",
+   "kind": "singola",
+   "method": "MARCATORI",
+   "title": "Singola marcatore",
+   "descr": "Il marcatore più probabile di una partita",
+   "picks": [
+    {
+     "fx": "630f0b86",
+     "lg": "D1",
+     "date": "2026-11-22",
+     "time": "16:30",
+     "home": "Werder Bremen",
+     "away": "Hamburg",
+     "markets": [
+      "SC_170257"
+     ],
+     "name": "Segna Niclas Füllkrug (Werder Bremen)",
+     "p": 0.6649,
+     "fair": 1.5,
+     "min_odds": 1.58,
+     "real": null
+    }
+   ],
+   "prob": 0.6649,
+   "fair": 1.5,
+   "real": null,
+   "combos": null,
+   "set": [
+    "affidabili",
+    "stagione",
+    "tutti"
+   ],
+   "created": "2026-11-22",
+   "status": "IN CORSO"
+  },
+  {
+   "id": "021cb0d1f4",
+   "kind": "singola",
+   "method": "MARCATORI",
+   "title": "Singola marcatore",
+   "descr": "Il marcatore più probabile di una partita",
+   "picks": [
+    {
+     "fx": "06d2899c",
+     "lg": "T1",
+     "date": "2026-11-22",
+     "time": "16:00",
+     "home": "Trabzonspor",
+     "away": "Eyupspor",
+     "markets": [
+      "SC_173896"
+     ],
+     "name": "Segna Mohamed Salah (Trabzonspor)",
+     "p": 0.5765,
+     "fair": 1.73,
+     "min_odds": 1.82,
+     "real": null
+    }
+   ],
+   "prob": 0.5765,
+   "fair": 1.73,
+   "real": null,
+   "combos": null,
+   "set": [
+    "affidabili",
+    "stagione",
+    "tutti"
+   ],
+   "created": "2026-11-22",
+   "status": "IN CORSO"
+  },
+  {
+   "id": "fdc5c603c5",
+   "kind": "singola",
+   "method": "MARCATORI",
+   "title": "Singola marcatore",
+   "descr": "Il marcatore più probabile di una partita",
+   "picks": [
+    {
+     "fx": "96cf42a6",
+     "lg": "N1",
+     "date": "2026-11-22",
+     "time": "11:15",
+     "home": "Twente",
+     "away": "Willem II",
+     "markets": [
+      "SC_177042"
+     ],
+     "name": "Segna Wout Weghorst (Twente)",
+     "p": 0.5618,
+     "fair": 1.78,
+     "min_odds": 1.87,
+     "real": null
+    }
+   ],
+   "prob": 0.5618,
+   "fair": 1.78,
+   "real": null,
+   "combos": null,
+   "set": [
+    "affidabili",
+    "stagione",
+    "tutti"
+   ],
+   "created": "2026-11-22",
+   "status": "IN CORSO"
+  },
+  {
+   "id": "abf6ad2215",
+   "kind": "singola",
+   "method": "MARCATORI",
+   "title": "Singola marcatore",
+   "descr": "Il marcatore più probabile di una partita",
+   "picks": [
+    {
+     "fx": "12139faa",
+     "lg": "I1",
+     "date": "2026-11-23",
+     "time": "19:45",
+     "home": "Monza",
+     "away": "Fiorentina",
+     "markets": [
+      "SC_384482"
+     ],
+     "name": "Segna Gustavo Varela (Monza)",
+     "p": 0.5617,
+     "fair": 1.78,
+     "min_odds": 1.87,
+     "real": null
+    }
+   ],
+   "prob": 0.5617,
+   "fair": 1.78,
+   "real": null,
+   "combos": null,
+   "set": [
+    "affidabili",
+    "stagione",
+    "tutti"
+   ],
+   "created": "2026-11-22",
+   "status": "IN CORSO"
+  },
+  {
+   "id": "58d38a71b6",
+   "kind": "singola",
+   "method": "MARCATORI",
+   "title": "Singola marcatore",
+   "descr": "Il marcatore più probabile di una partita",
+   "picks": [
+    {
+     "fx": "fada1706",
+     "lg": "SP1",
+     "date": "2026-11-22",
+     "time": "17:30",
+     "home": "Osasuna",
+     "away": "Malaga",
+     "markets": [
+      "SC_373542"
+     ],
+     "name": "Segna Adrián Niño (Malaga)",
+     "p": 0.5524,
+     "fair": 1.81,
+     "min_odds": 1.9,
+     "real": null
+    }
+   ],
+   "prob": 0.5524,
+   "fair": 1.81,
+   "real": null,
+   "combos": null,
+   "set": [
+    "tutti",
+    "affidabili",
+    "stagione"
+   ],
+   "created": "2026-11-22",
+   "status": "IN CORSO"
+  },
+  {
+   "id": "53c14121ec",
+   "kind": "multipla",
+   "method": "MARCATORI",
+   "title": "Doppia marcatori",
+   "descr": "I due marcatori più probabili, in partite diverse",
+   "picks": [
+    {
+     "fx": "630f0b86",
+     "lg": "D1",
+     "date": "2026-11-22",
+     "time": "16:30",
+     "home": "Werder Bremen",
+     "away": "Hamburg",
+     "markets": [
+      "SC_170257"
+     ],
+     "name": "Segna Niclas Füllkrug (Werder Bremen)",
+     "p": 0.6649,
+     "fair": 1.5,
+     "min_odds": 1.58,
+     "real": null
+    },
+    {
+     "fx": "06d2899c",
+     "lg": "T1",
+     "date": "2026-11-22",
+     "time": "16:00",
+     "home": "Trabzonspor",
+     "away": "Eyupspor",
+     "markets": [
+      "SC_173896"
+     ],
+     "name": "Segna Mohamed Salah (Trabzonspor)",
+     "p": 0.5765,
+     "fair": 1.73,
+     "min_odds": 1.82,
+     "real": null
+    }
+   ],
+   "prob": 0.3833,
+   "fair": 2.61,
+   "real": null,
+   "combos": null,
+   "set": [
+    "affidabili",
+    "stagione",
+    "tutti"
+   ],
+   "created": "2026-11-22",
+   "status": "IN CORSO"
+  },
+  {
+   "id": "46acbcda8e",
+   "kind": "sistema",
+   "method": "MARCATORI",
+   "title": "Sistema marcatori 2 su 4",
+   "descr": "Basta che segnino 2 giocatori su 4: 6 colonne",
+   "picks": [
+    {
+     "fx": "630f0b86",
+     "lg": "D1",
+     "date": "2026-11-22",
+     "time": "16:30",
+     "home": "Werder Bremen",
+     "away": "Hamburg",
+     "markets": [
+      "SC_170257"
+     ],
+     "name": "Segna Niclas Füllkrug (Werder Bremen)",
+     "p": 0.6649,
+     "fair": 1.5,
+     "min_odds": 1.58,
+     "real": null
+    },
+    {
+     "fx": "06d2899c",
+     "lg": "T1",
+     "date": "2026-11-22",
+     "time": "16:00",
+     "home": "Trabzonspor",
+     "away": "Eyupspor",
+     "markets": [
+      "SC_173896"
+     ],
+     "name": "Segna Mohamed Salah (Trabzonspor)",
+     "p": 0.5765,
+     "fair": 1.73,
+     "min_odds": 1.82,
+     "real": null
+    },
+    {
+     "fx": "96cf42a6",
+     "lg": "N1",
+     "date": "2026-11-22",
+     "time": "11:15",
+     "home": "Twente",
+     "away": "Willem II",
+     "markets": [
+      "SC_177042"
+     ],
+     "name": "Segna Wout Weghorst (Twente)",
+     "p": 0.5618,
+     "fair": 1.78,
+     "min_odds": 1.87,
+     "real": null
+    },
+    {
+     "fx": "12139faa",
+     "lg": "I1",
+     "date": "2026-11-23",
+     "time": "19:45",
+     "home": "Monza",
+     "away": "Fiorentina",
+     "markets": [
+      "SC_384482"
+     ],
+     "name": "Segna Gustavo Varela (Monza)",
+     "p": 0.5617,
+     "fair": 1.78,
+     "min_odds": 1.87,
+     "real": null
+    }
+   ],
+   "prob": 0.8117,
+   "fair": null,
+   "real": null,
+   "combos": 6,
+   "min_ok": 2,
+   "set": [
+    "affidabili",
+    "stagione",
+    "tutti"
+   ],
+   "created": "2026-11-22",
+   "status": "IN CORSO"
+  },
+  {
+   "id": "4f8240b9a5",
+   "kind": "sistema",
+   "method": "MARCATORI",
+   "title": "Sistema marcatori 3 su 6",
+   "descr": "Basta che segnino 3 giocatori su 6: 20 colonne",
+   "picks": [
+    {
+     "fx": "630f0b86",
+     "lg": "D1",
+     "date": "2026-11-22",
+     "time": "16:30",
+     "home": "Werder Bremen",
+     "away": "Hamburg",
+     "markets": [
+      "SC_170257"
+     ],
+     "name": "Segna Niclas Füllkrug (Werder Bremen)",
+     "p": 0.6649,
+     "fair": 1.5,
+     "min_odds": 1.58,
+     "real": null
+    },
+    {
+     "fx": "06d2899c",
+     "lg": "T1",
+     "date": "2026-11-22",
+     "time": "16:00",
+     "home": "Trabzonspor",
+     "away": "Eyupspor",
+     "markets": [
+      "SC_173896"
+     ],
+     "name": "Segna Mohamed Salah (Trabzonspor)",
+     "p": 0.5765,
+     "fair": 1.73,
+     "min_odds": 1.82,
+     "real": null
+    },
+    {
+     "fx": "96cf42a6",
+     "lg": "N1",
+     "date": "2026-11-22",
+     "time": "11:15",
+     "home": "Twente",
+     "away": "Willem II",
+     "markets": [
+      "SC_177042"
+     ],
+     "name": "Segna Wout Weghorst (Twente)",
+     "p": 0.5618,
+     "fair": 1.78,
+     "min_odds": 1.87,
+     "real": null
+    },
+    {
+     "fx": "12139faa",
+     "lg": "I1",
+     "date": "2026-11-23",
+     "time": "19:45",
+     "home": "Monza",
+     "away": "Fiorentina",
+     "markets": [
+      "SC_384482"
+     ],
+     "name": "Segna Gustavo Varela (Monza)",
+     "p": 0.5617,
+     "fair": 1.78,
+     "min_odds": 1.87,
+     "real": null
+    },
+    {
+     "fx": "fada1706",
+     "lg": "SP1",
+     "date": "2026-11-22",
+     "time": "17:30",
+     "home": "Osasuna",
+     "away": "Malaga",
+     "markets": [
+      "SC_373542"
+     ],
+     "name": "Segna Adrián Niño (Malaga)",
+     "p": 0.5524,
+     "fair": 1.81,
+     "min_odds": 1.9,
+     "real": null
+    },
+    {
+     "fx": "966f2f9d",
+     "lg": "D1",
+     "date": "2026-11-22",
+     "time": "14:30",
+     "home": "Augsburg",
+     "away": "Mainz",
+     "markets": [
+      "SC_146804"
+     ],
+     "name": "Segna Michael Gregoritsch (Augsburg)",
+     "p": 0.5405,
+     "fair": 1.85,
+     "min_odds": 1.94,
+     "real": null
+    }
+   ],
+   "prob": 0.7873,
+   "fair": null,
+   "real": null,
+   "combos": 20,
+   "min_ok": 3,
+   "set": [
+    "tutti",
+    "affidabili",
+    "stagione"
+   ],
+   "created": "2026-11-22",
+   "status": "IN CORSO"
+  },
+  {
+   "id": "ca523ec2b7",
+   "kind": "singola",
+   "method": "MARCATORI",
+   "title": "Singola marcatore",
+   "descr": "Il marcatore più probabile di una partita",
+   "picks": [
+    {
+     "fx": "35e52df9",
+     "lg": "SP1",
+     "date": "2026-11-22",
+     "time": "13:00",
+     "home": "Barcelona",
+     "away": "Villarreal",
+     "markets": [
+      "SC_231050"
+     ],
+     "name": "Segna Raphinha (Barcelona)",
+     "p": 0.5006,
+     "fair": 2.0,
+     "min_odds": 2.1,
+     "real": null
+    }
+   ],
+   "prob": 0.5006,
+   "fair": 2.0,
+   "real": null,
+   "combos": null,
+   "set": [
+    "tutti",
+    "affidabili",
+    "stagione"
+   ],
+   "created": "2026-11-22",
+   "status": "IN CORSO"
+  },
+  {
+   "id": "5c02b7fdfb",
+   "kind": "sistema",
+   "method": "MARCATORI",
+   "title": "Sistema marcatori 3 su 6",
+   "descr": "Basta che segnino 3 giocatori su 6: 20 colonne",
+   "picks": [
+    {
+     "fx": "630f0b86",
+     "lg": "D1",
+     "date": "2026-11-22",
+     "time": "16:30",
+     "home": "Werder Bremen",
+     "away": "Hamburg",
+     "markets": [
+      "SC_170257"
+     ],
+     "name": "Segna Niclas Füllkrug (Werder Bremen)",
+     "p": 0.5961,
+     "fair": 1.68,
+     "min_odds": 1.76,
+     "real": null
+    },
+    {
+     "fx": "06d2899c",
+     "lg": "T1",
+     "date": "2026-11-22",
+     "time": "16:00",
+     "home": "Trabzonspor",
+     "away": "Eyupspor",
+     "markets": [
+      "SC_173896"
+     ],
+     "name": "Segna Mohamed Salah (Trabzonspor)",
+     "p": 0.5105,
+     "fair": 1.96,
+     "min_odds": 2.06,
+     "real": null
+    },
+    {
+     "fx": "96cf42a6",
+     "lg": "N1",
+     "date": "2026-11-22",
+     "time": "11:15",
+     "home": "Twente",
+     "away": "Willem II",
+     "markets": [
+      "SC_177042"
+     ],
+     "name": "Segna Wout Weghorst (Twente)",
+     "p": 0.5082,
+     "fair": 1.97,
+     "min_odds": 2.07,
+     "real": null
+    },
+    {
+     "fx": "12139faa",
+     "lg": "I1",
+     "date": "2026-11-23",
+     "time": "19:45",
+     "home": "Monza",
+     "away": "Fiorentina",
+     "markets": [
+      "SC_384482"
+     ],
+     "name": "Segna Gustavo Varela (Monza)",
+     "p": 0.5014,
+     "fair": 1.99,
+     "min_odds": 2.09,
+     "real": null
+    },
+    {
+     "fx": "35e52df9",
+     "lg": "SP1",
+     "date": "2026-11-22",
+     "time": "13:00",
+     "home": "Barcelona",
+     "away": "Villarreal",
+     "markets": [
+      "SC_231050"
+     ],
+     "name": "Segna Raphinha (Barcelona)",
+     "p": 0.5006,
+     "fair": 2.0,
+     "min_odds": 2.1,
+     "real": null
+    },
+    {
+     "fx": "fada1706",
+     "lg": "SP1",
+     "date": "2026-11-22",
+     "time": "17:30",
+     "home": "Osasuna",
+     "away": "Malaga",
+     "markets": [
+      "SC_373542"
+     ],
+     "name": "Segna Adrián Niño (Malaga)",
+     "p": 0.4921,
+     "fair": 2.03,
+     "min_odds": 2.13,
+     "real": null
+    }
+   ],
+   "prob": 0.6901,
+   "fair": null,
+   "real": null,
+   "combos": 20,
+   "min_ok": 3,
+   "set": [
+    "tutti",
+    "affidabili",
+    "stagione"
    ],
    "created": "2026-11-22",
    "status": "IN CORSO"
