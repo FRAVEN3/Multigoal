@@ -427,4 +427,19 @@
   window.MG = { D, state, views, inSet, campChips, esc, pct, q2, eur, lgName, fdate, badge, render, ko, hm, started, startedTag,
     goTab(t) { state.tab = t; document.querySelectorAll(".tabs button").forEach((x) => x.classList.toggle("on", x.dataset.tab === t)); render(); window.scrollTo(0, 0); } };
   document.addEventListener("DOMContentLoaded", render);
+
+  // ---------- versione nuova online? ricarico da solo ----------
+  // il telefono tiene in memoria la pagina per un po': se online c'è una versione più nuova la riapro con un indirizzo nuovo
+  function checkVersion() {
+    const mine = (document.querySelector('meta[name="mg-ver"]') || {}).content;
+    if (!mine || location.protocol === "file:") return;
+    fetch(`version.json?t=${Date.now()}`, { cache: "no-store" }).then((r) => r.json()).then((j) => {
+      if (!j.v || j.v === mine) return;
+      let tried = null;
+      try { tried = sessionStorage.getItem("mg_reload"); sessionStorage.setItem("mg_reload", j.v); } catch (e) { /* niente */ }
+      if (tried !== j.v) location.replace(`${location.pathname}?v=${j.v}${location.hash}`);
+    }).catch(() => {});
+  }
+  checkVersion();
+  document.addEventListener("visibilitychange", () => { if (document.visibilityState === "visible") checkVersion(); });
 })();

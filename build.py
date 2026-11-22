@@ -209,9 +209,15 @@ def stamp_versions():
         return f'{m.group(1)}="{name}?v={h}"'
 
     new = re.sub(r'(src|href)="([\w.-]+\.(?:js|css))(?:\?v=\w+)?"', ver, html)
+    # versione dell'intera pagina: l'app la confronta con version.json e, se online ce n'è una più nuova, si ricarica da sola
+    page_v = hashlib.md5(re.sub(r'<meta name="mg-ver"[^>]*>', "", new).encode()).hexdigest()[:10]
+    meta = f'<meta name="mg-ver" content="{page_v}">'
+    new = re.sub(r'<meta name="mg-ver"[^>]*>', meta, new) if 'name="mg-ver"' in new else new.replace("<title>", meta + "\n<title>", 1)
     if new != html:
         with open(path, "w", encoding="utf-8") as f:
             f.write(new)
+    with open(os.path.join(docs, "version.json"), "w", encoding="utf-8") as f:
+        json.dump({"v": page_v}, f)
 
 
 if __name__ == "__main__":
