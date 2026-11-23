@@ -4949,7 +4949,9 @@
      "p": 0.852,
      "fair": 1.17,
      "min_odds": 1.23,
-     "real": null
+     "real": null,
+     "esito": "W",
+     "score": "0-3 (0-2)"
     },
     {
      "fx": "224af7e4",
@@ -4965,7 +4967,9 @@
      "p": 0.8335,
      "fair": 1.2,
      "min_odds": 1.26,
-     "real": null
+     "real": null,
+     "esito": "W",
+     "score": "2-0 (0-0)"
     },
     {
      "fx": "bb28ffd8",
@@ -4981,7 +4985,9 @@
      "p": 0.8335,
      "fair": 1.2,
      "min_odds": 1.26,
-     "real": null
+     "real": null,
+     "esito": "W",
+     "score": "3-1 (3-1)"
     },
     {
      "fx": "26eeead3",
@@ -4997,7 +5003,9 @@
      "p": 0.8335,
      "fair": 1.2,
      "min_odds": 1.26,
-     "real": null
+     "real": null,
+     "esito": "W",
+     "score": "1-0 (0-0)"
     }
    ],
    "prob": 0.4934,
@@ -5010,7 +5018,8 @@
     "tutti"
    ],
    "created": "2026-11-20",
-   "status": "IN CORSO"
+   "status": "VINTA",
+   "settled": "2026-11-23"
   },
   {
    "id": "c2fb053f6e",
@@ -5033,7 +5042,9 @@
      "p": 0.8317,
      "fair": 1.2,
      "min_odds": 1.26,
-     "real": null
+     "real": null,
+     "esito": "W",
+     "score": "0-1 (0-1)"
     },
     {
      "fx": "3fb78196",
@@ -5065,7 +5076,9 @@
      "p": 0.8182,
      "fair": 1.22,
      "min_odds": 1.28,
-     "real": null
+     "real": null,
+     "esito": "W",
+     "score": "0-1 (0-0)"
     },
     {
      "fx": "93650ace",
@@ -5117,7 +5130,9 @@
      "p": 0.852,
      "fair": 1.17,
      "min_odds": 1.23,
-     "real": null
+     "real": null,
+     "esito": "W",
+     "score": "0-3 (0-2)"
     }
    ],
    "prob": 0.852,
@@ -5130,7 +5145,8 @@
     "tutti"
    ],
    "created": "2026-11-20",
-   "status": "IN CORSO"
+   "status": "VINTA",
+   "settled": "2026-11-23"
   },
   {
    "id": "2c6728ab88",
@@ -5153,7 +5169,9 @@
      "p": 0.8335,
      "fair": 1.2,
      "min_odds": 1.26,
-     "real": null
+     "real": null,
+     "esito": "W",
+     "score": "2-0 (0-0)"
     }
    ],
    "prob": 0.8335,
@@ -5166,7 +5184,8 @@
     "tutti"
    ],
    "created": "2026-11-20",
-   "status": "IN CORSO"
+   "status": "VINTA",
+   "settled": "2026-11-23"
   },
   {
    "id": "0e470f7a24",
@@ -5189,7 +5208,9 @@
      "p": 0.8335,
      "fair": 1.2,
      "min_odds": 1.26,
-     "real": null
+     "real": null,
+     "esito": "W",
+     "score": "3-1 (3-1)"
     }
    ],
    "prob": 0.8335,
@@ -5202,7 +5223,8 @@
     "tutti"
    ],
    "created": "2026-11-20",
-   "status": "IN CORSO"
+   "status": "VINTA",
+   "settled": "2026-11-23"
   },
   {
    "id": "5bfee69278",
@@ -5225,7 +5247,9 @@
      "p": 0.8335,
      "fair": 1.2,
      "min_odds": 1.26,
-     "real": null
+     "real": null,
+     "esito": "W",
+     "score": "1-0 (0-0)"
     }
    ],
    "prob": 0.8335,
@@ -5238,7 +5262,8 @@
     "tutti"
    ],
    "created": "2026-11-20",
-   "status": "IN CORSO"
+   "status": "VINTA",
+   "settled": "2026-11-23"
   },
   {
    "id": "6eebc2f1a4",
@@ -5261,7 +5286,9 @@
      "p": 0.8317,
      "fair": 1.2,
      "min_odds": 1.26,
-     "real": null
+     "real": null,
+     "esito": "W",
+     "score": "0-1 (0-1)"
     }
    ],
    "prob": 0.8317,
@@ -5274,7 +5301,8 @@
     "tutti"
    ],
    "created": "2026-11-20",
-   "status": "IN CORSO"
+   "status": "VINTA",
+   "settled": "2026-11-23"
   },
   {
    "id": "7ab9445c04",
@@ -5297,7 +5325,9 @@
      "p": 0.5075,
      "fair": 1.97,
      "min_odds": 2.07,
-     "real": null
+     "real": null,
+     "esito": "L",
+     "score": "4-0 (1-0)"
     }
    ],
    "prob": 0.5075,
@@ -5310,7 +5340,8 @@
     "tutti"
    ],
    "created": "2026-11-20",
-   "status": "IN CORSO"
+   "status": "PERSA",
+   "settled": "2026-11-23"
   },
   {
    "id": "255b1e4c9c",
@@ -5333,7 +5364,9 @@
      "p": 0.5075,
      "fair": 1.97,
      "min_odds": 2.07,
-     "real": null
+     "real": null,
+     "esito": "W",
+     "score": "2-3 (0-1)"
     }
    ],
    "prob": 0.5075,
@@ -5346,7 +5379,8 @@
     "tutti"
    ],
    "created": "2026-11-20",
-   "status": "IN CORSO"
+   "status": "VINTA",
+   "settled": "2026-11-23"
   },
   {
    "id": "d1d69dee0f",
@@ -5369,7 +5403,9 @@
      "p": 0.5075,
      "fair": 1.97,
      "min_odds": 2.07,
-     "real": null
+     "real": null,
+     "esito": "W",
+     "score": "1-1 (1-1)"
     }
    ],
    "prob": 0.5075,
@@ -5382,7 +5418,8 @@
     "stagione"
    ],
    "created": "2026-11-20",
-   "status": "IN CORSO"
+   "status": "VINTA",
+   "settled": "2026-11-23"
   },
   {
    "id": "2d48d4ac84",
@@ -5441,7 +5478,9 @@
      "p": 0.5007,
      "fair": 2.0,
      "min_odds": 2.1,
-     "real": null
+     "real": null,
+     "esito": "W",
+     "score": "1-4 (0-3)"
     }
    ],
    "prob": 0.5007,
@@ -5454,7 +5493,8 @@
     "tutti"
    ],
    "created": "2026-11-20",
-   "status": "IN CORSO"
+   "status": "VINTA",
+   "settled": "2026-11-23"
   },
   {
    "id": "d0eb4f3ed0",
@@ -5477,7 +5517,9 @@
      "p": 0.5075,
      "fair": 1.97,
      "min_odds": 2.07,
-     "real": null
+     "real": null,
+     "esito": "L",
+     "score": "4-0 (1-0)"
     },
     {
      "fx": "8f494387",
@@ -5493,7 +5535,9 @@
      "p": 0.5075,
      "fair": 1.97,
      "min_odds": 2.07,
-     "real": null
+     "real": null,
+     "esito": "W",
+     "score": "2-3 (0-1)"
     }
    ],
    "prob": 0.2576,
@@ -5506,7 +5550,8 @@
     "tutti"
    ],
    "created": "2026-11-20",
-   "status": "IN CORSO"
+   "status": "PERSA",
+   "settled": "2026-11-23"
   },
   {
    "id": "908a6cdeaa",
@@ -5529,7 +5574,9 @@
      "p": 0.5075,
      "fair": 1.97,
      "min_odds": 2.07,
-     "real": null
+     "real": null,
+     "esito": "L",
+     "score": "4-0 (1-0)"
     },
     {
      "fx": "8f494387",
@@ -5545,7 +5592,9 @@
      "p": 0.5075,
      "fair": 1.97,
      "min_odds": 2.07,
-     "real": null
+     "real": null,
+     "esito": "W",
+     "score": "2-3 (0-1)"
     },
     {
      "fx": "632a10ce",
@@ -5561,7 +5610,9 @@
      "p": 0.5075,
      "fair": 1.97,
      "min_odds": 2.07,
-     "real": null
+     "real": null,
+     "esito": "W",
+     "score": "1-1 (1-1)"
     }
    ],
    "prob": 0.1307,
@@ -5574,7 +5625,8 @@
     "stagione"
    ],
    "created": "2026-11-20",
-   "status": "IN CORSO"
+   "status": "PERSA",
+   "settled": "2026-11-23"
   },
   {
    "id": "69d99ddab5",
@@ -5597,7 +5649,9 @@
      "p": 0.582,
      "fair": 1.72,
      "min_odds": 1.8,
-     "real": 1.77
+     "real": 1.77,
+     "esito": "L",
+     "score": "3-2 (1-0)"
     },
     {
      "fx": "aca75f1e",
@@ -5613,7 +5667,9 @@
      "p": 0.582,
      "fair": 1.72,
      "min_odds": 1.8,
-     "real": 2.5
+     "real": 2.5,
+     "esito": "L",
+     "score": "6-2 (2-2)"
     }
    ],
    "prob": 0.3387,
@@ -5626,7 +5682,10 @@
     "tutti"
    ],
    "created": "2026-11-20",
-   "status": "IN CORSO"
+   "status": "PERSA",
+   "settled": "2026-11-23",
+   "stake": 10,
+   "profit": -10
   },
   {
    "id": "7f71fed5ec",
@@ -5649,7 +5708,9 @@
      "p": 0.6364,
      "fair": 1.57,
      "min_odds": 1.65,
-     "real": null
+     "real": null,
+     "esito": "W",
+     "score": "2-0 (1-0)"
     }
    ],
    "prob": 0.6364,
@@ -5662,7 +5723,8 @@
     "tutti"
    ],
    "created": "2026-11-20",
-   "status": "IN CORSO"
+   "status": "VINTA",
+   "settled": "2026-11-23"
   },
   {
    "id": "06fdf26095",
@@ -5685,7 +5747,9 @@
      "p": 0.6364,
      "fair": 1.57,
      "min_odds": 1.65,
-     "real": null
+     "real": null,
+     "esito": "W",
+     "score": "2-0 (0-0)"
     }
    ],
    "prob": 0.6364,
@@ -5698,7 +5762,8 @@
     "tutti"
    ],
    "created": "2026-11-20",
-   "status": "IN CORSO"
+   "status": "VINTA",
+   "settled": "2026-11-23"
   },
   {
    "id": "c4c501a5a4",
@@ -5721,7 +5786,9 @@
      "p": 0.6364,
      "fair": 1.57,
      "min_odds": 1.65,
-     "real": null
+     "real": null,
+     "esito": "W",
+     "score": "1-1 (1-0)"
     }
    ],
    "prob": 0.6364,
@@ -5734,7 +5801,8 @@
     "tutti"
    ],
    "created": "2026-11-20",
-   "status": "IN CORSO"
+   "status": "VINTA",
+   "settled": "2026-11-23"
   },
   {
    "id": "19aaf49d33",
@@ -5757,7 +5825,9 @@
      "p": 0.6364,
      "fair": 1.57,
      "min_odds": 1.65,
-     "real": null
+     "real": null,
+     "esito": "W",
+     "score": "1-0 (0-0)"
     }
    ],
    "prob": 0.6364,
@@ -5770,7 +5840,8 @@
     "tutti"
    ],
    "created": "2026-11-20",
-   "status": "IN CORSO"
+   "status": "VINTA",
+   "settled": "2026-11-23"
   },
   {
    "id": "c6b2a16756",
@@ -5793,7 +5864,9 @@
      "p": 0.6364,
      "fair": 1.57,
      "min_odds": 1.65,
-     "real": null
+     "real": null,
+     "esito": "W",
+     "score": "0-3 (0-2)"
     }
    ],
    "prob": 0.6364,
@@ -5806,7 +5879,8 @@
     "tutti"
    ],
    "created": "2026-11-20",
-   "status": "IN CORSO"
+   "status": "VINTA",
+   "settled": "2026-11-23"
   },
   {
    "id": "21565e180a",
@@ -5830,7 +5904,9 @@
      "p": 0.5098,
      "fair": 1.96,
      "min_odds": 2.06,
-     "real": null
+     "real": null,
+     "esito": "W",
+     "score": "2-0 (1-0)"
     },
     {
      "fx": "7e5d2a8e",
@@ -5847,7 +5923,9 @@
      "p": 0.5244,
      "fair": 1.91,
      "min_odds": 2.0,
-     "real": null
+     "real": null,
+     "esito": "W",
+     "score": "2-0 (0-0)"
     }
    ],
    "prob": 0.2673,
@@ -5860,7 +5938,8 @@
     "tutti"
    ],
    "created": "2026-11-20",
-   "status": "IN CORSO"
+   "status": "VINTA",
+   "settled": "2026-11-23"
   },
   {
    "id": "d043c82fcd",
@@ -5883,7 +5962,9 @@
      "p": 0.5007,
      "fair": 2.0,
      "min_odds": 2.1,
-     "real": null
+     "real": null,
+     "esito": "L",
+     "score": "3-0 (3-0)"
     }
    ],
    "prob": 0.5007,
@@ -5896,7 +5977,8 @@
     "tutti"
    ],
    "created": "2026-11-21",
-   "status": "IN CORSO"
+   "status": "PERSA",
+   "settled": "2026-11-23"
   },
   {
    "id": "5de59f3239",
@@ -5919,7 +6001,9 @@
      "p": 0.5075,
      "fair": 1.97,
      "min_odds": 2.07,
-     "real": null
+     "real": null,
+     "esito": "L",
+     "score": "4-0 (1-0)"
     },
     {
      "fx": "8f494387",
@@ -5935,7 +6019,9 @@
      "p": 0.5075,
      "fair": 1.97,
      "min_odds": 2.07,
-     "real": null
+     "real": null,
+     "esito": "W",
+     "score": "2-3 (0-1)"
     },
     {
      "fx": "12139faa",
@@ -5964,7 +6050,8 @@
     "stagione"
    ],
    "created": "2026-11-21",
-   "status": "IN CORSO"
+   "status": "PERSA",
+   "settled": "2026-11-23"
   },
   {
    "id": "477070cf64",
@@ -5987,7 +6074,9 @@
      "p": 0.852,
      "fair": 1.17,
      "min_odds": 1.23,
-     "real": null
+     "real": null,
+     "esito": "W",
+     "score": "0-3 (0-2)"
     },
     {
      "fx": "26eeead3",
@@ -6003,7 +6092,9 @@
      "p": 0.8335,
      "fair": 1.2,
      "min_odds": 1.26,
-     "real": null
+     "real": null,
+     "esito": "W",
+     "score": "1-0 (0-0)"
     },
     {
      "fx": "3fb78196",
@@ -6071,7 +6162,9 @@
      "p": 0.8151,
      "fair": 1.23,
      "min_odds": 1.29,
-     "real": null
+     "real": null,
+     "esito": "L",
+     "score": "4-1 (2-1)"
     },
     {
      "fx": "3f4c2774",
@@ -6087,7 +6180,9 @@
      "p": 0.8151,
      "fair": 1.23,
      "min_odds": 1.29,
-     "real": null
+     "real": null,
+     "esito": "W",
+     "score": "1-0 (0-0)"
     },
     {
      "fx": "d8247d08",
@@ -6119,7 +6214,9 @@
      "p": 0.8034,
      "fair": 1.24,
      "min_odds": 1.31,
-     "real": null
+     "real": null,
+     "esito": "W",
+     "score": "4-0 (0-0)"
     }
    ],
    "prob": 0.4316,
@@ -6132,7 +6229,8 @@
     "tutti"
    ],
    "created": "2026-11-22",
-   "status": "IN CORSO"
+   "status": "PERSA",
+   "settled": "2026-11-23"
   },
   {
    "id": "760c7ec2ca",
@@ -6227,7 +6325,9 @@
      "p": 0.8151,
      "fair": 1.23,
      "min_odds": 1.29,
-     "real": null
+     "real": null,
+     "esito": "L",
+     "score": "4-1 (2-1)"
     }
    ],
    "prob": 0.8151,
@@ -6240,7 +6340,8 @@
     "tutti"
    ],
    "created": "2026-11-22",
-   "status": "IN CORSO"
+   "status": "PERSA",
+   "settled": "2026-11-23"
   },
   {
    "id": "d7a81c44af",
@@ -6263,7 +6364,9 @@
      "p": 0.5007,
      "fair": 2.0,
      "min_odds": 2.1,
-     "real": null
+     "real": null,
+     "esito": "L",
+     "score": "0-1 (0-0)"
     }
    ],
    "prob": 0.5007,
@@ -6276,7 +6379,8 @@
     "tutti"
    ],
    "created": "2026-11-22",
-   "status": "IN CORSO"
+   "status": "PERSA",
+   "settled": "2026-11-23"
   },
   {
    "id": "5139cc1244",
@@ -6299,7 +6403,9 @@
      "p": 0.4667,
      "fair": 2.14,
      "min_odds": 2.25,
-     "real": null
+     "real": null,
+     "esito": "W",
+     "score": "1-5 (1-1)"
     }
    ],
    "prob": 0.4667,
@@ -6312,7 +6418,8 @@
     "tutti"
    ],
    "created": "2026-11-22",
-   "status": "IN CORSO"
+   "status": "VINTA",
+   "settled": "2026-11-23"
   },
   {
    "id": "f556d12ee3",
@@ -6335,7 +6442,9 @@
      "p": 0.5075,
      "fair": 1.97,
      "min_odds": 2.07,
-     "real": null
+     "real": null,
+     "esito": "L",
+     "score": "4-0 (1-0)"
     },
     {
      "fx": "12139faa",
@@ -6364,7 +6473,8 @@
     "tutti"
    ],
    "created": "2026-11-22",
-   "status": "IN CORSO"
+   "status": "PERSA",
+   "settled": "2026-11-23"
   },
   {
    "id": "dc3a052389",
@@ -6387,7 +6497,9 @@
      "p": 0.5075,
      "fair": 1.97,
      "min_odds": 2.07,
-     "real": null
+     "real": null,
+     "esito": "L",
+     "score": "4-0 (1-0)"
     },
     {
      "fx": "12139faa",
@@ -6419,7 +6531,9 @@
      "p": 0.5007,
      "fair": 2.0,
      "min_odds": 2.1,
-     "real": null
+     "real": null,
+     "esito": "L",
+     "score": "3-0 (3-0)"
     }
    ],
    "prob": 0.129,
@@ -6432,7 +6546,8 @@
     "tutti"
    ],
    "created": "2026-11-22",
-   "status": "IN CORSO"
+   "status": "PERSA",
+   "settled": "2026-11-23"
   },
   {
    "id": "81f36c4d50",
@@ -6455,7 +6570,9 @@
      "p": 0.6354,
      "fair": 1.57,
      "min_odds": 1.65,
-     "real": null
+     "real": null,
+     "esito": "L",
+     "score": "2-2 (1-2)"
     }
    ],
    "prob": 0.6354,
@@ -6467,7 +6584,8 @@
     "tutti"
    ],
    "created": "2026-11-22",
-   "status": "IN CORSO"
+   "status": "PERSA",
+   "settled": "2026-11-23"
   },
   {
    "id": "4663f489b6",
@@ -6491,7 +6609,9 @@
      "p": 0.5244,
      "fair": 1.91,
      "min_odds": 2.0,
-     "real": null
+     "real": null,
+     "esito": "W",
+     "score": "2-0 (0-0)"
     },
     {
      "fx": "fc483f23",
@@ -6508,7 +6628,9 @@
      "p": 0.5072,
      "fair": 1.97,
      "min_odds": 2.07,
-     "real": null
+     "real": null,
+     "esito": "W",
+     "score": "1-1 (1-0)"
     }
    ],
    "prob": 0.266,
@@ -6521,7 +6643,8 @@
     "tutti"
    ],
    "created": "2026-11-22",
-   "status": "IN CORSO"
+   "status": "VINTA",
+   "settled": "2026-11-23"
   },
   {
    "id": "b316a6996f",
@@ -6544,7 +6667,9 @@
      "p": 0.6257,
      "fair": 1.6,
      "min_odds": 1.68,
-     "real": null
+     "real": null,
+     "esito": "L",
+     "score": "6-2 (2-2)"
     }
    ],
    "prob": 0.6257,
@@ -6555,7 +6680,8 @@
     "affidabili"
    ],
    "created": "2026-11-22",
-   "status": "IN CORSO"
+   "status": "PERSA",
+   "settled": "2026-11-23"
   },
   {
    "id": "c2a1a5557f",
@@ -6578,7 +6704,9 @@
      "p": 0.6649,
      "fair": 1.5,
      "min_odds": 1.58,
-     "real": null
+     "real": null,
+     "esito": "W",
+     "score": "ha segnato"
     }
    ],
    "prob": 0.6649,
@@ -6591,7 +6719,8 @@
     "tutti"
    ],
    "created": "2026-11-22",
-   "status": "IN CORSO"
+   "status": "VINTA",
+   "settled": "2026-11-23"
   },
   {
    "id": "021cb0d1f4",
@@ -6614,7 +6743,9 @@
      "p": 0.5765,
      "fair": 1.73,
      "min_odds": 1.82,
-     "real": null
+     "real": null,
+     "esito": "L",
+     "score": "non ha segnato"
     }
    ],
    "prob": 0.5765,
@@ -6627,7 +6758,8 @@
     "tutti"
    ],
    "created": "2026-11-22",
-   "status": "IN CORSO"
+   "status": "PERSA",
+   "settled": "2026-11-23"
   },
   {
    "id": "fdc5c603c5",
@@ -6650,7 +6782,9 @@
      "p": 0.5618,
      "fair": 1.78,
      "min_odds": 1.87,
-     "real": null
+     "real": null,
+     "esito": "L",
+     "score": "non ha segnato"
     }
    ],
    "prob": 0.5618,
@@ -6663,7 +6797,8 @@
     "tutti"
    ],
    "created": "2026-11-22",
-   "status": "IN CORSO"
+   "status": "PERSA",
+   "settled": "2026-11-23"
   },
   {
    "id": "abf6ad2215",
@@ -6722,7 +6857,9 @@
      "p": 0.5524,
      "fair": 1.81,
      "min_odds": 1.9,
-     "real": null
+     "real": null,
+     "esito": "L",
+     "score": "non ha segnato"
     }
    ],
    "prob": 0.5524,
@@ -6735,7 +6872,8 @@
     "stagione"
    ],
    "created": "2026-11-22",
-   "status": "IN CORSO"
+   "status": "PERSA",
+   "settled": "2026-11-23"
   },
   {
    "id": "53c14121ec",
@@ -6758,7 +6896,9 @@
      "p": 0.6649,
      "fair": 1.5,
      "min_odds": 1.58,
-     "real": null
+     "real": null,
+     "esito": "W",
+     "score": "ha segnato"
     },
     {
      "fx": "06d2899c",
@@ -6774,7 +6914,9 @@
      "p": 0.5765,
      "fair": 1.73,
      "min_odds": 1.82,
-     "real": null
+     "real": null,
+     "esito": "L",
+     "score": "non ha segnato"
     }
    ],
    "prob": 0.3833,
@@ -6787,7 +6929,8 @@
     "tutti"
    ],
    "created": "2026-11-22",
-   "status": "IN CORSO"
+   "status": "PERSA",
+   "settled": "2026-11-23"
   },
   {
    "id": "46acbcda8e",
@@ -6810,7 +6953,9 @@
      "p": 0.6649,
      "fair": 1.5,
      "min_odds": 1.58,
-     "real": null
+     "real": null,
+     "esito": "W",
+     "score": "ha segnato"
     },
     {
      "fx": "06d2899c",
@@ -6826,7 +6971,9 @@
      "p": 0.5765,
      "fair": 1.73,
      "min_odds": 1.82,
-     "real": null
+     "real": null,
+     "esito": "L",
+     "score": "non ha segnato"
     },
     {
      "fx": "96cf42a6",
@@ -6842,7 +6989,9 @@
      "p": 0.5618,
      "fair": 1.78,
      "min_odds": 1.87,
-     "real": null
+     "real": null,
+     "esito": "L",
+     "score": "non ha segnato"
     },
     {
      "fx": "12139faa",
@@ -6895,7 +7044,9 @@
      "p": 0.6649,
      "fair": 1.5,
      "min_odds": 1.58,
-     "real": null
+     "real": null,
+     "esito": "W",
+     "score": "ha segnato"
     },
     {
      "fx": "06d2899c",
@@ -6911,7 +7062,9 @@
      "p": 0.5765,
      "fair": 1.73,
      "min_odds": 1.82,
-     "real": null
+     "real": null,
+     "esito": "L",
+     "score": "non ha segnato"
     },
     {
      "fx": "96cf42a6",
@@ -6927,7 +7080,9 @@
      "p": 0.5618,
      "fair": 1.78,
      "min_odds": 1.87,
-     "real": null
+     "real": null,
+     "esito": "L",
+     "score": "non ha segnato"
     },
     {
      "fx": "12139faa",
@@ -6959,7 +7114,9 @@
      "p": 0.5524,
      "fair": 1.81,
      "min_odds": 1.9,
-     "real": null
+     "real": null,
+     "esito": "L",
+     "score": "non ha segnato"
     },
     {
      "fx": "966f2f9d",
@@ -6975,7 +7132,9 @@
      "p": 0.5405,
      "fair": 1.85,
      "min_odds": 1.94,
-     "real": null
+     "real": null,
+     "esito": "W",
+     "score": "ha segnato"
     }
    ],
    "prob": 0.7873,
@@ -7012,7 +7171,9 @@
      "p": 0.5006,
      "fair": 2.0,
      "min_odds": 2.1,
-     "real": null
+     "real": null,
+     "esito": "L",
+     "score": "non ha segnato"
     }
    ],
    "prob": 0.5006,
@@ -7025,7 +7186,8 @@
     "tutti"
    ],
    "created": "2026-11-22",
-   "status": "IN CORSO"
+   "status": "PERSA",
+   "settled": "2026-11-23"
   },
   {
    "id": "5c02b7fdfb",
@@ -7048,7 +7210,9 @@
      "p": 0.5961,
      "fair": 1.68,
      "min_odds": 1.76,
-     "real": null
+     "real": null,
+     "esito": "W",
+     "score": "ha segnato"
     },
     {
      "fx": "06d2899c",
@@ -7064,7 +7228,9 @@
      "p": 0.5105,
      "fair": 1.96,
      "min_odds": 2.06,
-     "real": null
+     "real": null,
+     "esito": "L",
+     "score": "non ha segnato"
     },
     {
      "fx": "96cf42a6",
@@ -7080,7 +7246,9 @@
      "p": 0.5082,
      "fair": 1.97,
      "min_odds": 2.07,
-     "real": null
+     "real": null,
+     "esito": "L",
+     "score": "non ha segnato"
     },
     {
      "fx": "12139faa",
@@ -7112,7 +7280,9 @@
      "p": 0.5006,
      "fair": 2.0,
      "min_odds": 2.1,
-     "real": null
+     "real": null,
+     "esito": "L",
+     "score": "non ha segnato"
     },
     {
      "fx": "fada1706",
@@ -7128,7 +7298,9 @@
      "p": 0.4921,
      "fair": 2.03,
      "min_odds": 2.13,
-     "real": null
+     "real": null,
+     "esito": "L",
+     "score": "non ha segnato"
     }
    ],
    "prob": 0.6901,
@@ -7142,6 +7314,1231 @@
     "tutti"
    ],
    "created": "2026-11-22",
+   "status": "PERSA",
+   "settled": "2026-11-23"
+  },
+  {
+   "id": "771bf24214",
+   "kind": "multipla",
+   "method": "MULTIGOL",
+   "title": "Multigol a raddoppio #1",
+   "descr": "Le fasce Multigol più sicure fino a quota ~2",
+   "picks": [
+    {
+     "fx": "3fb78196",
+     "lg": "E0",
+     "date": "2026-11-23",
+     "time": "20:00",
+     "home": "Brentford",
+     "away": "Everton",
+     "markets": [
+      "MG14"
+     ],
+     "name": "Multigol 1-4",
+     "p": 0.8317,
+     "fair": 1.2,
+     "min_odds": 1.26,
+     "real": null
+    },
+    {
+     "fx": "d8247d08",
+     "lg": "SP2",
+     "date": "2026-11-23",
+     "time": "19:30",
+     "home": "Ceuta",
+     "away": "Almeria",
+     "markets": [
+      "MG14"
+     ],
+     "name": "Multigol 1-4",
+     "p": 0.8085,
+     "fair": 1.24,
+     "min_odds": 1.3,
+     "real": null
+    },
+    {
+     "fx": "280433a6",
+     "lg": "DNK",
+     "date": "2026-11-23",
+     "time": "18:00",
+     "home": "Brondby",
+     "away": "Midtjylland",
+     "markets": [
+      "MG14"
+     ],
+     "name": "Multigol 1-4",
+     "p": 0.7822,
+     "fair": 1.28,
+     "min_odds": 1.34,
+     "real": null
+    },
+    {
+     "fx": "f2d0417f",
+     "lg": "F2",
+     "date": "2026-11-23",
+     "time": "19:45",
+     "home": "Sochaux",
+     "away": "Dunkerque",
+     "markets": [
+      "MG14"
+     ],
+     "name": "Multigol 1-4",
+     "p": 0.7822,
+     "fair": 1.28,
+     "min_odds": 1.34,
+     "real": null
+    }
+   ],
+   "prob": 0.4114,
+   "fair": 2.43,
+   "real": null,
+   "combos": null,
+   "set": [
+    "tutti"
+   ],
+   "created": "2026-11-23",
+   "status": "IN CORSO"
+  },
+  {
+   "id": "c9ad998bbe",
+   "kind": "multipla",
+   "method": "MULTIGOL",
+   "title": "Multigol a raddoppio #2",
+   "descr": "Le fasce Multigol più sicure fino a quota ~2",
+   "picks": [
+    {
+     "fx": "abed8763",
+     "lg": "F2",
+     "date": "2026-11-23",
+     "time": "19:45",
+     "home": "Nantes",
+     "away": "Grenoble",
+     "markets": [
+      "MG14"
+     ],
+     "name": "Multigol 1-4",
+     "p": 0.7742,
+     "fair": 1.29,
+     "min_odds": 1.36,
+     "real": null
+    },
+    {
+     "fx": "c73f6970",
+     "lg": "G1",
+     "date": "2026-11-23",
+     "time": "15:00",
+     "home": "Asteras Tripolis",
+     "away": "Aris",
+     "markets": [
+      "MG14"
+     ],
+     "name": "Multigol 1-4",
+     "p": 0.7733,
+     "fair": 1.29,
+     "min_odds": 1.36,
+     "real": null
+    },
+    {
+     "fx": "69c63f30",
+     "lg": "T1",
+     "date": "2026-11-23",
+     "time": "17:00",
+     "home": "Buyuksehyr",
+     "away": "Corum",
+     "markets": [
+      "MG14"
+     ],
+     "name": "Multigol 1-4",
+     "p": 0.7712,
+     "fair": 1.3,
+     "min_odds": 1.36,
+     "real": null
+    }
+   ],
+   "prob": 0.4617,
+   "fair": 2.17,
+   "real": null,
+   "combos": null,
+   "set": [
+    "tutti"
+   ],
+   "created": "2026-11-23",
+   "status": "IN CORSO"
+  },
+  {
+   "id": "522697ddea",
+   "kind": "singola",
+   "method": "MULTIGOL",
+   "title": "Singola Multigol",
+   "descr": "",
+   "picks": [
+    {
+     "fx": "d8247d08",
+     "lg": "SP2",
+     "date": "2026-11-23",
+     "time": "19:30",
+     "home": "Ceuta",
+     "away": "Almeria",
+     "markets": [
+      "MG14"
+     ],
+     "name": "Multigol 1-4",
+     "p": 0.8085,
+     "fair": 1.24,
+     "min_odds": 1.3,
+     "real": null
+    }
+   ],
+   "prob": 0.8085,
+   "fair": 1.24,
+   "real": null,
+   "combos": null,
+   "set": [
+    "tutti",
+    "affidabili",
+    "stagione"
+   ],
+   "created": "2026-11-23",
+   "status": "IN CORSO"
+  },
+  {
+   "id": "81567bb5b5",
+   "kind": "singola",
+   "method": "MULTIGOL",
+   "title": "Singola Multigol",
+   "descr": "",
+   "picks": [
+    {
+     "fx": "280433a6",
+     "lg": "DNK",
+     "date": "2026-11-23",
+     "time": "18:00",
+     "home": "Brondby",
+     "away": "Midtjylland",
+     "markets": [
+      "MG14"
+     ],
+     "name": "Multigol 1-4",
+     "p": 0.7822,
+     "fair": 1.28,
+     "min_odds": 1.34,
+     "real": null
+    }
+   ],
+   "prob": 0.7822,
+   "fair": 1.28,
+   "real": null,
+   "combos": null,
+   "set": [
+    "tutti"
+   ],
+   "created": "2026-11-23",
+   "status": "IN CORSO"
+  },
+  {
+   "id": "3183230e4d",
+   "kind": "singola",
+   "method": "MULTIGOL",
+   "title": "Singola Multigol",
+   "descr": "",
+   "picks": [
+    {
+     "fx": "f2d0417f",
+     "lg": "F2",
+     "date": "2026-11-23",
+     "time": "19:45",
+     "home": "Sochaux",
+     "away": "Dunkerque",
+     "markets": [
+      "MG14"
+     ],
+     "name": "Multigol 1-4",
+     "p": 0.7822,
+     "fair": 1.28,
+     "min_odds": 1.34,
+     "real": null
+    }
+   ],
+   "prob": 0.7822,
+   "fair": 1.28,
+   "real": null,
+   "combos": null,
+   "set": [
+    "tutti",
+    "affidabili",
+    "stagione"
+   ],
+   "created": "2026-11-23",
+   "status": "IN CORSO"
+  },
+  {
+   "id": "ead8c7f157",
+   "kind": "singola",
+   "method": "MULTIGOL",
+   "title": "Singola Multigol",
+   "descr": "",
+   "picks": [
+    {
+     "fx": "abed8763",
+     "lg": "F2",
+     "date": "2026-11-23",
+     "time": "19:45",
+     "home": "Nantes",
+     "away": "Grenoble",
+     "markets": [
+      "MG14"
+     ],
+     "name": "Multigol 1-4",
+     "p": 0.7742,
+     "fair": 1.29,
+     "min_odds": 1.36,
+     "real": null
+    }
+   ],
+   "prob": 0.7742,
+   "fair": 1.29,
+   "real": null,
+   "combos": null,
+   "set": [
+    "tutti",
+    "affidabili",
+    "stagione"
+   ],
+   "created": "2026-11-23",
+   "status": "IN CORSO"
+  },
+  {
+   "id": "9069d4308f",
+   "kind": "multipla",
+   "method": "RADUCIOIU",
+   "title": "Raducioiu multipla Under 2.5",
+   "descr": "Partite con media Batistuta bassa, quota ~2",
+   "picks": [
+    {
+     "fx": "f2d0417f",
+     "lg": "F2",
+     "date": "2026-11-23",
+     "time": "19:45",
+     "home": "Sochaux",
+     "away": "Dunkerque",
+     "markets": [
+      "U25"
+     ],
+     "name": "Under 2.5",
+     "p": 0.5665,
+     "fair": 1.77,
+     "min_odds": 1.85,
+     "real": 1.9
+    },
+    {
+     "fx": "3fb78196",
+     "lg": "E0",
+     "date": "2026-11-23",
+     "time": "20:00",
+     "home": "Brentford",
+     "away": "Everton",
+     "markets": [
+      "U25"
+     ],
+     "name": "Under 2.5",
+     "p": 0.5221,
+     "fair": 1.92,
+     "min_odds": 2.01,
+     "real": 2.05
+    }
+   ],
+   "prob": 0.2958,
+   "fair": 3.38,
+   "real": 3.89,
+   "combos": null,
+   "set": [
+    "tutti",
+    "affidabili",
+    "stagione"
+   ],
+   "created": "2026-11-23",
+   "status": "IN CORSO"
+  },
+  {
+   "id": "f7c8d7ea12",
+   "kind": "singola",
+   "method": "RADUCIOIU",
+   "title": "Raducioiu: NG 1°T + NG 2°T",
+   "descr": "",
+   "picks": [
+    {
+     "fx": "f2d0417f",
+     "lg": "F2",
+     "date": "2026-11-23",
+     "time": "19:45",
+     "home": "Sochaux",
+     "away": "Dunkerque",
+     "markets": [
+      "RAD"
+     ],
+     "name": "NG-NG nei due tempi (Raducioiu)",
+     "p": 0.6257,
+     "fair": 1.6,
+     "min_odds": 1.68,
+     "real": null
+    }
+   ],
+   "prob": 0.6257,
+   "fair": 1.6,
+   "real": null,
+   "combos": null,
+   "set": [
+    "tutti",
+    "affidabili",
+    "stagione"
+   ],
+   "created": "2026-11-23",
+   "status": "IN CORSO"
+  },
+  {
+   "id": "b45c4f4e57",
+   "kind": "singola",
+   "method": "RADUCIOIU",
+   "title": "Raducioiu: NG 1°T + NG 2°T",
+   "descr": "",
+   "picks": [
+    {
+     "fx": "d8247d08",
+     "lg": "SP2",
+     "date": "2026-11-23",
+     "time": "19:30",
+     "home": "Ceuta",
+     "away": "Almeria",
+     "markets": [
+      "RAD"
+     ],
+     "name": "NG-NG nei due tempi (Raducioiu)",
+     "p": 0.6143,
+     "fair": 1.63,
+     "min_odds": 1.71,
+     "real": null
+    }
+   ],
+   "prob": 0.6143,
+   "fair": 1.63,
+   "real": null,
+   "combos": null,
+   "set": [
+    "tutti",
+    "affidabili",
+    "stagione"
+   ],
+   "created": "2026-11-23",
+   "status": "IN CORSO"
+  },
+  {
+   "id": "3be2ccce99",
+   "kind": "singola",
+   "method": "RADUCIOIU",
+   "title": "Raducioiu: NG 1°T + NG 2°T",
+   "descr": "",
+   "picks": [
+    {
+     "fx": "3fb78196",
+     "lg": "E0",
+     "date": "2026-11-23",
+     "time": "20:00",
+     "home": "Brentford",
+     "away": "Everton",
+     "markets": [
+      "RAD"
+     ],
+     "name": "NG-NG nei due tempi (Raducioiu)",
+     "p": 0.6134,
+     "fair": 1.63,
+     "min_odds": 1.71,
+     "real": null
+    }
+   ],
+   "prob": 0.6134,
+   "fair": 1.63,
+   "real": null,
+   "combos": null,
+   "set": [
+    "tutti",
+    "affidabili",
+    "stagione"
+   ],
+   "created": "2026-11-23",
+   "status": "IN CORSO"
+  },
+  {
+   "id": "e63d27e818",
+   "kind": "singola",
+   "method": "RADUCIOIU",
+   "title": "Raducioiu: NG 1°T + NG 2°T",
+   "descr": "",
+   "picks": [
+    {
+     "fx": "abed8763",
+     "lg": "F2",
+     "date": "2026-11-23",
+     "time": "19:45",
+     "home": "Nantes",
+     "away": "Grenoble",
+     "markets": [
+      "RAD"
+     ],
+     "name": "NG-NG nei due tempi (Raducioiu)",
+     "p": 0.6036,
+     "fair": 1.66,
+     "min_odds": 1.74,
+     "real": null
+    }
+   ],
+   "prob": 0.6036,
+   "fair": 1.66,
+   "real": null,
+   "combos": null,
+   "set": [
+    "tutti",
+    "affidabili",
+    "stagione"
+   ],
+   "created": "2026-11-23",
+   "status": "IN CORSO"
+  },
+  {
+   "id": "0628be4f59",
+   "kind": "singola",
+   "method": "RADUCIOIU",
+   "title": "Raducioiu: NG 1°T + NG 2°T",
+   "descr": "",
+   "picks": [
+    {
+     "fx": "2493fa86",
+     "lg": "SP1",
+     "date": "2026-11-23",
+     "time": "20:00",
+     "home": "Levante",
+     "away": "Elche",
+     "markets": [
+      "RAD"
+     ],
+     "name": "NG-NG nei due tempi (Raducioiu)",
+     "p": 0.5819,
+     "fair": 1.72,
+     "min_odds": 1.8,
+     "real": null
+    }
+   ],
+   "prob": 0.5819,
+   "fair": 1.72,
+   "real": null,
+   "combos": null,
+   "set": [
+    "tutti",
+    "affidabili",
+    "stagione"
+   ],
+   "created": "2026-11-23",
+   "status": "IN CORSO"
+  },
+  {
+   "id": "e3fa2f507b",
+   "kind": "sistema",
+   "method": "RADUCIOIU",
+   "title": "Sistema Risultato Esatto 2 partite × 2 gruppi",
+   "descr": "4 colonne, come il foglio 'Contab Sistema RE'",
+   "picks": [
+    {
+     "fx": "f2d0417f",
+     "lg": "F2",
+     "date": "2026-11-23",
+     "time": "19:45",
+     "home": "Sochaux",
+     "away": "Dunkerque",
+     "markets": [
+      "RE_C",
+      "RE_X"
+     ],
+     "name": "Ris. esatto 1-0 / 2-0 / 2-1 oppure Ris. esatto 0-0 / 1-1 / 2-2",
+     "p": 0.5302,
+     "fair": 1.89,
+     "min_odds": 1.98,
+     "real": null
+    },
+    {
+     "fx": "d8247d08",
+     "lg": "SP2",
+     "date": "2026-11-23",
+     "time": "19:30",
+     "home": "Ceuta",
+     "away": "Almeria",
+     "markets": [
+      "RE_C",
+      "RE_X"
+     ],
+     "name": "Ris. esatto 1-0 / 2-0 / 2-1 oppure Ris. esatto 0-0 / 1-1 / 2-2",
+     "p": 0.4931,
+     "fair": 2.03,
+     "min_odds": 2.13,
+     "real": null
+    }
+   ],
+   "prob": 0.2614,
+   "fair": 3.82,
+   "real": null,
+   "combos": 4,
+   "set": [
+    "tutti",
+    "affidabili",
+    "stagione"
+   ],
+   "created": "2026-11-23",
+   "status": "IN CORSO"
+  },
+  {
+   "id": "2f4f1d94f7",
+   "kind": "multipla",
+   "method": "MULTIGOL",
+   "title": "Multigol a raddoppio #1",
+   "descr": "Le fasce Multigol più sicure fino a quota ~2",
+   "picks": [
+    {
+     "fx": "3fb78196",
+     "lg": "E0",
+     "date": "2026-11-23",
+     "time": "20:00",
+     "home": "Brentford",
+     "away": "Everton",
+     "markets": [
+      "MG14"
+     ],
+     "name": "Multigol 1-4",
+     "p": 0.8317,
+     "fair": 1.2,
+     "min_odds": 1.26,
+     "real": null
+    },
+    {
+     "fx": "d8247d08",
+     "lg": "SP2",
+     "date": "2026-11-23",
+     "time": "19:30",
+     "home": "Ceuta",
+     "away": "Almeria",
+     "markets": [
+      "MG14"
+     ],
+     "name": "Multigol 1-4",
+     "p": 0.8085,
+     "fair": 1.24,
+     "min_odds": 1.3,
+     "real": null
+    },
+    {
+     "fx": "f2d0417f",
+     "lg": "F2",
+     "date": "2026-11-23",
+     "time": "19:45",
+     "home": "Sochaux",
+     "away": "Dunkerque",
+     "markets": [
+      "MG14"
+     ],
+     "name": "Multigol 1-4",
+     "p": 0.7822,
+     "fair": 1.28,
+     "min_odds": 1.34,
+     "real": null
+    },
+    {
+     "fx": "abed8763",
+     "lg": "F2",
+     "date": "2026-11-23",
+     "time": "19:45",
+     "home": "Nantes",
+     "away": "Grenoble",
+     "markets": [
+      "MG14"
+     ],
+     "name": "Multigol 1-4",
+     "p": 0.7742,
+     "fair": 1.29,
+     "min_odds": 1.36,
+     "real": null
+    }
+   ],
+   "prob": 0.4072,
+   "fair": 2.46,
+   "real": null,
+   "combos": null,
+   "set": [
+    "affidabili",
+    "stagione"
+   ],
+   "created": "2026-11-23",
+   "status": "IN CORSO"
+  },
+  {
+   "id": "de5bd66d9b",
+   "kind": "multipla",
+   "method": "MULTIGOL",
+   "title": "Multigol a raddoppio #2",
+   "descr": "Le fasce Multigol più sicure fino a quota ~2",
+   "picks": [
+    {
+     "fx": "c73f6970",
+     "lg": "G1",
+     "date": "2026-11-23",
+     "time": "15:00",
+     "home": "Asteras Tripolis",
+     "away": "Aris",
+     "markets": [
+      "MG14"
+     ],
+     "name": "Multigol 1-4",
+     "p": 0.7733,
+     "fair": 1.29,
+     "min_odds": 1.36,
+     "real": null
+    },
+    {
+     "fx": "12139faa",
+     "lg": "I1",
+     "date": "2026-11-23",
+     "time": "19:45",
+     "home": "Monza",
+     "away": "Fiorentina",
+     "markets": [
+      "MG14"
+     ],
+     "name": "Multigol 1-4",
+     "p": 0.7712,
+     "fair": 1.3,
+     "min_odds": 1.36,
+     "real": null
+    },
+    {
+     "fx": "2493fa86",
+     "lg": "SP1",
+     "date": "2026-11-23",
+     "time": "20:00",
+     "home": "Levante",
+     "away": "Elche",
+     "markets": [
+      "MG14"
+     ],
+     "name": "Multigol 1-4",
+     "p": 0.7681,
+     "fair": 1.3,
+     "min_odds": 1.37,
+     "real": null
+    }
+   ],
+   "prob": 0.4581,
+   "fair": 2.18,
+   "real": null,
+   "combos": null,
+   "set": [
+    "affidabili"
+   ],
+   "created": "2026-11-23",
+   "status": "IN CORSO"
+  },
+  {
+   "id": "73e8711934",
+   "kind": "singola",
+   "method": "MULTIGOL",
+   "title": "Singola Multigol",
+   "descr": "",
+   "picks": [
+    {
+     "fx": "c73f6970",
+     "lg": "G1",
+     "date": "2026-11-23",
+     "time": "15:00",
+     "home": "Asteras Tripolis",
+     "away": "Aris",
+     "markets": [
+      "MG14"
+     ],
+     "name": "Multigol 1-4",
+     "p": 0.7733,
+     "fair": 1.29,
+     "min_odds": 1.36,
+     "real": null
+    }
+   ],
+   "prob": 0.7733,
+   "fair": 1.29,
+   "real": null,
+   "combos": null,
+   "set": [
+    "affidabili",
+    "stagione"
+   ],
+   "created": "2026-11-23",
+   "status": "IN CORSO"
+  },
+  {
+   "id": "0e850a3fbd",
+   "kind": "multipla",
+   "method": "MULTIGOL",
+   "title": "Multigol a raddoppio #2",
+   "descr": "Le fasce Multigol più sicure fino a quota ~2",
+   "picks": [
+    {
+     "fx": "c73f6970",
+     "lg": "G1",
+     "date": "2026-11-23",
+     "time": "15:00",
+     "home": "Asteras Tripolis",
+     "away": "Aris",
+     "markets": [
+      "MG14"
+     ],
+     "name": "Multigol 1-4",
+     "p": 0.7733,
+     "fair": 1.29,
+     "min_odds": 1.36,
+     "real": null
+    },
+    {
+     "fx": "69c63f30",
+     "lg": "T1",
+     "date": "2026-11-23",
+     "time": "17:00",
+     "home": "Buyuksehyr",
+     "away": "Corum",
+     "markets": [
+      "MG14"
+     ],
+     "name": "Multigol 1-4",
+     "p": 0.7712,
+     "fair": 1.3,
+     "min_odds": 1.36,
+     "real": null
+    },
+    {
+     "fx": "12139faa",
+     "lg": "I1",
+     "date": "2026-11-23",
+     "time": "19:45",
+     "home": "Monza",
+     "away": "Fiorentina",
+     "markets": [
+      "MG14"
+     ],
+     "name": "Multigol 1-4",
+     "p": 0.7712,
+     "fair": 1.3,
+     "min_odds": 1.36,
+     "real": null
+    }
+   ],
+   "prob": 0.4599,
+   "fair": 2.17,
+   "real": null,
+   "combos": null,
+   "set": [
+    "stagione"
+   ],
+   "created": "2026-11-23",
+   "status": "IN CORSO"
+  },
+  {
+   "id": "bdcd6ef1e6",
+   "kind": "singola",
+   "method": "MARCATORI",
+   "title": "Singola marcatore",
+   "descr": "Il marcatore più probabile di una partita",
+   "picks": [
+    {
+     "fx": "d8247d08",
+     "lg": "SP2",
+     "date": "2026-11-23",
+     "time": "19:30",
+     "home": "Ceuta",
+     "away": "Almeria",
+     "markets": [
+      "SC_277717"
+     ],
+     "name": "Segna Miguel de la Fuente (Almeria)",
+     "p": 0.3563,
+     "fair": 2.81,
+     "min_odds": 2.95,
+     "real": null
+    }
+   ],
+   "prob": 0.3563,
+   "fair": 2.81,
+   "real": null,
+   "combos": null,
+   "set": [
+    "tutti",
+    "affidabili",
+    "stagione"
+   ],
+   "created": "2026-11-23",
+   "status": "IN CORSO"
+  },
+  {
+   "id": "791787dc0a",
+   "kind": "singola",
+   "method": "MARCATORI",
+   "title": "Singola marcatore",
+   "descr": "Il marcatore più probabile di una partita",
+   "picks": [
+    {
+     "fx": "3fb78196",
+     "lg": "E0",
+     "date": "2026-11-23",
+     "time": "20:00",
+     "home": "Brentford",
+     "away": "Everton",
+     "markets": [
+      "SC_301166"
+     ],
+     "name": "Segna Thierno Barry (Everton)",
+     "p": 0.3548,
+     "fair": 2.82,
+     "min_odds": 2.96,
+     "real": null
+    }
+   ],
+   "prob": 0.3548,
+   "fair": 2.82,
+   "real": null,
+   "combos": null,
+   "set": [
+    "tutti",
+    "affidabili",
+    "stagione"
+   ],
+   "created": "2026-11-23",
+   "status": "IN CORSO"
+  },
+  {
+   "id": "424aabc030",
+   "kind": "singola",
+   "method": "MARCATORI",
+   "title": "Singola marcatore",
+   "descr": "Il marcatore più probabile di una partita",
+   "picks": [
+    {
+     "fx": "69c63f30",
+     "lg": "T1",
+     "date": "2026-11-23",
+     "time": "17:00",
+     "home": "Buyuksehyr",
+     "away": "Corum",
+     "markets": [
+      "SC_82009"
+     ],
+     "name": "Segna Jesús Ramírez (Corum)",
+     "p": 0.3059,
+     "fair": 3.27,
+     "min_odds": 3.43,
+     "real": null
+    }
+   ],
+   "prob": 0.3059,
+   "fair": 3.27,
+   "real": null,
+   "combos": null,
+   "set": [
+    "tutti",
+    "affidabili",
+    "stagione"
+   ],
+   "created": "2026-11-23",
+   "status": "IN CORSO"
+  },
+  {
+   "id": "1956d275fc",
+   "kind": "singola",
+   "method": "MARCATORI",
+   "title": "Singola marcatore",
+   "descr": "Il marcatore più probabile di una partita",
+   "picks": [
+    {
+     "fx": "abed8763",
+     "lg": "F2",
+     "date": "2026-11-23",
+     "time": "19:45",
+     "home": "Nantes",
+     "away": "Grenoble",
+     "markets": [
+      "SC_322899"
+     ],
+     "name": "Segna Kilian Corredor (Nantes)",
+     "p": 0.302,
+     "fair": 3.31,
+     "min_odds": 3.48,
+     "real": null
+    }
+   ],
+   "prob": 0.302,
+   "fair": 3.31,
+   "real": null,
+   "combos": null,
+   "set": [
+    "tutti",
+    "affidabili",
+    "stagione"
+   ],
+   "created": "2026-11-23",
+   "status": "IN CORSO"
+  },
+  {
+   "id": "2bebb467eb",
+   "kind": "multipla",
+   "method": "MARCATORI",
+   "title": "Doppia marcatori",
+   "descr": "I due marcatori più probabili, in partite diverse",
+   "picks": [
+    {
+     "fx": "12139faa",
+     "lg": "I1",
+     "date": "2026-11-23",
+     "time": "19:45",
+     "home": "Monza",
+     "away": "Fiorentina",
+     "markets": [
+      "SC_384482"
+     ],
+     "name": "Segna Gustavo Varela (Monza)",
+     "p": 0.5014,
+     "fair": 1.99,
+     "min_odds": 2.09,
+     "real": null
+    },
+    {
+     "fx": "d8247d08",
+     "lg": "SP2",
+     "date": "2026-11-23",
+     "time": "19:30",
+     "home": "Ceuta",
+     "away": "Almeria",
+     "markets": [
+      "SC_277717"
+     ],
+     "name": "Segna Miguel de la Fuente (Almeria)",
+     "p": 0.3563,
+     "fair": 2.81,
+     "min_odds": 2.95,
+     "real": null
+    }
+   ],
+   "prob": 0.1786,
+   "fair": 5.6,
+   "real": null,
+   "combos": null,
+   "set": [
+    "tutti",
+    "affidabili",
+    "stagione"
+   ],
+   "created": "2026-11-23",
+   "status": "IN CORSO"
+  },
+  {
+   "id": "fcc4c73cb4",
+   "kind": "sistema",
+   "method": "MARCATORI",
+   "title": "Sistema marcatori 2 su 4",
+   "descr": "Basta che segnino 2 giocatori su 4: 6 colonne",
+   "picks": [
+    {
+     "fx": "12139faa",
+     "lg": "I1",
+     "date": "2026-11-23",
+     "time": "19:45",
+     "home": "Monza",
+     "away": "Fiorentina",
+     "markets": [
+      "SC_384482"
+     ],
+     "name": "Segna Gustavo Varela (Monza)",
+     "p": 0.5014,
+     "fair": 1.99,
+     "min_odds": 2.09,
+     "real": null
+    },
+    {
+     "fx": "d8247d08",
+     "lg": "SP2",
+     "date": "2026-11-23",
+     "time": "19:30",
+     "home": "Ceuta",
+     "away": "Almeria",
+     "markets": [
+      "SC_277717"
+     ],
+     "name": "Segna Miguel de la Fuente (Almeria)",
+     "p": 0.3563,
+     "fair": 2.81,
+     "min_odds": 2.95,
+     "real": null
+    },
+    {
+     "fx": "3fb78196",
+     "lg": "E0",
+     "date": "2026-11-23",
+     "time": "20:00",
+     "home": "Brentford",
+     "away": "Everton",
+     "markets": [
+      "SC_301166"
+     ],
+     "name": "Segna Thierno Barry (Everton)",
+     "p": 0.3548,
+     "fair": 2.82,
+     "min_odds": 2.96,
+     "real": null
+    },
+    {
+     "fx": "69c63f30",
+     "lg": "T1",
+     "date": "2026-11-23",
+     "time": "17:00",
+     "home": "Buyuksehyr",
+     "away": "Corum",
+     "markets": [
+      "SC_82009"
+     ],
+     "name": "Segna Jesús Ramírez (Corum)",
+     "p": 0.3059,
+     "fair": 3.27,
+     "min_odds": 3.43,
+     "real": null
+    }
+   ],
+   "prob": 0.4898,
+   "fair": null,
+   "real": null,
+   "combos": 6,
+   "min_ok": 2,
+   "set": [
+    "tutti",
+    "affidabili",
+    "stagione"
+   ],
+   "created": "2026-11-23",
+   "status": "IN CORSO"
+  },
+  {
+   "id": "21b8738c7a",
+   "kind": "sistema",
+   "method": "MARCATORI",
+   "title": "Sistema marcatori 3 su 6",
+   "descr": "Basta che segnino 3 giocatori su 6: 20 colonne",
+   "picks": [
+    {
+     "fx": "12139faa",
+     "lg": "I1",
+     "date": "2026-11-23",
+     "time": "19:45",
+     "home": "Monza",
+     "away": "Fiorentina",
+     "markets": [
+      "SC_384482"
+     ],
+     "name": "Segna Gustavo Varela (Monza)",
+     "p": 0.5014,
+     "fair": 1.99,
+     "min_odds": 2.09,
+     "real": null
+    },
+    {
+     "fx": "d8247d08",
+     "lg": "SP2",
+     "date": "2026-11-23",
+     "time": "19:30",
+     "home": "Ceuta",
+     "away": "Almeria",
+     "markets": [
+      "SC_277717"
+     ],
+     "name": "Segna Miguel de la Fuente (Almeria)",
+     "p": 0.3563,
+     "fair": 2.81,
+     "min_odds": 2.95,
+     "real": null
+    },
+    {
+     "fx": "3fb78196",
+     "lg": "E0",
+     "date": "2026-11-23",
+     "time": "20:00",
+     "home": "Brentford",
+     "away": "Everton",
+     "markets": [
+      "SC_301166"
+     ],
+     "name": "Segna Thierno Barry (Everton)",
+     "p": 0.3548,
+     "fair": 2.82,
+     "min_odds": 2.96,
+     "real": null
+    },
+    {
+     "fx": "69c63f30",
+     "lg": "T1",
+     "date": "2026-11-23",
+     "time": "17:00",
+     "home": "Buyuksehyr",
+     "away": "Corum",
+     "markets": [
+      "SC_82009"
+     ],
+     "name": "Segna Jesús Ramírez (Corum)",
+     "p": 0.3059,
+     "fair": 3.27,
+     "min_odds": 3.43,
+     "real": null
+    },
+    {
+     "fx": "abed8763",
+     "lg": "F2",
+     "date": "2026-11-23",
+     "time": "19:45",
+     "home": "Nantes",
+     "away": "Grenoble",
+     "markets": [
+      "SC_322899"
+     ],
+     "name": "Segna Kilian Corredor (Nantes)",
+     "p": 0.302,
+     "fair": 3.31,
+     "min_odds": 3.48,
+     "real": null
+    },
+    {
+     "fx": "2493fa86",
+     "lg": "SP1",
+     "date": "2026-11-23",
+     "time": "20:00",
+     "home": "Levante",
+     "away": "Elche",
+     "markets": [
+      "SC_301684"
+     ],
+     "name": "Segna Fer Niño (Elche)",
+     "p": 0.2961,
+     "fair": 3.38,
+     "min_odds": 3.55,
+     "real": null
+    }
+   ],
+   "prob": 0.3571,
+   "fair": null,
+   "real": null,
+   "combos": 20,
+   "min_ok": 3,
+   "set": [
+    "tutti",
+    "affidabili",
+    "stagione"
+   ],
+   "created": "2026-11-23",
    "status": "IN CORSO"
   }
  ]
