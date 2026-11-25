@@ -8914,9 +8914,9 @@
    "real": null,
    "combos": null,
    "set": [
-    "tutti",
     "affidabili",
-    "stagione"
+    "stagione",
+    "tutti"
    ],
    "created": "2026-11-24",
    "status": "IN CORSO"
@@ -9182,9 +9182,9 @@
    "real": null,
    "combos": null,
    "set": [
-    "tutti",
     "affidabili",
-    "stagione"
+    "stagione",
+    "tutti"
    ],
    "created": "2026-11-24",
    "status": "IN CORSO"
@@ -9380,9 +9380,9 @@
    "real": null,
    "combos": null,
    "set": [
-    "tutti",
     "affidabili",
-    "stagione"
+    "stagione",
+    "tutti"
    ],
    "created": "2026-11-24",
    "status": "IN CORSO"
@@ -9416,9 +9416,9 @@
    "real": null,
    "combos": null,
    "set": [
-    "tutti",
     "affidabili",
-    "stagione"
+    "stagione",
+    "tutti"
    ],
    "created": "2026-11-24",
    "status": "IN CORSO"
@@ -9488,9 +9488,9 @@
    "real": null,
    "combos": null,
    "set": [
-    "tutti",
     "affidabili",
-    "stagione"
+    "stagione",
+    "tutti"
    ],
    "created": "2026-11-24",
    "status": "IN CORSO"
@@ -9747,6 +9747,894 @@
     "stagione"
    ],
    "created": "2026-11-24",
+   "status": "IN CORSO"
+  },
+  {
+   "id": "608709807e",
+   "kind": "multipla",
+   "method": "MULTIGOL",
+   "title": "Multigol a raddoppio #1",
+   "descr": "Le fasce Multigol più sicure fino a quota ~2",
+   "picks": [
+    {
+     "fx": "d65918aa",
+     "lg": "I2",
+     "date": "2026-11-25",
+     "time": "19:00",
+     "home": "Padova",
+     "away": "Sampdoria",
+     "markets": [
+      "MG14"
+     ],
+     "name": "Multigol 1-4",
+     "p": 0.8351,
+     "fair": 1.2,
+     "min_odds": 1.26,
+     "real": null
+    },
+    {
+     "fx": "9782396d",
+     "lg": "I2",
+     "date": "2026-11-25",
+     "time": "19:00",
+     "home": "Pisa",
+     "away": "Modena",
+     "markets": [
+      "MG14"
+     ],
+     "name": "Multigol 1-4",
+     "p": 0.805,
+     "fair": 1.24,
+     "min_odds": 1.3,
+     "real": null
+    },
+    {
+     "fx": "447b491d",
+     "lg": "E1",
+     "date": "2026-11-25",
+     "time": "19:45",
+     "home": "Burnley",
+     "away": "Birmingham",
+     "markets": [
+      "MG14"
+     ],
+     "name": "Multigol 1-4",
+     "p": 0.8006,
+     "fair": 1.25,
+     "min_odds": 1.31,
+     "real": null
+    },
+    {
+     "fx": "971b1e3f",
+     "lg": "E1",
+     "date": "2026-11-25",
+     "time": "19:45",
+     "home": "Watford",
+     "away": "Blackburn",
+     "markets": [
+      "MG14"
+     ],
+     "name": "Multigol 1-4",
+     "p": 0.8006,
+     "fair": 1.25,
+     "min_odds": 1.31,
+     "real": null
+    }
+   ],
+   "prob": 0.4309,
+   "fair": 2.32,
+   "real": null,
+   "combos": null,
+   "set": [
+    "tutti",
+    "affidabili",
+    "stagione"
+   ],
+   "created": "2026-11-25",
+   "status": "IN CORSO"
+  },
+  {
+   "id": "79534fd761",
+   "kind": "multipla",
+   "method": "MULTIGOL",
+   "title": "Multigol a raddoppio #2",
+   "descr": "Le fasce Multigol più sicure fino a quota ~2",
+   "picks": [
+    {
+     "fx": "687db194",
+     "lg": "E1",
+     "date": "2026-11-25",
+     "time": "20:00",
+     "home": "Stoke",
+     "away": "Millwall",
+     "markets": [
+      "MG14"
+     ],
+     "name": "Multigol 1-4",
+     "p": 0.8006,
+     "fair": 1.25,
+     "min_odds": 1.31,
+     "real": null
+    },
+    {
+     "fx": "1837d987",
+     "lg": "E2",
+     "date": "2026-11-26",
+     "time": "20:00",
+     "home": "Doncaster",
+     "away": "Huddersfield",
+     "markets": [
+      "MG14"
+     ],
+     "name": "Multigol 1-4",
+     "p": 0.7981,
+     "fair": 1.25,
+     "min_odds": 1.32,
+     "real": null
+    },
+    {
+     "fx": "23d69b38",
+     "lg": "I2",
+     "date": "2026-11-25",
+     "time": "18:00",
+     "home": "Cremonese",
+     "away": "Avellino",
+     "markets": [
+      "MG14"
+     ],
+     "name": "Multigol 1-4",
+     "p": 0.7923,
+     "fair": 1.26,
+     "min_odds": 1.33,
+     "real": null
+    },
+    {
+     "fx": "0550abc8",
+     "lg": "E1",
+     "date": "2026-11-25",
+     "time": "19:45",
+     "home": "Bolton",
+     "away": "West Brom",
+     "markets": [
+      "MG14"
+     ],
+     "name": "Multigol 1-4",
+     "p": 0.7822,
+     "fair": 1.28,
+     "min_odds": 1.34,
+     "real": null
+    }
+   ],
+   "prob": 0.396,
+   "fair": 2.53,
+   "real": null,
+   "combos": null,
+   "set": [
+    "tutti",
+    "affidabili",
+    "stagione"
+   ],
+   "created": "2026-11-25",
+   "status": "IN CORSO"
+  },
+  {
+   "id": "4ca7d32b50",
+   "kind": "singola",
+   "method": "MULTIGOL",
+   "title": "Singola Multigol",
+   "descr": "",
+   "picks": [
+    {
+     "fx": "9782396d",
+     "lg": "I2",
+     "date": "2026-11-25",
+     "time": "19:00",
+     "home": "Pisa",
+     "away": "Modena",
+     "markets": [
+      "MG14"
+     ],
+     "name": "Multigol 1-4",
+     "p": 0.805,
+     "fair": 1.24,
+     "min_odds": 1.3,
+     "real": null
+    }
+   ],
+   "prob": 0.805,
+   "fair": 1.24,
+   "real": null,
+   "combos": null,
+   "set": [
+    "tutti",
+    "affidabili",
+    "stagione"
+   ],
+   "created": "2026-11-25",
+   "status": "IN CORSO"
+  },
+  {
+   "id": "124d36ebd7",
+   "kind": "singola",
+   "method": "MULTIGOL",
+   "title": "Singola Multigol",
+   "descr": "",
+   "picks": [
+    {
+     "fx": "447b491d",
+     "lg": "E1",
+     "date": "2026-11-25",
+     "time": "19:45",
+     "home": "Burnley",
+     "away": "Birmingham",
+     "markets": [
+      "MG14"
+     ],
+     "name": "Multigol 1-4",
+     "p": 0.8006,
+     "fair": 1.25,
+     "min_odds": 1.31,
+     "real": null
+    }
+   ],
+   "prob": 0.8006,
+   "fair": 1.25,
+   "real": null,
+   "combos": null,
+   "set": [
+    "tutti",
+    "affidabili",
+    "stagione"
+   ],
+   "created": "2026-11-25",
+   "status": "IN CORSO"
+  },
+  {
+   "id": "a778ddb4c6",
+   "kind": "singola",
+   "method": "MULTIGOL",
+   "title": "Singola Multigol",
+   "descr": "",
+   "picks": [
+    {
+     "fx": "971b1e3f",
+     "lg": "E1",
+     "date": "2026-11-25",
+     "time": "19:45",
+     "home": "Watford",
+     "away": "Blackburn",
+     "markets": [
+      "MG14"
+     ],
+     "name": "Multigol 1-4",
+     "p": 0.8006,
+     "fair": 1.25,
+     "min_odds": 1.31,
+     "real": null
+    }
+   ],
+   "prob": 0.8006,
+   "fair": 1.25,
+   "real": null,
+   "combos": null,
+   "set": [
+    "tutti",
+    "affidabili",
+    "stagione"
+   ],
+   "created": "2026-11-25",
+   "status": "IN CORSO"
+  },
+  {
+   "id": "789608e520",
+   "kind": "singola",
+   "method": "MULTIGOL",
+   "title": "Singola Multigol",
+   "descr": "",
+   "picks": [
+    {
+     "fx": "687db194",
+     "lg": "E1",
+     "date": "2026-11-25",
+     "time": "20:00",
+     "home": "Stoke",
+     "away": "Millwall",
+     "markets": [
+      "MG14"
+     ],
+     "name": "Multigol 1-4",
+     "p": 0.8006,
+     "fair": 1.25,
+     "min_odds": 1.31,
+     "real": null
+    }
+   ],
+   "prob": 0.8006,
+   "fair": 1.25,
+   "real": null,
+   "combos": null,
+   "set": [
+    "tutti",
+    "affidabili",
+    "stagione"
+   ],
+   "created": "2026-11-25",
+   "status": "IN CORSO"
+  },
+  {
+   "id": "24786e0c30",
+   "kind": "multipla",
+   "method": "RADUCIOIU",
+   "title": "Raducioiu multipla Under 2.5",
+   "descr": "Partite con media Batistuta bassa, quota ~2",
+   "picks": [
+    {
+     "fx": "d65918aa",
+     "lg": "I2",
+     "date": "2026-11-25",
+     "time": "19:00",
+     "home": "Padova",
+     "away": "Sampdoria",
+     "markets": [
+      "U25"
+     ],
+     "name": "Under 2.5",
+     "p": 0.5151,
+     "fair": 1.94,
+     "min_odds": 2.04,
+     "real": 1.69
+    },
+    {
+     "fx": "23d69b38",
+     "lg": "I2",
+     "date": "2026-11-25",
+     "time": "18:00",
+     "home": "Cremonese",
+     "away": "Avellino",
+     "markets": [
+      "U25"
+     ],
+     "name": "Under 2.5",
+     "p": 0.5151,
+     "fair": 1.94,
+     "min_odds": 2.04,
+     "real": 1.7
+    }
+   ],
+   "prob": 0.2653,
+   "fair": 3.77,
+   "real": 2.87,
+   "combos": null,
+   "set": [
+    "tutti",
+    "affidabili",
+    "stagione"
+   ],
+   "created": "2026-11-25",
+   "status": "IN CORSO"
+  },
+  {
+   "id": "134d651739",
+   "kind": "singola",
+   "method": "RADUCIOIU",
+   "title": "Raducioiu: NG 1°T + NG 2°T",
+   "descr": "",
+   "picks": [
+    {
+     "fx": "23d69b38",
+     "lg": "I2",
+     "date": "2026-11-25",
+     "time": "18:00",
+     "home": "Cremonese",
+     "away": "Avellino",
+     "markets": [
+      "RAD"
+     ],
+     "name": "NG-NG nei due tempi (Raducioiu)",
+     "p": 0.6036,
+     "fair": 1.66,
+     "min_odds": 1.74,
+     "real": null
+    }
+   ],
+   "prob": 0.6036,
+   "fair": 1.66,
+   "real": null,
+   "combos": null,
+   "set": [
+    "tutti",
+    "affidabili",
+    "stagione"
+   ],
+   "created": "2026-11-25",
+   "status": "IN CORSO"
+  },
+  {
+   "id": "53a80b874a",
+   "kind": "singola",
+   "method": "RADUCIOIU",
+   "title": "Raducioiu: NG 1°T + NG 2°T",
+   "descr": "",
+   "picks": [
+    {
+     "fx": "687db194",
+     "lg": "E1",
+     "date": "2026-11-25",
+     "time": "20:00",
+     "home": "Stoke",
+     "away": "Millwall",
+     "markets": [
+      "RAD"
+     ],
+     "name": "NG-NG nei due tempi (Raducioiu)",
+     "p": 0.6036,
+     "fair": 1.66,
+     "min_odds": 1.74,
+     "real": null
+    }
+   ],
+   "prob": 0.6036,
+   "fair": 1.66,
+   "real": null,
+   "combos": null,
+   "set": [
+    "tutti",
+    "affidabili",
+    "stagione"
+   ],
+   "created": "2026-11-25",
+   "status": "IN CORSO"
+  },
+  {
+   "id": "5d7985cfc3",
+   "kind": "singola",
+   "method": "RADUCIOIU",
+   "title": "Raducioiu: NG 1°T + NG 2°T",
+   "descr": "",
+   "picks": [
+    {
+     "fx": "971b1e3f",
+     "lg": "E1",
+     "date": "2026-11-25",
+     "time": "19:45",
+     "home": "Watford",
+     "away": "Blackburn",
+     "markets": [
+      "RAD"
+     ],
+     "name": "NG-NG nei due tempi (Raducioiu)",
+     "p": 0.5943,
+     "fair": 1.68,
+     "min_odds": 1.77,
+     "real": null
+    }
+   ],
+   "prob": 0.5943,
+   "fair": 1.68,
+   "real": null,
+   "combos": null,
+   "set": [
+    "tutti",
+    "affidabili",
+    "stagione"
+   ],
+   "created": "2026-11-25",
+   "status": "IN CORSO"
+  },
+  {
+   "id": "ec16ae0224",
+   "kind": "singola",
+   "method": "RADUCIOIU",
+   "title": "Raducioiu: NG 1°T + NG 2°T",
+   "descr": "",
+   "picks": [
+    {
+     "fx": "d70862f7",
+     "lg": "I2",
+     "date": "2026-11-25",
+     "time": "19:00",
+     "home": "Mantova",
+     "away": "Arezzo",
+     "markets": [
+      "RAD"
+     ],
+     "name": "NG-NG nei due tempi (Raducioiu)",
+     "p": 0.5912,
+     "fair": 1.69,
+     "min_odds": 1.78,
+     "real": null
+    }
+   ],
+   "prob": 0.5912,
+   "fair": 1.69,
+   "real": null,
+   "combos": null,
+   "set": [
+    "tutti",
+    "affidabili",
+    "stagione"
+   ],
+   "created": "2026-11-25",
+   "status": "IN CORSO"
+  },
+  {
+   "id": "172f347850",
+   "kind": "sistema",
+   "method": "RADUCIOIU",
+   "title": "Sistema Risultato Esatto 2 partite × 2 gruppi",
+   "descr": "4 colonne, come il foglio 'Contab Sistema RE'",
+   "picks": [
+    {
+     "fx": "d65918aa",
+     "lg": "I2",
+     "date": "2026-11-25",
+     "time": "19:00",
+     "home": "Padova",
+     "away": "Sampdoria",
+     "markets": [
+      "RE_C",
+      "RE_X"
+     ],
+     "name": "Ris. esatto 1-0 / 2-0 / 2-1 oppure Ris. esatto 0-0 / 1-1 / 2-2",
+     "p": 0.5162,
+     "fair": 1.94,
+     "min_odds": 2.03,
+     "real": null
+    },
+    {
+     "fx": "23d69b38",
+     "lg": "I2",
+     "date": "2026-11-25",
+     "time": "18:00",
+     "home": "Cremonese",
+     "away": "Avellino",
+     "markets": [
+      "RE_X",
+      "RE_C"
+     ],
+     "name": "Ris. esatto 0-0 / 1-1 / 2-2 oppure Ris. esatto 1-0 / 2-0 / 2-1",
+     "p": 0.5013,
+     "fair": 1.99,
+     "min_odds": 2.09,
+     "real": null
+    }
+   ],
+   "prob": 0.2588,
+   "fair": 3.86,
+   "real": null,
+   "combos": 4,
+   "set": [
+    "tutti",
+    "affidabili",
+    "stagione"
+   ],
+   "created": "2026-11-25",
+   "status": "IN CORSO"
+  },
+  {
+   "id": "22805f9aec",
+   "kind": "singola",
+   "method": "MARCATORI",
+   "title": "Singola marcatore",
+   "descr": "Il marcatore più probabile di una partita",
+   "picks": [
+    {
+     "fx": "0550abc8",
+     "lg": "E1",
+     "date": "2026-11-25",
+     "time": "19:45",
+     "home": "Bolton",
+     "away": "West Brom",
+     "markets": [
+      "SC_317857"
+     ],
+     "name": "Segna Isaac Price (West Brom)",
+     "p": 0.3379,
+     "fair": 2.96,
+     "min_odds": 3.11,
+     "real": null
+    }
+   ],
+   "prob": 0.3379,
+   "fair": 2.96,
+   "real": null,
+   "combos": null,
+   "set": [
+    "tutti",
+    "affidabili",
+    "stagione"
+   ],
+   "created": "2026-11-25",
+   "status": "IN CORSO"
+  },
+  {
+   "id": "c3af74ca86",
+   "kind": "singola",
+   "method": "MARCATORI",
+   "title": "Singola marcatore",
+   "descr": "Il marcatore più probabile di una partita",
+   "picks": [
+    {
+     "fx": "23d69b38",
+     "lg": "I2",
+     "date": "2026-11-25",
+     "time": "18:00",
+     "home": "Cremonese",
+     "away": "Avellino",
+     "markets": [
+      "SC_292241"
+     ],
+     "name": "Segna Walid Cheddira (Avellino)",
+     "p": 0.3369,
+     "fair": 2.97,
+     "min_odds": 3.12,
+     "real": null
+    }
+   ],
+   "prob": 0.3369,
+   "fair": 2.97,
+   "real": null,
+   "combos": null,
+   "set": [
+    "tutti",
+    "affidabili",
+    "stagione"
+   ],
+   "created": "2026-11-25",
+   "status": "IN CORSO"
+  },
+  {
+   "id": "fe5b636f07",
+   "kind": "multipla",
+   "method": "MARCATORI",
+   "title": "Doppia marcatori",
+   "descr": "I due marcatori più probabili, in partite diverse",
+   "picks": [
+    {
+     "fx": "1837d987",
+     "lg": "E2",
+     "date": "2026-11-26",
+     "time": "20:00",
+     "home": "Doncaster",
+     "away": "Huddersfield",
+     "markets": [
+      "SC_207774"
+     ],
+     "name": "Segna Joseph Taylor (Huddersfield)",
+     "p": 0.437,
+     "fair": 2.29,
+     "min_odds": 2.4,
+     "real": null
+    },
+    {
+     "fx": "9782396d",
+     "lg": "I2",
+     "date": "2026-11-25",
+     "time": "19:00",
+     "home": "Pisa",
+     "away": "Modena",
+     "markets": [
+      "SC_170755"
+     ],
+     "name": "Segna Andrea Belotti (Modena)",
+     "p": 0.4365,
+     "fair": 2.29,
+     "min_odds": 2.41,
+     "real": null
+    }
+   ],
+   "prob": 0.1908,
+   "fair": 5.24,
+   "real": null,
+   "combos": null,
+   "set": [
+    "tutti",
+    "affidabili",
+    "stagione"
+   ],
+   "created": "2026-11-25",
+   "status": "IN CORSO"
+  },
+  {
+   "id": "8235896356",
+   "kind": "sistema",
+   "method": "MARCATORI",
+   "title": "Sistema marcatori 2 su 4",
+   "descr": "Basta che segnino 2 giocatori su 4: 6 colonne",
+   "picks": [
+    {
+     "fx": "1837d987",
+     "lg": "E2",
+     "date": "2026-11-26",
+     "time": "20:00",
+     "home": "Doncaster",
+     "away": "Huddersfield",
+     "markets": [
+      "SC_207774"
+     ],
+     "name": "Segna Joseph Taylor (Huddersfield)",
+     "p": 0.437,
+     "fair": 2.29,
+     "min_odds": 2.4,
+     "real": null
+    },
+    {
+     "fx": "9782396d",
+     "lg": "I2",
+     "date": "2026-11-25",
+     "time": "19:00",
+     "home": "Pisa",
+     "away": "Modena",
+     "markets": [
+      "SC_170755"
+     ],
+     "name": "Segna Andrea Belotti (Modena)",
+     "p": 0.4365,
+     "fair": 2.29,
+     "min_odds": 2.41,
+     "real": null
+    },
+    {
+     "fx": "971b1e3f",
+     "lg": "E1",
+     "date": "2026-11-25",
+     "time": "19:45",
+     "home": "Watford",
+     "away": "Blackburn",
+     "markets": [
+      "SC_326075"
+     ],
+     "name": "Segna Andri Gudjohnsen (Blackburn)",
+     "p": 0.3963,
+     "fair": 2.52,
+     "min_odds": 2.65,
+     "real": null
+    },
+    {
+     "fx": "0550abc8",
+     "lg": "E1",
+     "date": "2026-11-25",
+     "time": "19:45",
+     "home": "Bolton",
+     "away": "West Brom",
+     "markets": [
+      "SC_317857"
+     ],
+     "name": "Segna Isaac Price (West Brom)",
+     "p": 0.3379,
+     "fair": 2.96,
+     "min_odds": 3.11,
+     "real": null
+    }
+   ],
+   "prob": 0.5286,
+   "fair": null,
+   "real": null,
+   "combos": 6,
+   "min_ok": 2,
+   "set": [
+    "tutti",
+    "affidabili",
+    "stagione"
+   ],
+   "created": "2026-11-25",
+   "status": "IN CORSO"
+  },
+  {
+   "id": "6f1c75f86a",
+   "kind": "sistema",
+   "method": "MARCATORI",
+   "title": "Sistema marcatori 3 su 6",
+   "descr": "Basta che segnino 3 giocatori su 6: 20 colonne",
+   "picks": [
+    {
+     "fx": "1837d987",
+     "lg": "E2",
+     "date": "2026-11-26",
+     "time": "20:00",
+     "home": "Doncaster",
+     "away": "Huddersfield",
+     "markets": [
+      "SC_207774"
+     ],
+     "name": "Segna Joseph Taylor (Huddersfield)",
+     "p": 0.437,
+     "fair": 2.29,
+     "min_odds": 2.4,
+     "real": null
+    },
+    {
+     "fx": "9782396d",
+     "lg": "I2",
+     "date": "2026-11-25",
+     "time": "19:00",
+     "home": "Pisa",
+     "away": "Modena",
+     "markets": [
+      "SC_170755"
+     ],
+     "name": "Segna Andrea Belotti (Modena)",
+     "p": 0.4365,
+     "fair": 2.29,
+     "min_odds": 2.41,
+     "real": null
+    },
+    {
+     "fx": "971b1e3f",
+     "lg": "E1",
+     "date": "2026-11-25",
+     "time": "19:45",
+     "home": "Watford",
+     "away": "Blackburn",
+     "markets": [
+      "SC_326075"
+     ],
+     "name": "Segna Andri Gudjohnsen (Blackburn)",
+     "p": 0.3963,
+     "fair": 2.52,
+     "min_odds": 2.65,
+     "real": null
+    },
+    {
+     "fx": "0550abc8",
+     "lg": "E1",
+     "date": "2026-11-25",
+     "time": "19:45",
+     "home": "Bolton",
+     "away": "West Brom",
+     "markets": [
+      "SC_317857"
+     ],
+     "name": "Segna Isaac Price (West Brom)",
+     "p": 0.3379,
+     "fair": 2.96,
+     "min_odds": 3.11,
+     "real": null
+    },
+    {
+     "fx": "23d69b38",
+     "lg": "I2",
+     "date": "2026-11-25",
+     "time": "18:00",
+     "home": "Cremonese",
+     "away": "Avellino",
+     "markets": [
+      "SC_292241"
+     ],
+     "name": "Segna Walid Cheddira (Avellino)",
+     "p": 0.3369,
+     "fair": 2.97,
+     "min_odds": 3.12,
+     "real": null
+    },
+    {
+     "fx": "d65918aa",
+     "lg": "I2",
+     "date": "2026-11-25",
+     "time": "19:00",
+     "home": "Padova",
+     "away": "Sampdoria",
+     "markets": [
+      "SC_139028"
+     ],
+     "name": "Segna Lorenzo Insigne (Sampdoria)",
+     "p": 0.3281,
+     "fair": 3.05,
+     "min_odds": 3.2,
+     "real": null
+    }
+   ],
+   "prob": 0.4115,
+   "fair": null,
+   "real": null,
+   "combos": 20,
+   "min_ok": 3,
+   "set": [
+    "tutti",
+    "affidabili",
+    "stagione"
+   ],
+   "created": "2026-11-25",
    "status": "IN CORSO"
   }
  ]
